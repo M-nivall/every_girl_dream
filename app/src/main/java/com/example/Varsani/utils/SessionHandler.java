@@ -127,23 +127,7 @@ public class SessionHandler {
 
         return user;
     }
-//    public BnfryModel getUserDetails_2() {
-//        //Check if user is logged in first
-//        if (!isLoggedIn()) {
-//            return null;
-//        }
-//        BnfryModel user = new BnfryModel();
-//        user.setUser_type(mPreferences.getString(KEY_USER_TYPE, KEY_EMPTY));
-//        user.setID(mPreferences.getString(KEY_ID, KEY_EMPTY));
-//        user.setFirstname(mPreferences.getString(KEY_FIRST_NAME, KEY_EMPTY));
-//        user.setLastname(mPreferences.getString(KEY_LAST_NAME, KEY_EMPTY));
-//        user.setUsername(mPreferences.getString(KEY_USER_NAME, KEY_EMPTY));
-//        user.setEmail(mPreferences.getString(KEY_EMAIL, KEY_EMPTY));
-//        user.setPhoneNo(mPreferences.getString(KEY_PHONE_NO, KEY_EMPTY));
-//        user.setDateCreated(mPreferences.getString(KEY_DATE_CREATED, KEY_EMPTY));
-//
-//        return user;
-//    }
+
 
     /**
      * Logs out user by clearing the session
