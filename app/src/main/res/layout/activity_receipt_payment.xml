@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardBackgroundColor="@android:color/white"
+    tools:context=".Suppliers.ReceiptPayment">
+
+    <!-- Inner LinearLayout (Header + Body + Footer) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <!-- Print Button -->
+        <ImageView
+            android:id="@+id/btn_printfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:contentDescription="print"
+            android:src="@drawable/ic_print" />
+
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:padding="16dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_company_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refnet Payment Receipt"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_company_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PO BOX 45-100, Lunga Lunga Road, Kenya"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_company_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact: +254 756 7890"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- Body Section (Receipt Details) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@android:color/white"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_request_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request ID: "
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Items: "
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_request_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request Date: "
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_request_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Request Status: "
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tv_quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quantity: "
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:paddingBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_request_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                android:paddingTop="4dp"/>
+
+        </LinearLayout>
+
+        <!-- Footer Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tv_footer_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thank you for your business!"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tv_footer_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="For inquiries, contact info@refnetconditioning.com"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:gravity="center" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Refnet</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Refnet</string>
+    <string name="nav_header_subtitle">Refnet</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="home_second">Home Second</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="login">Customer Login</string>
+    <string name="orders">Order Receipts</string>
+    <string name="feedback">Feedback</string>
+    <string name="staff_login">Login</string>
+    <string name="about">
+
+REFNET AIR CONDITIONING (E.A) LTD has been involved in Air conditioning works in Kenya and its neighbouring countries like Tanzania, Uganda and Rwanda. Be it domestic or commercial, we have engineers and Technicians  to meet all your needs.We do quality and timely works. That is why we are relied upon by so many of the East Africa big names.The leading Air conditioning contractor in Kenya. Mainly dealers of LG, Samsung and Carrier Air conditioners. Top in the list of air conditioning suppliers in Kenya
+
+    </string>
+
+
+    <string name="help">
+        <b>1.	Help</b>
+
+    </string>
+
+    <string-array name="recipient">
+        <item>Select Recipient</item>
+        <item>Finance</item>
+        <item>Shipping Manager</item>
+        <item>Stock manager</item>
+        <item>Service manager</item>
+    </string-array>
+
+
+    <string-array name="products">
+        <item>Select item</item>
+
+        <item>LG Air Conditioners-Split</item>
+        <item>Fujiair Commercial Air Conditioner Units</item>
+        <item>Daikin Air Conditioner Units</item>
+        <item>Carrier Air Conditioners</item>
+        <item>Panasonic Air Conditioning Unit</item>
+        <item>Samsung Air Conditioning Units</item>
+        <item>Trane Commercial HVAC Systems</item>
+        <item>Gree Air Conditioners</item>
+    </string-array>
+    <string name="title_activity_supplier_payments">SupplierPayments</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+</resources>
