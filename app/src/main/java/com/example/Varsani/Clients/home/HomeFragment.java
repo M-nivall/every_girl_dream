@@ -1,197 +1,242 @@
 package com.example.Varsani.Clients.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.view.MenuItemCompat;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.Varsani.Clients.Adapters.AdapterProducts;
-import com.example.Varsani.Clients.Adapters.AdapterServices;
-import com.example.Varsani.Clients.CartItems;
-import com.example.Varsani.Clients.Help_in;
-import com.example.Varsani.Clients.Models.ServicesModal;
-import com.example.Varsani.MainActivity;
-import com.example.Varsani.utils.SessionHandler;
-import com.example.Varsani.utils.Urls;
-import com.example.Varsani.Clients.Models.ProductModal;
-import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Clients.About;
+import com.example.Varsani.Clients.Login;
+import com.example.Varsani.Clients.Register;
 import com.example.Varsani.R;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.Varsani.utils.SessionHandler;
+import com.example.Varsani.Clients.Models.UserModel;
 
 public class HomeFragment extends Fragment {
 
     private SessionHandler session;
     private UserModel user;
-    private List<ProductModal> list;
-    private List<ServicesModal> list2;
-    private AdapterProducts adapterProducts;
-    private AdapterServices adapterServices;
-    private ImageView help,home;
-    private ImageView cart;
-    private RecyclerView recyclerView ,recyclerView2 ,recyclerview3;
-    private ProgressBar progressBar,progressBar3;
+
+    // Buttons
+    private Button btnReportEmergency;
+    private Button btnEmergencyHotline;
+    private Button btnLogin;
+    private Button btnRegister;
+
+    // Cards
+    private CardView cardRescueCenters;
+    private CardView cardCounselling;
+    private CardView cardSeminars;
+    private CardView cardLearnMore;
+    private CardView cardLoginPrompt;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        progressBar=root.findViewById(R.id.progressBar);
-        recyclerView=root.findViewById(R.id.recyclerView);
-        recyclerView2=root.findViewById(R.id.recyclerView2);
 
-        cart = root.findViewById(R.id.imgcart);
-        help= root.findViewById(R.id.imghelp);
+        // Initialize session
+        session = new SessionHandler(getContext());
 
+        // Initialize views
+        initializeViews(root);
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CartItems.class);
-                startActivity(intent);
-            }
-        });
-        help.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent ght = new Intent(getContext(), Help_in.class);
-                startActivity(ght);
-            }
-        });
+        // Check if user is logged in
+        if(session.isLoggedIn()) {
+            user = session.getUserDetails();
+            hideLoginPrompt();
+        }
 
-        recyclerView.setLayoutManager( new LinearLayoutManager( getContext()));
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
-        recyclerView.setLayoutManager(mLayoutManager);
-
-        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecyclerView.LayoutManager nLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.HORIZONTAL,false);
-        recyclerView2.setLayoutManager(nLayoutManager);
-
-        session=new SessionHandler(getContext());
-        user=session.getUserDetails();
-        list= new ArrayList<>();
-        list2= new ArrayList<>();
-        getProdcuts();
-        getservices();
+        // Set click listeners
+        setClickListeners();
 
         return root;
     }
-    public void getProdcuts(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Urls.URL_GET_PRODUCTS,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
 
-                            Log.e("Response",""+response);
-                            JSONObject jsonObject=new JSONObject(response);
-                            String status=jsonObject.getString("status");
+    private void initializeViews(View root) {
+        // Emergency buttons
+        btnReportEmergency = root.findViewById(R.id.btnReportEmergency);
+        btnEmergencyHotline = root.findViewById(R.id.btnEmergencyHotline);
 
-                            if(status.equals("1")){
-                                JSONArray jsonArray=jsonObject.getJSONArray("products");
-                                for (int i=0; i < jsonArray.length();i++){
-                                    JSONObject jsn=jsonArray.getJSONObject(i);
-                                    String productID=jsn.getString("productID");
-                                    String productName=jsn.getString("productName");
-                                    String price=jsn.getString("price");
-                                    String stock=jsn.getString("stock");
-                                    String image=jsn.getString("image");
-                                    String desc=jsn.getString("desc");
+        // Login/Register buttons
+        btnLogin = root.findViewById(R.id.btnLogin);
+        btnRegister = root.findViewById(R.id.btnRegister);
 
-                                    ProductModal productModal=new ProductModal( productID, productName, stock, price, image,desc);
-                                    list.add(productModal);
-                                }
-                                progressBar.setVisibility(View.GONE);
-                                adapterProducts=new AdapterProducts(getContext(),list);
-                                recyclerView.setAdapter(adapterProducts);
-                            }
-                        }catch (Exception e){
-                            e.printStackTrace();
-                            Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
+        // Quick access cards
+        cardRescueCenters = root.findViewById(R.id.cardRescueCenters);
+        cardCounselling = root.findViewById(R.id.cardCounselling);
+        cardSeminars = root.findViewById(R.id.cardSeminars);
+        cardLearnMore = root.findViewById(R.id.cardLearnMore);
+        cardLoginPrompt = root.findViewById(R.id.cardLoginPrompt);
     }
 
-    public void getservices(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Urls.URL_GET_SERVICES,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-
-                            Log.e("Response",""+response);
-                            JSONObject jsonObject=new JSONObject(response);
-                            String status=jsonObject.getString("status");
-
-                            if(status.equals("1")){
-                                JSONArray jsonArray=jsonObject.getJSONArray("products");
-                                for (int i=0; i < jsonArray.length();i++){
-                                    JSONObject jsn=jsonArray.getJSONObject(i);
-                                    String productID=jsn.getString("productID");
-                                    String productName=jsn.getString("productName");
-                                    String price=jsn.getString("price");
-                                    String stock=jsn.getString("stock");
-                                    String image=jsn.getString("image");
-                                    String desc=jsn.getString("desc");
-
-                                    ServicesModal servicesModal=new ServicesModal( productID, productName, stock, price, image,desc);
-                                    list2.add(servicesModal);
-                                }
-                                progressBar.setVisibility(View.GONE);
-                                adapterServices=new AdapterServices(getContext(),list2);
-                                recyclerView2.setAdapter(adapterServices);
-                            }
-                        }catch (Exception e){
-                            e.printStackTrace();
-                            Toast.makeText(getContext(),e.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
+    private void setClickListeners() {
+        // Emergency Report Button (No login required)
+        btnReportEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                openEmergencyReport();
             }
         });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
+
+        // Emergency Hotline Button
+        btnEmergencyHotline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeEmergencyCall();
+            }
+        });
+
+        // Login Button
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Login.class);
+                startActivity(intent);
+            }
+        });
+
+        // Register Button
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Register.class);
+                startActivity(intent);
+            }
+        });
+
+        // Rescue Centers Card
+        cardRescueCenters.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openRescueCenters();
+            }
+        });
+
+        // Counselling Card
+        cardCounselling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCounselling();
+            }
+        });
+
+        // Seminars Card
+        cardSeminars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSeminars();
+            }
+        });
+
+        // Learn More Card
+        cardLearnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLearnMore();
+            }
+        });
     }
 
+    /**
+     * Opens emergency report page (no login required)
+     */
+    private void openEmergencyReport() {
+        // TODO: Create EmergencyReportActivity and uncomment
+        // Intent intent = new Intent(getContext(), EmergencyReportActivity.class);
+        // startActivity(intent);
 
+        // Temporary toast until EmergencyReportActivity is created
+        Toast.makeText(getContext(), "Opening Emergency Report...", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Makes emergency call to FGM hotline
+     */
+    private void makeEmergencyCall() {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:1195")); // Kenya FGM hotline number
+
+        try {
+            startActivity(callIntent);
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "Unable to make call", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Opens rescue centers page
+     */
+    private void openRescueCenters() {
+        // TODO: Create RescueCentersActivity and uncomment
+        // Intent intent = new Intent(getContext(), RescueCentersActivity.class);
+        // startActivity(intent);
+
+        Toast.makeText(getContext(), "Opening Rescue Centers...", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Opens counselling page (may require login)
+     */
+    private void openCounselling() {
+        if(session.isLoggedIn()) {
+            // TODO: Create CounsellingActivity and uncomment
+            // Intent intent = new Intent(getContext(), CounsellingActivity.class);
+            // startActivity(intent);
+
+            Toast.makeText(getContext(), "Opening Counselling...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Please login to access counselling services", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getContext(), Login.class);
+            startActivity(intent);
+        }
+    }
+
+    /**
+     * Opens seminars page
+     */
+    private void openSeminars() {
+        // TODO: Create SeminarsActivity and uncomment
+        // Intent intent = new Intent(getContext(), SeminarsActivity.class);
+        // startActivity(intent);
+
+        Toast.makeText(getContext(), "Opening Seminars...", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Opens learn more / about FGM page
+     */
+    private void openLearnMore() {
+        Intent intent = new Intent(getContext(), About.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Hides login prompt card when user is already logged in
+     */
+    private void hideLoginPrompt() {
+        if(cardLoginPrompt != null) {
+            cardLoginPrompt.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        // Refresh login state when fragment resumes
+        if(session.isLoggedIn()) {
+            user = session.getUserDetails();
+            hideLoginPrompt();
+        }
+    }
 }

@@ -77,92 +77,68 @@ public class Dashboard extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        Intent hm = new Intent( getApplicationContext(), Dashboard.class );
-                        startActivity( hm );
-                        break;
-                    case R.id.nav_new_orders:
-                        Intent n = new Intent( getApplicationContext(), NewOrders.class );
-                        startActivity( n );
-                        break;
-                    case R.id.nav_approvedOrders:
-                        Intent a = new Intent( getApplicationContext(), ApprovedOrders.class );
-                        startActivity( a );
-                        break;
-                    case R.id.nav_new_serv_payments:
-                        Intent np = new Intent( getApplicationContext(), NewServicePayments.class );
-                        startActivity( np );
-                        break;
-                    case R.id.nav_approved_serv_payments:
-                        Intent apr = new Intent(getApplicationContext(), ApprovedServPayments.class);
-                        startActivity(apr);
-                        break;
-                    case R.id.nav_supplier_payments:
-                        Intent sp = new Intent(getApplicationContext(), SupplyPayments.class);
-                        startActivity(sp);
-                        break;
-
-                    case R.id.nav_orders_to_shipp:
-                        Intent as = new Intent( getApplicationContext(), OrdersToShip.class );
-                        startActivity( as );
-                        break;
-                    case R.id.nav_shipping_orders:
-                        Intent so = new Intent( getApplicationContext(), ShippingOrders.class );
-                        startActivity( so );
-                        break;
-
-                    case R.id.nav_assigned_orders:
-                        Intent ao = new Intent( getApplicationContext(), AssignedOrders.class );
-                        startActivity( ao );
-                        break;
-                    case R.id.nav_arrived_orders:
-                        Intent aro = new Intent( getApplicationContext(), ArrivedOrders.class );
-                        startActivity( aro );
-                        break;
-                    case R.id.nav_delivered_orders:
-                        Intent d = new Intent( getApplicationContext(), DeliveredOrders.class );
-                        startActivity( d );
-                        break;
-                    case R.id.nav_stock:
-                        Intent st = new Intent( getApplicationContext(), ViewStock.class );
-                        startActivity( st);
-                        break;
-                    case R.id.nav_tools:
-                        Intent nt = new Intent( getApplicationContext(), ViewTools.class );
-                        startActivity( nt);
-                        break;
-                    case R.id.nav_quot_requests:
-                        Intent rq = new Intent( getApplicationContext(), QuotationRequests.class );
-                        startActivity(rq);
-                        break;
-                    case R.id.nav_service_completed:
-                        Intent nsc = new Intent( getApplicationContext(), ServiceCompleted.class );
-                        startActivity(nsc);
-                        break;
-                    case R.id.nav_quot_visit:
-                        Intent qt = new Intent( getApplicationContext(), AssignedVisits.class );
-                        startActivity(qt);
-                        break;
-                    case R.id.nav_assigned_services:
-                        Intent asv = new Intent( getApplicationContext(), AssignedServices.class );
-                        startActivity(asv);
-                        break;
-                    case R.id.nav_materials:
-                        Intent mtr = new Intent( getApplicationContext(), RequestedMaterials.class );
-                        startActivity(mtr);
-                        break;
-                        case R.id.nav_staff_feedback:
-                        Intent fb = new Intent( getApplicationContext(), Stafffeedback.class );
-                        startActivity( fb);
-                        break;
-                    case R.id.nav_supplies:
-                        Intent im = new Intent( getApplicationContext(), RequestItems.class );
-                        startActivity( im);
-                        break;
-                    case R.id.nav_logout:
-                        alertLogout();
-                        break;
+                if (item.getItemId() == R.id.nav_home) {
+                    Intent hm = new Intent( getApplicationContext(), Dashboard.class );
+                    startActivity( hm );
+                } else if (item.getItemId() == R.id.nav_new_orders) {
+                    Intent n = new Intent( getApplicationContext(), NewOrders.class );
+                    startActivity( n );
+                } else if (item.getItemId() == R.id.nav_approvedOrders) {
+                    Intent a = new Intent( getApplicationContext(), ApprovedOrders.class );
+                    startActivity( a );
+                } else if (item.getItemId() == R.id.nav_new_serv_payments) {
+                    Intent np = new Intent( getApplicationContext(), NewServicePayments.class );
+                    startActivity( np );
+                } else if (item.getItemId() == R.id.nav_approved_serv_payments) {
+                    Intent apr = new Intent(getApplicationContext(), ApprovedServPayments.class);
+                    startActivity(apr);
+                } else if (item.getItemId() == R.id.nav_supplier_payments) {
+                    Intent sp = new Intent(getApplicationContext(), SupplyPayments.class);
+                    startActivity(sp);
+                } else if (item.getItemId() == R.id.nav_orders_to_shipp) {
+                    Intent as = new Intent( getApplicationContext(), OrdersToShip.class );
+                    startActivity( as );
+                } else if (item.getItemId() == R.id.nav_shipping_orders) {
+                    Intent so = new Intent( getApplicationContext(), ShippingOrders.class );
+                    startActivity( so );
+                } else if (item.getItemId() == R.id.nav_assigned_orders) {
+                    Intent ao = new Intent( getApplicationContext(), AssignedOrders.class );
+                    startActivity( ao );
+                } else if (item.getItemId() == R.id.nav_arrived_orders) {
+                    Intent aro = new Intent( getApplicationContext(), ArrivedOrders.class );
+                    startActivity( aro );
+                } else if (item.getItemId() == R.id.nav_delivered_orders) {
+                    Intent d = new Intent( getApplicationContext(), DeliveredOrders.class );
+                    startActivity( d );
+                } else if (item.getItemId() == R.id.nav_stock) {
+                    Intent st = new Intent( getApplicationContext(), ViewStock.class );
+                    startActivity( st);
+                } else if (item.getItemId() == R.id.nav_tools) {
+                    Intent nt = new Intent( getApplicationContext(), ViewTools.class );
+                    startActivity( nt);
+                } else if (item.getItemId() == R.id.nav_quot_requests) {
+                    Intent rq = new Intent( getApplicationContext(), QuotationRequests.class );
+                    startActivity(rq);
+                } else if (item.getItemId() == R.id.nav_service_completed) {
+                    Intent nsc = new Intent( getApplicationContext(), ServiceCompleted.class );
+                    startActivity(nsc);
+                } else if (item.getItemId() == R.id.nav_quot_visit) {
+                    Intent qt = new Intent( getApplicationContext(), AssignedVisits.class );
+                    startActivity(qt);
+                } else if (item.getItemId() == R.id.nav_assigned_services) {
+                    Intent asv = new Intent( getApplicationContext(), AssignedServices.class );
+                    startActivity(asv);
+                } else if (item.getItemId() == R.id.nav_materials) {
+                    Intent mtr = new Intent( getApplicationContext(), RequestedMaterials.class );
+                    startActivity(mtr);
+                } else if (item.getItemId() == R.id.nav_staff_feedback) {
+                    Intent fb = new Intent( getApplicationContext(), Stafffeedback.class );
+                    startActivity( fb);
+                } else if (item.getItemId() == R.id.nav_supplies) {
+                    Intent im = new Intent( getApplicationContext(), RequestItems.class );
+                    startActivity( im);
+                } else if (item.getItemId() == R.id.nav_logout) {
+                    alertLogout();
                 }
                 drawer.closeDrawer( GravityCompat.START,true);
                 return false;
@@ -181,12 +157,12 @@ public class Dashboard extends AppCompatActivity {
         alertDialog.setButton("Yes logout", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 session.logoutUser();
-              Toast toast=  Toast.makeText( getApplicationContext(),"You are logged out",Toast.LENGTH_SHORT );
-              toast.setGravity(Gravity.TOP,0,250);
-                      toast.show();
+                Toast toast=  Toast.makeText( getApplicationContext(),"You are logged out",Toast.LENGTH_SHORT );
+                toast.setGravity(Gravity.TOP,0,250);
+                toast.show();
 
-                      Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-                      startActivity(intent);
+                Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 finish();
                 return;
             }

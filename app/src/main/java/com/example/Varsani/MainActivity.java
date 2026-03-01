@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
     private  DrawerLayout drawer;
     private UserModel user;
     private SessionHandler session;
-     AdapterProducts adapterProducts;
-     HomeFragment homeFragment;
+    AdapterProducts adapterProducts;
+    HomeFragment homeFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,15 +97,13 @@ public class MainActivity extends AppCompatActivity {
         if(session.isLoggedIn()){
 
             if(user.getUser_type().equals("Client")||user.getUser_type().equals("Supplier")){
-               // DO NOTHING
+                // DO NOTHING
             }else{
                 Intent in=new Intent(getApplicationContext(), Dashboard.class);
                 startActivity(in);
                 finish();
             }
         }
-
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open,
@@ -117,90 +115,67 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener( new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        Intent in = new Intent( getApplicationContext(), MainActivity.class );
-                        startActivity( in );
-                        break;
-                    case R.id.nav_profile:
-                        Intent p=new Intent(getApplicationContext(), Profile.class);
-                        startActivity(p);
-                        break;
-                    case R.id.nav_request:
-                        Intent nr=new Intent(getApplicationContext(), MyRequests.class);
-                        startActivity(nr);
-                        break;
-                    case R.id.nav_supplies_history:
-                        Intent nsh=new Intent(getApplicationContext(), SuppliesHistory.class);
-                        startActivity(nsh);
-                        break;
-                    case R.id.nav_register:
-                        Intent intent=new Intent(getApplicationContext(), Register.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_reg_supplier:
-                        Intent ent=new Intent(getApplicationContext(), RegSuppliers.class);
-                        startActivity(ent);
-                        break;
-                     case R.id.nav_login:
-                        Intent i=new Intent(getApplicationContext(), Login.class);
-                        startActivity(i);
-                        break;
-                    case R.id.nav_contact:
-                        Intent ctn = new Intent( getApplicationContext(), ContactUs.class );
-                        startActivity(ctn);
-                        break;
-                    case R.id.nav_supplier_login:
-                        Intent isp=new Intent(getApplicationContext(), SupplierLogin.class);
-                        startActivity(isp);
-                        break;
-                    case R.id.nav_bookings:
-                        Intent bk=new Intent(getApplicationContext(), ServiceItems.class);
-                        startActivity(bk);
-                        break;
-                    case R.id.nav_completion:
-                        Intent cp=new Intent(getApplicationContext(), CompletedServices.class);
-                        startActivity(cp);
-                        break;
-
-                    case R.id.nav_invoice:
-                        Intent inv=new Intent(getApplicationContext(), Invoice.class);
-                        startActivity(inv);
-                        break;
-                    case R.id.nav_order_history:
-                        Intent noh=new Intent(getApplicationContext(), OrderHistory.class);
-                        startActivity(noh);
-                        break;
-                    case R.id.nav_orders:
-                        if(user.getUser_type().equals("Client")){
-                            Intent o=new Intent(getApplicationContext(), Orders_hist.class);
-                            startActivity(o);
-                        }else{
-                            Intent o=new Intent(getApplicationContext(), Requests.class);
-                            startActivity(o);
-                        }
-
-                        break;
-                    case R.id.nav_feedback:
-                        Intent fbs=new Intent(getApplicationContext(), Feedback.class);
-                        startActivity(fbs);
-                        break;
-                    case R.id.nav_staff_login:
-                        Intent s=new Intent(getApplicationContext(), SelectLogin.class);
-                        startActivity(s);
-                        break;
-                    case R.id.nav_help:
-                        Intent he=new Intent(getApplicationContext(), Help_in.class);
-                        startActivity(he);
-                        break;
-                    case R.id.nav_about:
-                        Intent ab=new Intent(getApplicationContext(), About.class);
-                        startActivity(ab);
-                        break;
-
-                    case R.id.nav_logout:
-                        alertLogout();
-                        break;
+                if (item.getItemId() == R.id.nav_home) {
+                    Intent in = new Intent( getApplicationContext(), MainActivity.class );
+                    startActivity( in );
+                } else if (item.getItemId() == R.id.nav_profile) {
+                    Intent p=new Intent(getApplicationContext(), Profile.class);
+                    startActivity(p);
+                } else if (item.getItemId() == R.id.nav_request) {
+                    Intent nr=new Intent(getApplicationContext(), MyRequests.class);
+                    startActivity(nr);
+                } else if (item.getItemId() == R.id.nav_supplies_history) {
+                    Intent nsh=new Intent(getApplicationContext(), SuppliesHistory.class);
+                    startActivity(nsh);
+                } else if (item.getItemId() == R.id.nav_register) {
+                    Intent intent=new Intent(getApplicationContext(), Register.class);
+                    startActivity(intent);
+                } else if (item.getItemId() == R.id.nav_reg_supplier) {
+                    Intent ent=new Intent(getApplicationContext(), RegSuppliers.class);
+                    startActivity(ent);
+                } else if (item.getItemId() == R.id.nav_login) {
+                    Intent i=new Intent(getApplicationContext(), Login.class);
+                    startActivity(i);
+                } else if (item.getItemId() == R.id.nav_contact) {
+                    Intent ctn = new Intent( getApplicationContext(), ContactUs.class );
+                    startActivity(ctn);
+                } else if (item.getItemId() == R.id.nav_supplier_login) {
+                    Intent isp=new Intent(getApplicationContext(), SupplierLogin.class);
+                    startActivity(isp);
+                } else if (item.getItemId() == R.id.nav_bookings) {
+                    Intent bk=new Intent(getApplicationContext(), ServiceItems.class);
+                    startActivity(bk);
+                } else if (item.getItemId() == R.id.nav_completion) {
+                    Intent cp=new Intent(getApplicationContext(), CompletedServices.class);
+                    startActivity(cp);
+                } else if (item.getItemId() == R.id.nav_invoice) {
+                    Intent inv=new Intent(getApplicationContext(), Invoice.class);
+                    startActivity(inv);
+                } else if (item.getItemId() == R.id.nav_order_history) {
+                    Intent noh=new Intent(getApplicationContext(), OrderHistory.class);
+                    startActivity(noh);
+                } else if (item.getItemId() == R.id.nav_orders) {
+                    if(user.getUser_type().equals("Client")){
+                        Intent o=new Intent(getApplicationContext(), Orders_hist.class);
+                        startActivity(o);
+                    }else{
+                        Intent o=new Intent(getApplicationContext(), Requests.class);
+                        startActivity(o);
+                    }
+                } else if (item.getItemId() == R.id.nav_feedback) {
+                    Intent fbs=new Intent(getApplicationContext(), Feedback.class);
+                    startActivity(fbs);
+                } else if (item.getItemId() == R.id.nav_staff_login) {
+                    Intent s=new Intent(getApplicationContext(), SelectLogin.class);
+                    startActivity(s);
+                } else if (item.getItemId() == R.id.nav_help) {
+                    Intent he=new Intent(getApplicationContext(), Help_in.class);
+                    startActivity(he);
+                } else if (item.getItemId() == R.id.nav_about) {
+                    Intent ab=new Intent(getApplicationContext(), About.class);
+                    startActivity(ab);
+                } else if (item.getItemId() == R.id.nav_logout) {
+                    alertLogout();
                 }
                 drawer.closeDrawer( GravityCompat.START,true);
                 return false;
@@ -277,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_invoice).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_order_history).setVisible(true);
             }
-               if(user.getUser_type().equals("Supplier")){
+            if(user.getUser_type().equals("Supplier")){
 
                 navigationView.getMenu().findItem(R.id.nav_profile).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_feedback).setVisible(true);
@@ -298,13 +273,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent s=new Intent(getApplicationContext(), Search.class);
-                startActivity(s);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.action_settings) {
+            Intent s=new Intent(getApplicationContext(), Search.class);
+            startActivity(s);
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
         }
     }
 
