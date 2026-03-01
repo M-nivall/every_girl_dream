@@ -152,6 +152,5 @@ public class SessionHandler {
     public void logoutUser(){
         mEditor.clear();
         mEditor.commit();
-
     }
 }
