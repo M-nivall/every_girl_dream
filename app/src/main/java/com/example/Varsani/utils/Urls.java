@@ -86,7 +86,6 @@ public class Urls {
     public static final String URL_SHIPPING_ORDERS=ROOT_URL + "ship_mrg/shipping_orders.php";
     public static final String URL_APPROVE_TENDER=ROOT_URL + "ship_mrg/approve_tender.php";
 
-
     //Service   Manager
     public static final String URL_QUOTATION_REQUEST=ROOT_URL + "serv_mrg/quot_requests.php";
     public static final String URL_QUOTATION_ITEMS=ROOT_URL + "quot_items.php";
