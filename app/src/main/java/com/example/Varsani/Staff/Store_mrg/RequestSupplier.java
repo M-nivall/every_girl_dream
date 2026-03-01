@@ -65,7 +65,7 @@ public class RequestSupplier extends AppCompatActivity {
 
 
         spinner = findViewById(R.id.select_product);
-        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.products,R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.products,android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
         edt_supplier.setFocusable(false);

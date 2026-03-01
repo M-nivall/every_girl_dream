@@ -110,7 +110,7 @@ public class AdapterProducts extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             final ProductModal p = items.get(position);
             String url = Urls.ROOT_URL_IMAGES;
-            Picasso.with(ctx)
+            Picasso.get()
                     .load(url+p.getImgUrl())
                     .fit()
                     .centerCrop()

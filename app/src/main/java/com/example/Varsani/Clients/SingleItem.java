@@ -94,7 +94,7 @@ public class SingleItem extends AppCompatActivity {
         txv_instock.setText(stock+" Available");
 
         String url = Urls.ROOT_URL_IMAGES;
-        Picasso.with(SingleItem.this).load(url+imagename )
+        Picasso.get().load(url+imagename )
                 .fit()
                 .centerCrop()
                 .into(imageView );

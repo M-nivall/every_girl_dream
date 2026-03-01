@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ReportCases.EmergencyReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".Staff.ServMrg.CompletedItems"
             android:exported="false" />
         <activity

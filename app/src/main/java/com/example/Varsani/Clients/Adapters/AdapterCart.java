@@ -123,7 +123,7 @@ public class AdapterCart extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
             String url = Urls.ROOT_URL_IMAGES;
-            Picasso.with(ctx)
+            Picasso.get()
                     .load(url+p.getImgUrl())
                     .fit()
                     .centerCrop()

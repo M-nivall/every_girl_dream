@@ -109,7 +109,7 @@ public class AdapterServices extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             final ServicesModal p = items.get(position);
             String url = Urls.ROOT_URL_IMAGES;
-            Picasso.with(ctx)
+            Picasso.get()
                     .load(url+p.getImgUrl())
                     .fit()
                     .centerCrop()

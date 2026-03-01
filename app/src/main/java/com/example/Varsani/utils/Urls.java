@@ -13,6 +13,9 @@ public class Urls {
     public static  final String UEL_FEEDBACK=ROOT_URL+"client/get_feedback.php";
     public static  final String UEL_FEEDBACK_SEND=ROOT_URL+"client/send_feedback.php";
 
+    //Emeregency
+    public static  final String URL_SUBMIT_EMERGENCY_REPORT=ROOT_URL+"emergency/report_emergency.php";
+
 
     public static  final String UEL_STAFF_SEND_FEEDBACK=ROOT_URL+"client/staff_sendfeedback.php";
     public static  final String UEL_STAFF_FEEDBACK=ROOT_URL+"client/getstafffeedback.php";
