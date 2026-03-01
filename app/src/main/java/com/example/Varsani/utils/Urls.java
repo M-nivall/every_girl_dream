@@ -2,7 +2,6 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-
     //public static String ipAddress = "http://192.168.100.238/refnet/";
     public static String ipAddress = "https://b4c1-2c0f-fe38-224b-b8fd-9551-e31d-308c-ef2f.ngrok-free.app/refnet/";
 
