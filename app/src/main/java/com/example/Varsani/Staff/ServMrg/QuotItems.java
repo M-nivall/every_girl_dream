@@ -346,5 +346,4 @@ public class QuotItems extends AppCompatActivity {
         });
         builder.show();
     }
-
 }
