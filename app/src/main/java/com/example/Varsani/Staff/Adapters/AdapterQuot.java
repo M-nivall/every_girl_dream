@@ -127,5 +127,4 @@ public class AdapterQuot extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //    }
 
 
-
 }
