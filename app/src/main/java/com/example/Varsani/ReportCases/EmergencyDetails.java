@@ -1,8 +1,5 @@
 package com.example.Varsani.ReportCases;
 
-import static com.example.Varsani.utils.Urls.URL_ASSIGN_GUIDE;
-import static com.example.Varsani.utils.Urls.URL_GET_TOUR_GUIDE;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,14 +42,14 @@ public class EmergencyDetails extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private TextView txv_reportID,txv_county,txv_town,
-            txv_address,txv_noTravellers,txv_status,
-            txv_name,txv_tell,txv_email;
-    private Button btn_ship;
-    private CardView card_assign;
+            txv_address,txv_ageGroup,txv_noGirls,
+            txv_urgency,txv_status,txv_description;
+    private Button btn_assign_rescue;
+    private CardView card_assign_rescue;
     private ArrayList<String> drivers;
     private ArrayList<String> driverFullNames;
 
-    private EditText edt_tourGuide;
+    private EditText edt_rescueLead;
 
     private String reportID,clientID,destination;
 
@@ -62,22 +59,20 @@ public class EmergencyDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressBar=findViewById(R.id.progressBar);
-        txv_noTravellers=findViewById(R.id.txv_noTravellers);
-        txv_status=findViewById(R.id.txv_status);
-        txv_name=findViewById(R.id.txv_name);
+        txv_ageGroup=findViewById(R.id.txv_ageGroup);
+        txv_noGirls=findViewById(R.id.txv_noGirls);
+        txv_urgency=findViewById(R.id.txv_urgency);
         txv_county=findViewById(R.id.txv_county);
-        txv_tell=findViewById(R.id.txv_tell);
-        txv_email=findViewById(R.id.txv_email);
+        txv_status=findViewById(R.id.txv_status);
+        txv_description=findViewById(R.id.txv_description);
         txv_town=findViewById(R.id.txv_town);
         txv_reportID=findViewById(R.id.txv_reportID);
-        txv_checkOutDate=findViewById(R.id.txv_checkOutDate);
-        btn_ship=findViewById(R.id.btn_approve);
-        edt_tourGuide=findViewById(R.id.edt_tourGuide);
-        card_assign=findViewById(R.id.card_assign);
+        txv_address=findViewById(R.id.txv_address);
+        btn_assign_rescue=findViewById(R.id.btn_assign_rescue);
+        edt_rescueLead=findViewById(R.id.edt_rescueLead);
+        card_assign_rescue=findViewById(R.id.card_assign_rescue);
 
-        card_assign.setVisibility(View.GONE);
-
-        edt_tourGuide.setFocusable(false);
+        edt_rescueLead.setFocusable(false);
 //        edt_driver.setEnabled(false);
 
         drivers = new ArrayList<>();
@@ -99,18 +94,14 @@ public class EmergencyDetails extends AppCompatActivity {
         txv_reportID.setText("Report ID: " + reportID);
         txv_county.setText("County: " + county );
         txv_town.setText("Town Village: " + village );
-        txv_checkOutDate.setText("Check-out-date: " + checkOutDate );
-        txv_noTravellers.setText("No Travellers: " + noTravellers );
-        txv_status.setText("Status: " + orderStatus );
-        txv_name.setText("Client: " + clientName );
-        txv_tell.setText("Phone No: " + phoneNo );
-        txv_email.setText("Email: " + email );
+        txv_address.setText("Address: " + address );
+        txv_ageGroup.setText("Age Group: " + ageGroup );
+        txv_noGirls.setText("No Girls: " + girls );
+        txv_urgency.setText("Urgency: " + urgency );
+        txv_status.setText("Status: " + reportStatus );
+        txv_description.setText(desc);
 
-        if (orderStatus.equals("Approved")) {
-            card_assign.setVisibility(View.VISIBLE);
-        }
-
-        edt_tourGuide.setOnClickListener(new View.OnClickListener() {
+        edt_rescueLead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getAlertInstructors(v);
@@ -118,7 +109,7 @@ public class EmergencyDetails extends AppCompatActivity {
         });
 
 
-        btn_ship.setOnClickListener(new View.OnClickListener() {
+        btn_assign_rescue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getAlertAssign(v);
@@ -139,7 +130,7 @@ public class EmergencyDetails extends AppCompatActivity {
 
     public void assign(){
 
-        final String username=edt_tourGuide.getText().toString().trim();
+        final String username=edt_rescueLead.getText().toString().trim();
 
         if(TextUtils.isEmpty(username)){
             Toast toast= Toast.makeText(getApplicationContext(), "Please select Tour Guide", Toast.LENGTH_SHORT);
@@ -258,7 +249,7 @@ public class EmergencyDetails extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When an instructor is selected, set the username in the EditText
-                edt_tourGuide.setText(drivers.get(which)); // Get the corresponding username
+                edt_rescueLead.setText(drivers.get(which)); // Get the corresponding username
             }
         });
 
