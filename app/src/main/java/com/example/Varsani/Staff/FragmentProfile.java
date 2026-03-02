@@ -48,5 +48,4 @@ public class FragmentProfile extends Fragment {
         return  root;
     }
 
-
 }
