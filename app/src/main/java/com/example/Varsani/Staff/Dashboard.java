@@ -251,7 +251,6 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_tools).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(false);
 
-
         if(session.isLoggedIn()) {
 
             if (user.getUser_type().equals("Finance")) {
