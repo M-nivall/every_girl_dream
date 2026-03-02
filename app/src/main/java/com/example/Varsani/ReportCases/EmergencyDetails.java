@@ -194,7 +194,7 @@ public class EmergencyDetails extends AppCompatActivity {
     }
 
     public void getTourGuide() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_TOUR_GUIDE,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,  URL_GET_TOUR_GUIDE,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
