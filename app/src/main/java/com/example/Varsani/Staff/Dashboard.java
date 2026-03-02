@@ -285,7 +285,6 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(true);
 
-
             } else if (user.getUser_type().equals("Technician")) {
                 navigationView.getMenu().findItem(R.id.nav_quot_visit).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_assigned_services).setVisible(true);
