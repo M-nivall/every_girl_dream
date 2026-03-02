@@ -289,9 +289,7 @@ public class Dashboard extends AppCompatActivity {
             } else if (user.getUser_type().equals("Technician")) {
                 navigationView.getMenu().findItem(R.id.nav_quot_visit).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_assigned_services).setVisible(true);
-
             }
         }
     }
-
 }
