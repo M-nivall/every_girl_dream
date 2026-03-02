@@ -1,5 +1,8 @@
 package com.example.Varsani.ReportCases;
 
+import static com.example.Varsani.utils.Urls.URL_ASSIGN_RECUE_TEAM;
+import static com.example.Varsani.utils.Urls.URL_GET_RESCUE_TEAM;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,12 +49,11 @@ public class EmergencyDetails extends AppCompatActivity {
             txv_urgency,txv_status,txv_description;
     private Button btn_assign_rescue;
     private CardView card_assign_rescue;
-    private ArrayList<String> drivers;
-    private ArrayList<String> driverFullNames;
+    private ArrayList<String> rescueTeams;
 
     private EditText edt_rescueLead;
 
-    private String reportID,clientID,destination;
+    private String reportID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +75,8 @@ public class EmergencyDetails extends AppCompatActivity {
         card_assign_rescue=findViewById(R.id.card_assign_rescue);
 
         edt_rescueLead.setFocusable(false);
-//        edt_driver.setEnabled(false);
 
-        drivers = new ArrayList<>();
-        driverFullNames = new ArrayList<>();
+        rescueTeams = new ArrayList<>();
 
         Intent intent=getIntent();
 
@@ -104,7 +104,7 @@ public class EmergencyDetails extends AppCompatActivity {
         edt_rescueLead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAlertInstructors(v);
+                getAlertTeams(v);
             }
         });
 
@@ -116,7 +116,7 @@ public class EmergencyDetails extends AppCompatActivity {
             }
         });
 
-        getTourGuide();
+        getRescueTeams();
     }
 
     @Override
@@ -127,18 +127,17 @@ public class EmergencyDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void assign(){
 
-        final String username=edt_rescueLead.getText().toString().trim();
+        final String selectedTeam=edt_rescueLead.getText().toString().trim();
 
-        if(TextUtils.isEmpty(username)){
-            Toast toast= Toast.makeText(getApplicationContext(), "Please select Tour Guide", Toast.LENGTH_SHORT);
+        if(TextUtils.isEmpty(selectedTeam)){
+            Toast toast= Toast.makeText(getApplicationContext(), "Please select Rescue Team", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP,0,250);
             toast.show();
             return;
         }
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGN_GUIDE,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGN_RECUE_TEAM,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -181,10 +180,8 @@ public class EmergencyDetails extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams()throws AuthFailureError {
                 Map<String,String> params=new HashMap<>();
-                params.put("orderID",orderID);
-                params.put("username",username);
-                params.put("clientID",clientID);
-                params.put("destination",destination);
+                params.put("reportID",reportID);
+                params.put("selectedTeam",selectedTeam);
                 Log.e("PARAMS",""+params);
                 return params;
             }
@@ -193,8 +190,8 @@ public class EmergencyDetails extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void getTourGuide() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_TOUR_GUIDE,
+    public void getRescueTeams() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_RESCUE_TEAM,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -208,10 +205,8 @@ public class EmergencyDetails extends AppCompatActivity {
                                 JSONArray jsonArray = jsonObject.getJSONArray("details");
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsn = jsonArray.getJSONObject(i);
-                                    String username = jsn.getString("username");
-                                    String fullName = jsn.getString("fullName"); // Assume this field is in the JSON response
-                                    drivers.add(username);
-                                    driverFullNames.add(fullName); // Add the full name to the list
+                                    String team_name = jsn.getString("team_name");
+                                    rescueTeams.add(team_name);
                                 }
                             } else {
                                 Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
@@ -238,18 +233,18 @@ public class EmergencyDetails extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-    public void getAlertInstructors(View v) {
+    public void getAlertTeams(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Tour Guide");
+        builder.setTitle("Select Rescue Team");
 
         // Create a string array of full names for the dialog
-        String[] fullNamesArray = driverFullNames.toArray(new String[0]);
+        String[] teamsArray = rescueTeams.toArray(new String[0]);
 
-        builder.setItems(fullNamesArray, new DialogInterface.OnClickListener() {
+        builder.setItems(teamsArray, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When an instructor is selected, set the username in the EditText
-                edt_rescueLead.setText(drivers.get(which)); // Get the corresponding username
+                edt_rescueLead.setText(rescueTeams.get(which)); // Get the corresponding username
             }
         });
 
@@ -258,8 +253,8 @@ public class EmergencyDetails extends AppCompatActivity {
 
     public void getAlertAssign(View v){
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        builder.setTitle("Assign Tour Guide");
-        final String[] array = drivers.toArray(new String[drivers.size()]);
+        builder.setTitle("Assign Rescue Team");
+        final String[] array = rescueTeams.toArray(new String[rescueTeams.size()]);
         builder.setNegativeButton("Cancel",null);
         builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

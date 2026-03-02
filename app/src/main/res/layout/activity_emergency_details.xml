@@ -179,7 +179,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Assign Rescue Lead"
+                        android:text="Assign Rescue Team"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorBlack"
@@ -189,7 +189,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select a rescue lead to handle this emergency case"
+                        android:text="Select a rescue team to handle this emergency case"
                         android:textSize="13sp"
                         android:textColor="#666"
                         android:paddingBottom="10dp"/>
@@ -199,7 +199,7 @@
                         android:id="@+id/edt_rescueLead"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Select Rescue Lead"
+                        android:hint="Select Rescue Team"
                         android:textSize="15sp"
                         android:padding="12dp"
                         android:background="@drawable/edittext_background1"
@@ -214,7 +214,7 @@
                         android:id="@+id/btn_assign_rescue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ASSIGN RESCUE LEAD"
+                        android:text="ASSIGN RESCUE TEAM"
                         android:textAllCaps="true"
                         android:backgroundTint="@color/colorPrimary"
                         android:textColor="@android:color/white"
