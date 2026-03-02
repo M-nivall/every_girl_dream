@@ -49,5 +49,4 @@ public class FragmentProfile extends Fragment {
     }
 
 
-
 }
