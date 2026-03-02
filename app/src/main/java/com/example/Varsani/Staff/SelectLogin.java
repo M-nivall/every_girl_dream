@@ -94,5 +94,4 @@ public class SelectLogin extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
