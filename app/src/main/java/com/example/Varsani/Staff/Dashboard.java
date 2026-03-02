@@ -278,8 +278,6 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_materials).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_tools).setVisible(true);
 
-
-
             }
             else if (user.getUser_type().equals("Service Manager")) {
                 navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
