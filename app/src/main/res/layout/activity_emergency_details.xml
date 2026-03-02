@@ -1,10 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ReportCases.EmergencyDetails">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
+
+            <!-- Order Details Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <!-- Title -->
+                    <TextView
+                        android:id="@+id/txv_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency Details"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:gravity="center"
+                        android:paddingBottom="8dp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Basic Info -->
+                    <TextView
+                        android:id="@+id/txv_reportID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Report ID: 45"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txv_county"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="County: Mombasa"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txv_town"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Town: Mtwapa"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txv_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address: Makongeni"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txv_ageGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Age Group: 6–10 years"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/txv_noGirls"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Girls: 2–5"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/txv_urgency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Urgency: Medium"
+                        android:textSize="16sp"
+                        android:textColor="@color/green_900"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/txv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status: Pending"
+                        android:textSize="16sp"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginBottom="10dp" />
+
+                    <!-- Description Label -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Emergency Description"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginBottom="6dp" />
+
+                    <!-- Description Box -->
+                    <TextView
+                        android:id="@+id/txv_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="The report indicates that several girls are at risk of undergoing FGM tonight. The location is remote and requires urgent intervention."
+                        android:textSize="15sp"
+                        android:textColor="#444"
+                        android:background="@drawable/bg_description_box"
+                        android:padding="12dp"
+                        android:lineSpacingExtra="4dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_assign_rescue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Assign Rescue Lead"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:paddingBottom="6dp"/>
+
+                    <!-- Sub text -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select a rescue lead to handle this emergency case"
+                        android:textSize="13sp"
+                        android:textColor="#666"
+                        android:paddingBottom="10dp"/>
+
+                    <!-- Rescue Lead Selector -->
+                    <EditText
+                        android:id="@+id/edt_rescueLead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Rescue Lead"
+                        android:textSize="15sp"
+                        android:padding="12dp"
+                        android:background="@drawable/edittext_background1"
+                        android:drawableStart="@drawable/ic_dropdown"
+                        android:drawablePadding="8dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none"/>
+
+                    <!-- Assign Button -->
+                    <Button
+                        android:id="@+id/btn_assign_rescue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ASSIGN RESCUE LEAD"
+                        android:textAllCaps="true"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="18dp"
+                        android:padding="12dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

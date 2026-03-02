@@ -80,7 +80,6 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
             view.txv_county.setText("County: " + o.getCounty());
             view.txv_status.setText("Status: " + o.getStatus());
 
-
             view.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -93,7 +92,7 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
                     in.putExtra("county",o.getCounty());
                     in.putExtra("village",o.getTownVillage());
                     in.putExtra("address",o.getSpecificAddress());
-                    in.putExtra("group",o.getAgeGroup());
+                    in.putExtra("ageGroup",o.getAgeGroup());
                     in.putExtra("girls",o.getNumberOfGirls());
                     in.putExtra("desc",o.getDescription());
                     in.putExtra("reportStatus",o.getStatus());
