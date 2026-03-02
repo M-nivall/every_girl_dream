@@ -81,7 +81,6 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
             view.txv_status.setText("Status: " + o.getStatus());
 
 
-
             view.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
