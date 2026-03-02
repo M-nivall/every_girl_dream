@@ -2,8 +2,8 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    //public static String ipAddress = "http://192.168.100.230/refnet/";
-    public static String ipAddress = "https://b4c1-2c0f-fe38-224b-b8fd-9551-e31d-308c-ef2f.ngrok-free.app/refnet/";
+    public static String ipAddress = "http://192.168.137.172/everygirldream/";
+    //public static String ipAddress = "https://b4c1-2c0f-fe38-224b-b8fd-9551-e31d-308c-ef2f.ngrok-free.app/refnet/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
@@ -12,8 +12,9 @@ public class Urls {
     public static  final String UEL_FEEDBACK=ROOT_URL+"client/get_feedback.php";
     public static  final String UEL_FEEDBACK_SEND=ROOT_URL+"client/send_feedback.php";
 
-    //Emeregency
+    //Emergency
     public static  final String URL_SUBMIT_EMERGENCY_REPORT=ROOT_URL+"emergency/report_emergency.php";
+    public static final String URL_EMERGENCY_REPORTS=ROOT_URL + "emergency/emergency_reports.php";
 
     public static  final String UEL_STAFF_SEND_FEEDBACK=ROOT_URL+"client/staff_sendfeedback.php";
     public static  final String UEL_STAFF_FEEDBACK=ROOT_URL+"client/getstafffeedback.php";

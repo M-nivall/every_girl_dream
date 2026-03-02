@@ -13,4 +13,6 @@
     <color name="purple">#A6009A</color>
     <color name="red">#D81B1B</color>
     <color name="colorLightGray">#F5F5F5</color>  <!-- Soft Light Gray -->
+    <color name="green_900">#1B5E20</color>
+    <color name="orange_700">#F57C00</color>
 </resources>

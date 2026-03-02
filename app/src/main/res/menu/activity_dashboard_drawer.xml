@@ -58,6 +58,10 @@
             android:title="Completed Service" />
 
         <item
+            android:id="@+id/nav_emergency_reports"
+            android:title="Emeregency Reports" />
+
+        <item
             android:id="@+id/nav_quot_visit"
             android:title="Assigned Service Requests " />
 

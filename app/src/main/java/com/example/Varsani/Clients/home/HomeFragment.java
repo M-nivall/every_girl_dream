@@ -16,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import com.example.Varsani.Clients.About;
 import com.example.Varsani.Clients.Login;
 import com.example.Varsani.Clients.Register;
+import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.R;
+import com.example.Varsani.ReportCases.EmergencyReportActivity;
 import com.example.Varsani.utils.SessionHandler;
 import com.example.Varsani.Clients.Models.UserModel;
 
@@ -99,7 +101,7 @@ public class HomeFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Login.class);
+                Intent intent = new Intent(getContext(), EmployeeLogin.class);
                 startActivity(intent);
             }
         });
@@ -150,12 +152,8 @@ public class HomeFragment extends Fragment {
      * Opens emergency report page (no login required)
      */
     private void openEmergencyReport() {
-        // TODO: Create EmergencyReportActivity and uncomment
-        // Intent intent = new Intent(getContext(), EmergencyReportActivity.class);
-        // startActivity(intent);
-
-        // Temporary toast until EmergencyReportActivity is created
-        Toast.makeText(getContext(), "Opening Emergency Report...", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), EmergencyReportActivity.class);
+        startActivity(intent);
     }
 
     /**

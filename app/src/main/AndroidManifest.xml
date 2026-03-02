@@ -6,15 +6,28 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/coolinglogo"
+        android:icon="@drawable/fgm"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/coolinglogo"
+        android:roundIcon="@drawable/fgm"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ReportCases.EmergencyReportActivity"
+            android:name=".ReportCases.EmergencyDetails"
             android:exported="false" />
+        <activity
+            android:name=".ReportCases.EmergencyReports"
+            android:exported="false" />
+        <activity
+            android:name=".Employees.EmployeeLogin"
+            android:exported="false"
+            android:label="Staff Login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ReportCases.EmergencyReportActivity"
+            android:exported="false"
+            android:label="Emergency Report"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Staff.ServMrg.CompletedItems"
             android:exported="false" />

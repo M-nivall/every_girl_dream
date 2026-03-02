@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:elevation="8dp"
+        card_view:cardCornerRadius="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txv_reportID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report ID: 12"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txv_county"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="County: Isiolo"
+                android:textColor="#444444"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/txv_no_girls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Girls: 5"
+                android:textColor="#444444"
+                android:textSize="15sp"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/txv_urgency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Urgency: Medium"
+                android:textColor="@color/green_900"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/txv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: Pending"
+                android:textColor="@color/orange_700"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp" />
+
+            <!-- View Details Button -->
+            <Button
+                android:id="@+id/btn_job_details"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="View Details"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:layout_gravity="end"
+                android:layout_marginTop="12dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

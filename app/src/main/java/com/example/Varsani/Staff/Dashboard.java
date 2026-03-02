@@ -21,6 +21,7 @@ import com.example.Varsani.Clients.ContactUs;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.R;
+import com.example.Varsani.ReportCases.EmergencyReports;
 import com.example.Varsani.Staff.Driver.ArrivedOrders;
 import com.example.Varsani.Staff.Driver.AssignedOrders;
 import com.example.Varsani.Staff.Driver.DeliveredOrders;
@@ -80,7 +81,10 @@ public class Dashboard extends AppCompatActivity {
                 if (item.getItemId() == R.id.nav_home) {
                     Intent hm = new Intent( getApplicationContext(), Dashboard.class );
                     startActivity( hm );
-                } else if (item.getItemId() == R.id.nav_new_orders) {
+                } else if (item.getItemId() == R.id.nav_emergency_reports) {
+                    Intent n = new Intent( getApplicationContext(), EmergencyReports.class );
+                    startActivity( n );
+                }else if (item.getItemId() == R.id.nav_new_orders) {
                     Intent n = new Intent( getApplicationContext(), NewOrders.class );
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_approvedOrders) {
@@ -277,7 +281,7 @@ public class Dashboard extends AppCompatActivity {
 
 
             }
-            else if (user.getUser_type().equals("Service manager")) {
+            else if (user.getUser_type().equals("Service Manager")) {
                 navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(true);
 
