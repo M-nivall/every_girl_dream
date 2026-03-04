@@ -34,7 +34,6 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
 
     public static final String TAG = "Orders adapter";
 
-
     public AdapterEmergencyReport(Context context, List<EmergencyModel> items) {
         this.items = items;
         ctx = context;
@@ -44,7 +43,6 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
 
         public TextView txv_reportID, txv_county, txv_no_girls;
         public TextView txv_urgency, txv_status;
-
 
         public OriginalViewHolder(View v) {
             super(v);
@@ -76,7 +74,7 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
 
             view.txv_reportID.setText("Report ID " + o.getReportID());
             view.txv_urgency.setText("Urgency: " + o.getUrgency());
-            view.txv_no_girls.setText("No Girls: " + o.getTownVillage());
+            view.txv_no_girls.setText("No Girls: " + o.getNumberOfGirls());
             view.txv_county.setText("County: " + o.getCounty());
             view.txv_status.setText("Status: " + o.getStatus());
 
@@ -97,7 +95,6 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
                     in.putExtra("desc",o.getDescription());
                     in.putExtra("reportStatus",o.getStatus());
                     ctx.startActivity(in);
-
                 }
             });
         }

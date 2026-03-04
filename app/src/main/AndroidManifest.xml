@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Employees.RescueLead.EmergencyDuties"
+            android:exported="false" />
+        <activity
             android:name=".ReportCases.EmergencyDetails"
             android:exported="false" />
         <activity

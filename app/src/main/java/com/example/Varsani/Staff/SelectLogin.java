@@ -19,7 +19,6 @@ public class SelectLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_login);
 
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn_driver=findViewById(R.id.card_driver);
         btn_finance=findViewById(R.id.card_finance);
@@ -27,7 +26,6 @@ public class SelectLogin extends AppCompatActivity {
         btn_store_mrg=findViewById(R.id.card_inventory);
         btn_service_mrg = findViewById(R.id.card_service);
         btn_tech = findViewById(R.id.card_technician);
-
 
         btn_driver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +36,7 @@ public class SelectLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btn_finance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,6 +46,7 @@ public class SelectLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btn_shipping_mrg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +56,7 @@ public class SelectLogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btn_store_mrg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +86,6 @@ public class SelectLogin extends AppCompatActivity {
                 startActivity(tc);
             }
         });
-
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

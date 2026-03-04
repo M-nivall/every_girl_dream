@@ -62,7 +62,7 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/ic_baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Staff ID"
+                android:hint="Username"
                 android:padding="8dp"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/cardview_dark_background"

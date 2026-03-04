@@ -48,6 +48,7 @@ public class EmergencyReports extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_emergency_reports);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setSubtitle("Emergency Reports");
@@ -58,7 +59,6 @@ public class EmergencyReports extends AppCompatActivity {
         recyclerView.setLayoutManager( new LinearLayoutManager( getApplicationContext() ) );
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         recyclerView.setLayoutManager(mLayoutManager);
-
 
         newOrders();
     }

@@ -62,6 +62,10 @@
             android:title="Emeregency Reports" />
 
         <item
+            android:id="@+id/nav_emergency_duties"
+            android:title="Emeregency Duties" />
+
+        <item
             android:id="@+id/nav_quot_visit"
             android:title="Assigned Service Requests " />
 

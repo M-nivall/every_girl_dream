@@ -58,6 +58,7 @@ public class EmergencyDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_emergency_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressBar=findViewById(R.id.progressBar);
