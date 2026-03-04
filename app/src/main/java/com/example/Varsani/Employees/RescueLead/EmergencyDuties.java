@@ -59,7 +59,6 @@ public class EmergencyDuties extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
 
         newOrders();
-
     }
 
     @Override

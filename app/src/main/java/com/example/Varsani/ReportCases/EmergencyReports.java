@@ -60,7 +60,7 @@ public class EmergencyReports extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         recyclerView.setLayoutManager(mLayoutManager);
 
-        newOrders();
+        newReports();
     }
 
     @Override
@@ -71,7 +71,7 @@ public class EmergencyReports extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void newOrders(){
+    public void newReports(){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_REPORTS,
                 new Response.Listener<String>() {
                     @Override
