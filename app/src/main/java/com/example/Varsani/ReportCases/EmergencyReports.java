@@ -70,7 +70,6 @@ public class EmergencyReports extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     public void newReports(){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_REPORTS,
                 new Response.Listener<String>() {
