@@ -1,4 +1,4 @@
-package com.example.Varsani.ReportCases.Adapters;
+package com.example.Varsani.Employees.RescueLead.Adapters;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,18 +12,19 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Employees.RescueLead.AssignedEmergencyDetails;
+import com.example.Varsani.Employees.RescueLead.Models.AssignedEmergencyModel;
 import com.example.Varsani.R;
+import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
 import com.example.Varsani.ReportCases.EmergencyDetails;
 import com.example.Varsani.ReportCases.Models.EmergencyModel;
-import com.example.Varsani.Staff.Adapters.AdapterQuot;
-import com.example.Varsani.Staff.Models.OrderToShipModel;
-import com.example.Varsani.Staff.ServMrg.QuotItems;
 import com.example.Varsani.utils.SessionHandler;
 
 import java.util.List;
 
-public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<EmergencyModel> items;
+public class AdapterAssignedEmergency extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+    private List<AssignedEmergencyModel> items;
 
     private Context ctx;
     ProgressDialog progressDialog;
@@ -35,7 +36,7 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
 
     public static final String TAG = "Orders adapter";
 
-    public AdapterEmergencyReport(Context context, List<EmergencyModel> items) {
+    public AdapterAssignedEmergency(Context context, List<AssignedEmergencyModel> items) {
         this.items = items;
         ctx = context;
     }
@@ -63,17 +64,17 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder vh;
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lv_emeregency_card, parent, false);
-        vh = new AdapterEmergencyReport.OriginalViewHolder(v);
+        vh = new AdapterAssignedEmergency.OriginalViewHolder(v);
         return vh;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        if (holder instanceof AdapterEmergencyReport.OriginalViewHolder) {
-            final AdapterEmergencyReport.OriginalViewHolder view = (AdapterEmergencyReport.OriginalViewHolder) holder;
+        if (holder instanceof AdapterAssignedEmergency.OriginalViewHolder) {
+            final AdapterAssignedEmergency.OriginalViewHolder view = (AdapterAssignedEmergency.OriginalViewHolder) holder;
 
-            final EmergencyModel o= items.get(position);
+            final AssignedEmergencyModel o= items.get(position);
 
             view.txv_reportID.setText("Report ID " + o.getReportID());
             view.txv_urgency.setText("Urgency: " + o.getUrgency());
@@ -85,7 +86,7 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
 
-                    Intent in=new Intent(ctx, EmergencyDetails.class);
+                    Intent in=new Intent(ctx, AssignedEmergencyDetails.class);
                     in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     in.putExtra("reportID", o.getReportID());
                     in.putExtra("anonymous",o.getAnonymous());
@@ -97,6 +98,8 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
                     in.putExtra("girls",o.getNumberOfGirls());
                     in.putExtra("desc",o.getDescription());
                     in.putExtra("reportStatus",o.getStatus());
+
+                    in.putExtra("assignedTeam",o.getAssignedTeam());
                     ctx.startActivity(in);
                 }
             });

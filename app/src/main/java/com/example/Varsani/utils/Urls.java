@@ -16,6 +16,10 @@ public class Urls {
     public static  final String URL_SUBMIT_EMERGENCY_REPORT=ROOT_URL+"emergency/report_emergency.php";
     public static final String URL_EMERGENCY_REPORTS=ROOT_URL + "emergency/emergency_reports.php";
 
+    //Team Lead
+    public static final String URL_EMERGENCY_DUTIES=ROOT_URL + "rescue_lead/emergency_duties.php";
+    public static final String URL_START_OPERATION=ROOT_URL + "rescue_lead/start_operation.php";
+
     public static final String URL_GET_RESCUE_TEAM=ROOT_URL + "emergency/get_rescue_team.php";
     public static final String URL_ASSIGN_RECUE_TEAM=ROOT_URL + "emergency/assign_rescue_team.php";
 

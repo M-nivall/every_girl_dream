@@ -1,5 +1,6 @@
 package com.example.Varsani.Employees.RescueLead;
 
+import static com.example.Varsani.utils.Urls.URL_EMERGENCY_DUTIES;
 import static com.example.Varsani.utils.Urls.URL_EMERGENCY_REPORTS;
 
 import android.os.Bundle;
@@ -19,28 +20,37 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Employees.RescueLead.Adapters.AdapterAssignedEmergency;
+import com.example.Varsani.Employees.RescueLead.Models.AssignedEmergencyModel;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
 import com.example.Varsani.ReportCases.Models.EmergencyModel;
+import com.example.Varsani.utils.SessionHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EmergencyDuties extends AppCompatActivity {
 
-    private List<EmergencyModel> list;
-    private AdapterEmergencyReport adapterEmergencyReport;
+    private List<AssignedEmergencyModel> list;
+    private AdapterAssignedEmergency adapterAssignedEmergency;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
+    private SessionHandler session;
+    private UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +59,12 @@ public class EmergencyDuties extends AppCompatActivity {
         setContentView(R.layout.activity_emergency_duties);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setSubtitle("Emergency Reports");
+        getSupportActionBar().setSubtitle("Emergency Duties");
         recyclerView=findViewById(R.id.recyclerView);
         progressBar=findViewById(R.id.progressBar);
+
+        session=new SessionHandler(getApplicationContext());
+        user=session.getUserDetails();
 
         list=new ArrayList<>();
         recyclerView.setLayoutManager( new LinearLayoutManager( getApplicationContext() ) );
@@ -70,7 +83,7 @@ public class EmergencyDuties extends AppCompatActivity {
     }
 
     public void newDuties(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_REPORTS,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_DUTIES,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -100,7 +113,9 @@ public class EmergencyDuties extends AppCompatActivity {
                                     String description = jsn.getString("description");
                                     String reportStatus = jsn.getString("status");
 
-                                    EmergencyModel emergencyModel = new EmergencyModel(
+                                    String assignedTeam = jsn.getString("assignedTeam");
+
+                                    AssignedEmergencyModel assignedEmergencyModel = new AssignedEmergencyModel(
                                             reportID,
                                             anonymous,
                                             urgency,
@@ -110,14 +125,15 @@ public class EmergencyDuties extends AppCompatActivity {
                                             ageGroup,
                                             numberOfGirls,
                                             description,
-                                            reportStatus
+                                            reportStatus,
+                                            assignedTeam
                                     );
 
-                                    list.add(emergencyModel);
+                                    list.add(assignedEmergencyModel);
                                 }
 
-                                adapterEmergencyReport = new AdapterEmergencyReport(getApplicationContext(), list);
-                                recyclerView.setAdapter(adapterEmergencyReport);
+                                adapterAssignedEmergency = new AdapterAssignedEmergency(getApplicationContext(), list);
+                                recyclerView.setAdapter(adapterAssignedEmergency);
                                 progressBar.setVisibility(View.GONE);
 
                             }else{
@@ -144,7 +160,15 @@ public class EmergencyDuties extends AppCompatActivity {
                 toast.show();
                 Log.e("ERROR E ", error.toString());
             }
-        });
+        }){
+            @Override
+            protected Map<String,String> getParams()throws AuthFailureError {
+                Map<String,String>params=new HashMap<>();
+                params.put("leadID",user.getClientID());
+                Log.e("PARAMS",""+params);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
