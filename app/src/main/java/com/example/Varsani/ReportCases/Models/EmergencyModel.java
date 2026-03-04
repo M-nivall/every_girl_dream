@@ -69,4 +69,5 @@ public class EmergencyModel {
     public String getStatus() {
         return status;
     }
+
 }
