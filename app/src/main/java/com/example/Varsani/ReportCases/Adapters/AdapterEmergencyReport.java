@@ -106,4 +106,5 @@ public class AdapterEmergencyReport extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
         return items.size();
     }
+
 }
