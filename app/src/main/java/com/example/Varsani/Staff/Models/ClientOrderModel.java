@@ -72,4 +72,5 @@ public class ClientOrderModel {
     public String getAddress() {
         return address;
     }
+
 }
