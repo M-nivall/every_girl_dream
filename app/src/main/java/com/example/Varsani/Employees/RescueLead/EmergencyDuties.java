@@ -180,5 +180,4 @@ public class EmergencyDuties extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
-
 }
