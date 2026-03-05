@@ -41,5 +41,4 @@ public class AssignedModel {
     public String getTown() {
         return town;
     }
-
 }
