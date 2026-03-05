@@ -72,5 +72,4 @@ public class AssignedEmergencyModel {
     public String getAssignedTeam() {
         return assignedTeam;
     }
-
 }
