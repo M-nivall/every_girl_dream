@@ -18,5 +18,4 @@
         tools:listitem="@layout/lv_item_seminars"
         tools:ignore="MissingConstraints" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
