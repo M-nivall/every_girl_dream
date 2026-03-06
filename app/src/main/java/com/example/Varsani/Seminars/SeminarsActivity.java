@@ -12,6 +12,7 @@ import com.example.Varsani.R;
 
 public class SeminarsActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
