@@ -157,5 +157,4 @@ public class EmergencyReports extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
-
 }
