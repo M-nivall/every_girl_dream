@@ -23,6 +23,7 @@ import com.example.Varsani.Employees.RescueLead.EmergencyDuties;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.EmergencyReports;
+import com.example.Varsani.Seminars.ScheduleSeminar;
 import com.example.Varsani.Staff.Driver.ArrivedOrders;
 import com.example.Varsani.Staff.Driver.AssignedOrders;
 import com.example.Varsani.Staff.Driver.DeliveredOrders;
@@ -87,6 +88,9 @@ public class Dashboard extends AppCompatActivity {
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_emergency_duties) {
                     Intent n = new Intent( getApplicationContext(), EmergencyDuties.class );
+                    startActivity( n );
+                } else if (item.getItemId() == R.id.nav_schedule_seminar) {
+                    Intent n = new Intent( getApplicationContext(), ScheduleSeminar.class );
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_new_orders) {
                     Intent n = new Intent( getApplicationContext(), NewOrders.class );

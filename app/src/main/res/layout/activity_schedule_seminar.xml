@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F9F9F9"
+    tools:context=".Seminars.ScheduleSeminar">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Heading -->
+            <TextView
+                android:id="@+id/tvHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Seminar"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Seminar Title -->
+            <EditText
+                android:id="@+id/edtSeminarTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Seminar Title"
+                android:background="@drawable/edittext_background1"
+                android:padding="12dp"
+                android:textSize="16sp"/>
+
+            <!-- Location -->
+            <EditText
+                android:id="@+id/edtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Location / Venue"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background1"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Date -->
+            <EditText
+                android:id="@+id/edtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Seminar Date"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background1"
+                android:drawableStart="@drawable/ic_date"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Time -->
+            <EditText
+                android:id="@+id/edtTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Seminar Time"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:background="@drawable/edittext_background1"
+                android:drawableStart="@drawable/ic_time"
+                android:focusable="false"
+                android:clickable="true"
+                android:inputType="none"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Description -->
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:hint="Seminar Description"
+                android:gravity="start|top"
+                android:background="@drawable/edittext_background1"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Create Seminar Button -->
+            <Button
+                android:id="@+id/btnCreateSeminar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Seminar"
+                android:backgroundTint="#1E88E5"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="24dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>

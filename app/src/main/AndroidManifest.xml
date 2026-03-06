@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Seminars.ScheduleSeminar"
+            android:exported="false" />
+        <activity
             android:name=".Employees.RescueLead.AssignedEmergencyDetails"
             android:exported="false" />
         <activity

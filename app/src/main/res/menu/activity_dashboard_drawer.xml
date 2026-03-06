@@ -62,6 +62,10 @@
             android:title="Emeregency Reports" />
 
         <item
+            android:id="@+id/nav_schedule_seminar"
+            android:title="Schedule Seminar" />
+
+        <item
             android:id="@+id/nav_emergency_duties"
             android:title="Emeregency Duties" />
 

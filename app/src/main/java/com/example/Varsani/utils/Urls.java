@@ -24,6 +24,9 @@ public class Urls {
     public static final String URL_START_OPERATION=ROOT_URL + "rescue_lead/start_operation.php";
     public static final String URL_COMPLETE_OPERATION=ROOT_URL + "rescue_lead/complete_operation.php";
 
+    //Seminars
+    public static final String URL_CREATE_SEMINAR=ROOT_URL + "seminars/create_seminar.php";
+
     public static  final String UEL_STAFF_SEND_FEEDBACK=ROOT_URL+"client/staff_sendfeedback.php";
     public static  final String UEL_STAFF_FEEDBACK=ROOT_URL+"client/getstafffeedback.php";
 
