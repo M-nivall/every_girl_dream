@@ -19,6 +19,7 @@ import com.example.Varsani.Clients.Register;
 import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.EmergencyReportActivity;
+import com.example.Varsani.Seminars.SeminarsActivity;
 import com.example.Varsani.utils.SessionHandler;
 import com.example.Varsani.Clients.Models.UserModel;
 

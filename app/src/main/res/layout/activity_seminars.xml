@@ -7,4 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".Seminars.SeminarsActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_exhibitions"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:overScrollMode="never"
+        android:padding="4dp"
+        tools:listitem="@layout/lv_item_seminars"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

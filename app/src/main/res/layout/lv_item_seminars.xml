@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    card_view:cardCornerRadius="16dp"
+    card_view:cardElevation="6dp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+        <!-- Banner Image -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <ImageView
+                android:id="@+id/img_banner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fgm"/>
+
+            <!-- Dark Overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66000000"/>
+
+            <!-- Title on Banner -->
+            <TextView
+                android:id="@+id/txt_seminar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Girls Safety Awareness"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:layout_gravity="bottom"/>
+
+            <!-- Status Badge -->
+            <TextView
+                android:id="@+id/txt_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bg_status"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:layout_margin="12dp"
+                android:layout_gravity="top|end"/>
+        </FrameLayout>
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Date -->
+            <TextView
+                android:id="@+id/txt_seminar_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📅Date: 20 July 2026"
+                android:textSize="14sp"
+                android:textColor="#555"/>
+
+            <!-- Time -->
+            <TextView
+                android:id="@+id/txt_seminar_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏰Time: 10:00 AM"
+                android:textSize="14sp"
+                android:textColor="#555"
+                android:layout_marginTop="6dp"/>
+
+            <!-- Location -->
+            <TextView
+                android:id="@+id/txt_seminar_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍Location: Nairobi Community Hall"
+                android:textSize="14sp"
+                android:textColor="#555"
+                android:layout_marginTop="6dp"/>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EEEEEE"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="10dp"/>
+
+            <!-- Apply Button -->
+            <Button
+                android:id="@+id/btn_apply"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Apply for Seminar"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#1E88E5"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
