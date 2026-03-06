@@ -51,7 +51,6 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
         progressBar=findViewById(R.id.progressBar);
         recyclerView=findViewById(R.id.recyclerView);
 
