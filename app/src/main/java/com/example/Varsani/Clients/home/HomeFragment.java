@@ -203,9 +203,8 @@ public class HomeFragment extends Fragment {
      * Opens seminars page
      */
     private void openSeminars() {
-        // TODO: Create SeminarsActivity and uncomment
-        // Intent intent = new Intent(getContext(), SeminarsActivity.class);
-        // startActivity(intent);
+         Intent intent = new Intent(getContext(), SeminarsActivity.class);
+         startActivity(intent);
 
         Toast.makeText(getContext(), "Opening Seminars...", Toast.LENGTH_SHORT).show();
     }
