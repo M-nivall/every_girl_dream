@@ -98,6 +98,16 @@
                 android:textColor="#555"
                 android:layout_marginTop="6dp"/>
 
+            <!-- Location -->
+            <TextView
+                android:id="@+id/txt_mentor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mentor: Joe Doe"
+                android:textSize="14sp"
+                android:textColor="@color/green_900"
+                android:layout_marginTop="6dp"/>
+
             <!-- Divider -->
             <View
                 android:layout_width="match_parent"
@@ -106,16 +116,37 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginBottom="10dp"/>
 
-            <!-- Apply Button -->
             <Button
-                android:id="@+id/btn_apply"
+                android:id="@+id/btn_attendance"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:text="Register for Seminar"
+                android:text="Attendance Registration"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/btn_color"/>
+
+            <!-- Apply Button -->
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Start Seminar"
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#1E88E5"/>
+
+            <!-- Apply Button -->
+            <Button
+                android:id="@+id/btn_end_seminar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="End Seminar"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="@color/red"/>
 
         </LinearLayout>
 

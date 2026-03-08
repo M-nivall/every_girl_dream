@@ -1,8 +1,8 @@
 package com.example.Varsani.Seminars;
 
-import static com.example.Varsani.utils.Urls.URL_EMERGENCY_REPORTS;
-import static com.example.Varsani.utils.Urls.URL_GET_SEMINARS;
+import static com.example.Varsani.utils.Urls.URL_APPLICANTS;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -11,15 +11,12 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,41 +24,50 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Varsani.R;
-import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
-import com.example.Varsani.ReportCases.Models.EmergencyModel;
-import com.example.Varsani.Seminars.Adapters.AdapterSeminars;
-import com.example.Varsani.Seminars.Models.SeminarModel;
+import com.example.Varsani.Seminars.Adapters.AdapterApplicant;
+import com.example.Varsani.Seminars.Models.ApplicantModel;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class SeminarsActivity extends AppCompatActivity {
-    private List<SeminarModel> list;
-    private AdapterSeminars adapterSeminars;
+public class ToAttend extends AppCompatActivity {
+
+    private List<ApplicantModel> list;
+    private AdapterApplicant adapterApplicant;
     private ProgressBar progressBar;
-    private RecyclerView rv_seminars;
+    private RecyclerView recyclerView;
+
+
+    String seminarID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_seminars);
+        setContentView(R.layout.activity_to_attend);
 
-        getSupportActionBar().setSubtitle("Seminars");
-        rv_seminars=findViewById(R.id.rv_seminars);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        getSupportActionBar().setTitle("Attendance Registration");
+        recyclerView=findViewById(R.id.recyclerView);
         progressBar=findViewById(R.id.progressBar);
 
         list=new ArrayList<>();
-        rv_seminars.setLayoutManager( new LinearLayoutManager( getApplicationContext() ) );
+        recyclerView.setLayoutManager( new LinearLayoutManager( getApplicationContext() ) );
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
-        rv_seminars.setLayoutManager(mLayoutManager);
+        recyclerView.setLayoutManager(mLayoutManager);
 
-        seminars();
+        getApplicants();
+
+        Intent intent = getIntent();
+        seminarID = intent.getStringExtra("seminarID");
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -70,8 +76,8 @@ public class SeminarsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void seminars(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_GET_SEMINARS,
+    public void getApplicants(){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_APPLICANTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -81,38 +87,22 @@ public class SeminarsActivity extends AppCompatActivity {
                             JSONObject jsonObject=new JSONObject(response);
                             String status=jsonObject.getString("status");
                             String msg=jsonObject.getString("message");
-
                             if(status.equals("1")){
-
                                 JSONArray jsonArray=jsonObject.getJSONArray("details");
-                                list.clear(); // Clear old data
-
                                 for(int i=0; i <jsonArray.length();i++){
                                     JSONObject jsn=jsonArray.getJSONObject(i);
+                                    String ID=jsn.getString("ID");
+                                    String fullName=jsn.getString("fullName");
+                                    String phone=jsn.getString("phone");
+                                    String ageGroup=jsn.getString("ageGroup");
+                                    String appStatus=jsn.getString("appStatus");
 
-                                    String seminarID = jsn.getString("seminarID");
-                                    String title = jsn.getString("title");
-                                    String location = jsn.getString("location");
-                                    String seminarDate = jsn.getString("seminarDate");
-                                    String seminarTime = jsn.getString("seminarTime");
-                                    String description = jsn.getString("description");
-                                    String seminarStatus = jsn.getString("seminarStatus");
-
-                                    SeminarModel seminarModel = new SeminarModel(
-                                            seminarID,
-                                            title,
-                                            location,
-                                            seminarDate,
-                                            seminarTime,
-                                            description,
-                                            seminarStatus
-                                    );
-
-                                    list.add(seminarModel);
+                                    ApplicantModel applicantModel=new ApplicantModel(ID,fullName,phone,
+                                            ageGroup,appStatus);
+                                    list.add(applicantModel);
                                 }
-
-                                adapterSeminars = new AdapterSeminars(getApplicationContext(), list);
-                                rv_seminars.setAdapter(adapterSeminars);
+                                adapterApplicant=new AdapterApplicant(getApplicationContext(),list);
+                                recyclerView.setAdapter(adapterApplicant);
                                 progressBar.setVisibility(View.GONE);
 
                             }else{
@@ -129,6 +119,7 @@ public class SeminarsActivity extends AppCompatActivity {
                             toast.show();
                             Log.e("ERROR E ", e.toString());
                         }
+
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -139,8 +130,15 @@ public class SeminarsActivity extends AppCompatActivity {
                 toast.show();
                 Log.e("ERROR E ", error.toString());
             }
-        });
-
+        }){
+            @Override
+            protected Map<String,String> getParams()throws AuthFailureError {
+                Map<String,String>params=new HashMap<>();
+                params.put("seminarID",seminarID);
+                Log.e("PARAMS","" +params);
+                return params;
+            }
+        };
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }

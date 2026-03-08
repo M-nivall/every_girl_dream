@@ -1,6 +1,8 @@
 package com.example.Varsani.Seminars;
 
 import static com.example.Varsani.utils.Urls.URL_CREATE_SEMINAR;
+import static com.example.Varsani.utils.Urls.URL_GET_MENTORS;
+import static com.example.Varsani.utils.Urls.URL_GET_RESCUE_TEAM;
 import static com.example.Varsani.utils.Urls.URL_SEND_REQUEST;
 
 import android.app.AlertDialog;
@@ -29,19 +31,22 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Varsani.R;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ScheduleSeminar extends AppCompatActivity {
 
-    private EditText edtSeminarTitle, edtLocation, edtDate, edtTime, edtDescription;
+    private EditText edtSeminarTitle, edtLocation, edtDate, edtTime, edtDescription, edtMentor;
     private Button btnCreateSeminar;
     private ProgressBar progressBar;
 
     private Calendar calendar;
+    private ArrayList<String> mentors;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +61,15 @@ public class ScheduleSeminar extends AppCompatActivity {
         edtDate = findViewById(R.id.edtDate);
         edtTime = findViewById(R.id.edtTime);
         edtDescription = findViewById(R.id.edtDescription);
+        edtMentor = findViewById(R.id.edtMentor);
         btnCreateSeminar = findViewById(R.id.btnCreateSeminar);
         progressBar = findViewById(R.id.progress_bar);
 
         calendar = Calendar.getInstance();
+
+        edtMentor.setFocusable(false);
+
+        mentors = new ArrayList<>();
 
         /* DATE PICKER */
         edtDate.setOnClickListener(v -> {
@@ -96,6 +106,15 @@ public class ScheduleSeminar extends AppCompatActivity {
             timePickerDialog.show();
         });
 
+        edtMentor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAlertMentors(v);
+            }
+        });
+
+        getMentors();
+
         btnCreateSeminar.setOnClickListener(view -> getAlert());
     }
 
@@ -116,6 +135,7 @@ public class ScheduleSeminar extends AppCompatActivity {
         final String date = edtDate.getText().toString().trim();
         final String time = edtTime.getText().toString().trim();
         final String description = edtDescription.getText().toString().trim();
+        final String mentor = edtMentor.getText().toString().trim();
 
         if (TextUtils.isEmpty(title)) {
             showToast("Please enter seminar title");
@@ -139,6 +159,11 @@ public class ScheduleSeminar extends AppCompatActivity {
 
         if (TextUtils.isEmpty(description)) {
             showToast("Please enter seminar description");
+            return;
+        }
+
+        if (TextUtils.isEmpty(mentor)) {
+            showToast("Please select mentor");
             return;
         }
 
@@ -189,6 +214,7 @@ public class ScheduleSeminar extends AppCompatActivity {
                 params.put("date", date);
                 params.put("time", time);
                 params.put("description", description);
+                params.put("mentor", mentor);
 
                 Log.e("PARAMS", params.toString());
 
@@ -218,6 +244,67 @@ public class ScheduleSeminar extends AppCompatActivity {
         builder.setPositiveButton("Create Seminar", (dialog, which) -> createSeminar());
 
         builder.setCancelable(false);
+        builder.show();
+    }
+
+    public void getMentors() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_MENTORS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            Log.e("RESPONSE", response);
+                            JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("status");
+                            String msg = jsonObject.getString("message");
+
+                            if (status.equals("1")) {
+                                JSONArray jsonArray = jsonObject.getJSONArray("details");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsn = jsonArray.getJSONObject(i);
+                                    String username = jsn.getString("username");
+                                    mentors.add(username);
+                                }
+                            } else {
+                                Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.TOP, 0, 250);
+                                toast.show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast toast = Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP, 0, 250);
+                            toast.show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP, 0, 250);
+                toast.show();
+            }
+        });
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+    }
+    public void getAlertMentors(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Mentor");
+
+        // Create a string array of full names for the dialog
+        String[] teamsArray = mentors.toArray(new String[0]);
+
+        builder.setItems(teamsArray, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // When an instructor is selected, set the username in the EditText
+                edtMentor.setText(mentors.get(which)); // Get the corresponding username
+            }
+        });
+
         builder.show();
     }
 

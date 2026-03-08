@@ -51,6 +51,7 @@ public class EmergencyReports extends AppCompatActivity {
         setContentView(R.layout.activity_emergency_reports);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         getSupportActionBar().setSubtitle("Emergency Reports");
         recyclerView=findViewById(R.id.recyclerView);
         progressBar=findViewById(R.id.progressBar);

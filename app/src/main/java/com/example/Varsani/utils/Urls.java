@@ -2,7 +2,7 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    public static String ipAddress = "http://192.168.137.172/everygirldream/";
+    public static String ipAddress = "http://192.168.137.1/everygirldream/";
     //public static String ipAddress = "https://b4c6-2c0f-fe38-220b-b8fd-9551-e31d-308c-ef2f.ngrok-free.app/refnet/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
@@ -26,9 +26,23 @@ public class Urls {
 
     //Seminars
     public static final String URL_CREATE_SEMINAR=ROOT_URL + "seminars/create_seminar.php";
+    public static final String URL_GET_SEMINARS=ROOT_URL + "seminars/get_seminars.php";
+    public static final String URL_REGISTER_FOR_SEMINAR = ROOT_URL +"seminars/register_seminar.php";
+    public static final String URL_GET_MENTORS=ROOT_URL + "seminars/get_mentors.php";
+    public static final String URL_APPLICANTS=ROOT_URL + "seminars/applicants.php";
+    public static final String URL_APPROVE_APPLICANT=ROOT_URL + "seminars/approve_applicant.php";
+
+    //Mentor
+    public static final String URL_ASSIGNED_SEMINARS=ROOT_URL + "mentor/get_seminars.php";
+    public static final String URL_START_SEMINAR=ROOT_URL + "mentor/start_seminar.php";
+    public static final String URL_END_SEMINAR=ROOT_URL + "mentor/end_seminar.php";
 
     public static  final String UEL_STAFF_SEND_FEEDBACK=ROOT_URL+"client/staff_sendfeedback.php";
     public static  final String UEL_STAFF_FEEDBACK=ROOT_URL+"client/getstafffeedback.php";
+
+    //Girls
+    public static final String URL_REGISTER_GIRLS = ROOT_URL +"girls/register.php";
+    public static final String URL_LOGIN= ROOT_URL+"girls/login.php";
 
      //  products
     public static final String URL_GET_PRODUCTS=ROOT_URL + "client/products.php";
@@ -53,7 +67,6 @@ public class Urls {
     public static final String URL_GET_CHECKOUT_TOTAL=ROOT_URL + "client/checkout_cost.php";
     // user
     public static final String URL_REG = ROOT_URL +"client/register.php";
-    public static final String URL_LOGIN= ROOT_URL+"client/login.php";
     public static final String URL_RESET = ROOT_URL + "client/forgotpass.php";
     public static final String URL_RESET2 = ROOT_URL + "client/resetpass.php";
 //    SUPPLIERS

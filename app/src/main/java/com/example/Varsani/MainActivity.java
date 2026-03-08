@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setImageResource(R.drawable.ic_shopping_cart_white);
         if(session.isLoggedIn()){
 
-            if(user.getUser_type().equals("Client")||user.getUser_type().equals("Supplier")){
+            if(user.getUser_type().equals("Girl")||user.getUser_type().equals("Supplier")){
                 // DO NOTHING
             }else{
                 Intent in=new Intent(getApplicationContext(), Dashboard.class);
@@ -241,16 +241,11 @@ public class MainActivity extends AppCompatActivity {
             navigationView.getMenu().findItem(R.id.nav_staff_login).setVisible(false);
             navigationView.getMenu().findItem(R.id.nav_supplier_login).setVisible(false);
 
-            if(user.getUser_type().equals("Client")){
+            if(user.getUser_type().equals("Girl")){
 
                 navigationView.getMenu().findItem(R.id.nav_profile).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_feedback).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_orders).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_bookings).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_completion).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_invoice).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_order_history).setVisible(true);
             }
             if(user.getUser_type().equals("Supplier")){
 

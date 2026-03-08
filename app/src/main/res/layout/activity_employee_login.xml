@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/header_gradient"
+    android:background="@drawable/girls_bg"
     tools:context=".Employees.EmployeeLogin">
 
     <androidx.cardview.widget.CardView
@@ -54,7 +54,7 @@
                     android:clickable="true" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Staff ID Field -->
+            <!-- Username -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -65,10 +65,9 @@
                 android:hint="Username"
                 android:padding="8dp"
                 android:textColor="@color/colorBlack"
-                android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
-            <!-- Password Field -->
+            <!-- Password -->
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -80,10 +79,9 @@
                 android:padding="8dp"
                 android:inputType="textPassword"
                 android:textColor="@color/colorBlack"
-                android:textColorHighlight="@color/cardview_dark_background"
                 android:layout_marginTop="20dp"/>
 
-            <!-- Progress Bar -->
+            <!-- Progress -->
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="match_parent"
@@ -101,12 +99,26 @@
                 android:backgroundTint="@color/colorPrimary"
                 app:cornerRadius="20dp"/>
 
-            <!-- Back to Home Link -->
+            <!-- Girls Login Link -->
+            <TextView
+                android:id="@+id/tvGirlsLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Girls Login"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="14dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <!-- Back to Home -->
             <TextView
                 android:id="@+id/tvBackToHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:text="← Back to Home"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
@@ -114,6 +126,7 @@
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

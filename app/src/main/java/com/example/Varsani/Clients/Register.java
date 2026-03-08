@@ -34,8 +34,8 @@ public class Register extends AppCompatActivity {
 
     private Button registerBtn;
     private ProgressBar progressBar;
-    private EditText edt_firstname,edt_lastname,
-            edt_username,edt_phoneNo,
+    private EditText edt_firstname,edt_lastname,edt_age,edt_school,
+            edt_location,edt_username,edt_phoneNo,
             edt_email,edt_password,edt_password_c;
 
     @Override
@@ -47,12 +47,16 @@ public class Register extends AppCompatActivity {
         edt_firstname=findViewById(R.id.edt_firstname);
         edt_username=findViewById(R.id.edt_username);
         edt_lastname=findViewById(R.id.edt_lastname);
-        edt_phoneNo=findViewById(R.id.edt_phoneNo);
+        edt_phoneNo=findViewById(R.id.edt_phone);
         edt_email=findViewById(R.id.edt_email);
         edt_password=findViewById(R.id.edt_password);
-        edt_password_c=findViewById(R.id.edt_password_c);
+        edt_password_c=findViewById(R.id.edt_confirm_password);
         progressBar=findViewById(R.id.progressBar);
-        registerBtn=findViewById(R.id.register_btn);
+        registerBtn=findViewById(R.id.btn_register);
+
+        edt_age = findViewById(R.id.edt_age);
+        edt_school = findViewById(R.id.edt_school);
+        edt_location = findViewById(R.id.edt_location);
 
         progressBar.setVisibility(View.GONE);
 
@@ -83,6 +87,10 @@ public class Register extends AppCompatActivity {
         final String email = edt_email.getText().toString().trim();
         final String password = edt_password.getText().toString().trim();
         final String password_c = edt_password_c.getText().toString().trim();
+
+        final String age = edt_age.getText().toString().trim();
+        final String school = edt_school.getText().toString().trim();
+        final String location = edt_location.getText().toString().trim();
 
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
@@ -131,6 +139,31 @@ public class Register extends AppCompatActivity {
             return;
 
         }
+
+        if(TextUtils.isEmpty(age)){
+            Toast.makeText(getApplicationContext(), "Enter age", Toast.LENGTH_SHORT).show();
+            registerBtn.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+            return;
+
+        }
+
+        if(TextUtils.isEmpty(school)){
+            Toast.makeText(getApplicationContext(), "Enter school", Toast.LENGTH_SHORT).show();
+            registerBtn.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+            return;
+
+        }
+
+        if(TextUtils.isEmpty(location)){
+            Toast.makeText(getApplicationContext(), "Enter location", Toast.LENGTH_SHORT).show();
+            registerBtn.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+            return;
+
+        }
+
         if (!email.matches(emailPattern)){
             Toast.makeText(getApplicationContext(), "In valid email address", Toast.LENGTH_SHORT).show();
             registerBtn.setVisibility(View.VISIBLE);
@@ -150,7 +183,7 @@ public class Register extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             return;
         }
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, Urls.URL_REG,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, Urls.URL_REGISTER_GIRLS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -197,6 +230,9 @@ public class Register extends AppCompatActivity {
                 params.put("username",username);
                 params.put("phoneNo",phoneNo);
                 params.put("email",email);
+                params.put("age",age);
+                params.put("school",school);
+                params.put("location",location);
                 params.put("password",password);
                 return params;
             }

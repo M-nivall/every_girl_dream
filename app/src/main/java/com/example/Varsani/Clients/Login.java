@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.Staff.SelectLogin;
 import com.example.Varsani.utils.SessionHandler;
@@ -80,7 +81,7 @@ public class Login extends AppCompatActivity {
         gotostaff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),SelectLogin.class);
+                Intent in = new Intent(getApplicationContext(), EmployeeLogin.class);
                 startActivity(in);
             }
         });

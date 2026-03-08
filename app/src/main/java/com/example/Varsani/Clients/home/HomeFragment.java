@@ -203,11 +203,18 @@ public class HomeFragment extends Fragment {
     /**
      * Opens seminars page
      */
-    private void openSeminars() {
-         Intent intent = new Intent(getContext(), SeminarsActivity.class);
-         startActivity(intent);
 
-        Toast.makeText(getContext(), "Opening Seminars...", Toast.LENGTH_SHORT).show();
+    private void openSeminars() {
+        if(session.isLoggedIn()) {
+             Intent intent = new Intent(getContext(), SeminarsActivity.class);
+             startActivity(intent);
+
+            Toast.makeText(getContext(), "Opening Seminar...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Please login to access seminar services", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getContext(), Login.class);
+            startActivity(intent);
+        }
     }
 
     /**

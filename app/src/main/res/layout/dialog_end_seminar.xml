@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    card_view:cardCornerRadius="18dp"
+    card_view:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="End Seminar"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Write seminar remarks before ending"
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/et_report"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="16dp"
+            android:gravity="top"
+            android:hint="Enter seminar remarks..."
+            android:padding="12dp"
+            android:background="@drawable/input_bg"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:id="@+id/btn_confirm_end"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="End Seminar"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:backgroundTint="@color/red"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

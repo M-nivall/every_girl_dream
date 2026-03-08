@@ -1,6 +1,6 @@
-package com.example.Varsani.Seminars;
+package com.example.Varsani.Employees.Mentor;
 
-import static com.example.Varsani.utils.Urls.URL_EMERGENCY_REPORTS;
+import static com.example.Varsani.utils.Urls.URL_ASSIGNED_SEMINARS;
 import static com.example.Varsani.utils.Urls.URL_GET_SEMINARS;
 
 import android.os.Bundle;
@@ -20,39 +20,53 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Employees.Mentor.Adapters.AdapterAssignedSeminars;
+import com.example.Varsani.Employees.Mentor.Models.AssignedSeminarModel;
 import com.example.Varsani.R;
-import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
-import com.example.Varsani.ReportCases.Models.EmergencyModel;
 import com.example.Varsani.Seminars.Adapters.AdapterSeminars;
 import com.example.Varsani.Seminars.Models.SeminarModel;
+import com.example.Varsani.utils.SessionHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class SeminarsActivity extends AppCompatActivity {
-    private List<SeminarModel> list;
-    private AdapterSeminars adapterSeminars;
+public class MentorshipSeminars extends AppCompatActivity {
+    private List<AssignedSeminarModel> list;
+    private AdapterAssignedSeminars adapterAssignedSeminars;
     private ProgressBar progressBar;
     private RecyclerView rv_seminars;
+
+    private SessionHandler session;
+    private UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_seminars);
+       //EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_mentorship_seminars);
 
-        getSupportActionBar().setSubtitle("Seminars");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        getSupportActionBar().setSubtitle("Mentorship Seminars");
         rv_seminars=findViewById(R.id.rv_seminars);
         progressBar=findViewById(R.id.progressBar);
+
+        session=new SessionHandler(getApplicationContext());
+        user=session.getUserDetails();
 
         list=new ArrayList<>();
         rv_seminars.setLayoutManager( new LinearLayoutManager( getApplicationContext() ) );
@@ -61,7 +75,6 @@ public class SeminarsActivity extends AppCompatActivity {
 
         seminars();
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -71,7 +84,7 @@ public class SeminarsActivity extends AppCompatActivity {
     }
 
     public void seminars(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_GET_SEMINARS,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGNED_SEMINARS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -97,22 +110,24 @@ public class SeminarsActivity extends AppCompatActivity {
                                     String seminarTime = jsn.getString("seminarTime");
                                     String description = jsn.getString("description");
                                     String seminarStatus = jsn.getString("seminarStatus");
+                                    String mentor = jsn.getString("mentor");
 
-                                    SeminarModel seminarModel = new SeminarModel(
+                                    AssignedSeminarModel assignedSeminarModel = new AssignedSeminarModel(
                                             seminarID,
                                             title,
                                             location,
                                             seminarDate,
                                             seminarTime,
                                             description,
-                                            seminarStatus
+                                            seminarStatus,
+                                            mentor
                                     );
 
-                                    list.add(seminarModel);
+                                    list.add(assignedSeminarModel);
                                 }
 
-                                adapterSeminars = new AdapterSeminars(getApplicationContext(), list);
-                                rv_seminars.setAdapter(adapterSeminars);
+                                adapterAssignedSeminars = new AdapterAssignedSeminars(getApplicationContext(), list);
+                                rv_seminars.setAdapter(adapterAssignedSeminars);
                                 progressBar.setVisibility(View.GONE);
 
                             }else{
@@ -139,7 +154,15 @@ public class SeminarsActivity extends AppCompatActivity {
                 toast.show();
                 Log.e("ERROR E ", error.toString());
             }
-        });
+        }){
+            @Override
+            protected Map<String,String> getParams()throws AuthFailureError {
+                Map<String,String>params=new HashMap<>();
+                params.put("username",user.getUsername());
+                Log.e("PARAMS","" +params);
+                return params;
+            }
+        };
 
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);

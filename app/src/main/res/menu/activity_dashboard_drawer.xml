@@ -66,6 +66,10 @@
             android:title="Schedule Seminar" />
 
         <item
+            android:id="@+id/nav_mentorship_seminar"
+            android:title="Mentorship Seminar" />
+
+        <item
             android:id="@+id/nav_emergency_duties"
             android:title="Emeregency Duties" />
 

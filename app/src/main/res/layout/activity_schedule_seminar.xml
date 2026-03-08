@@ -97,6 +97,59 @@
                 android:textSize="16sp"
                 android:layout_marginTop="16dp"/>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_assign_mentor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Assign Mentor"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorBlack"
+                        android:paddingBottom="6dp"/>
+
+                    <!-- Sub text -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Select a mentor who will guide the girls during the seminar."
+                        android:textSize="13sp"
+                        android:textColor="#666"
+                        android:paddingBottom="10dp"/>
+
+                    <!-- Mentor Selector -->
+                    <EditText
+                        android:id="@+id/edtMentor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Mentor"
+                        android:textSize="15sp"
+                        android:padding="12dp"
+                        android:background="@drawable/edittext_background1"
+                        android:drawableStart="@drawable/ic_dropdown"
+                        android:drawablePadding="8dp"
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:inputType="none"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Progress Bar -->
             <ProgressBar
                 android:id="@+id/progress_bar"

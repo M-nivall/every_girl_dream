@@ -13,6 +13,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Seminars.ToAttend"
+            android:exported="false" />
+        <activity
+            android:name=".Employees.Mentor.MentorshipSeminars"
+            android:exported="false" />
+        <activity
+            android:name=".Seminars.RegisterSeminar"
+            android:exported="false" />
+        <activity
             android:name=".Seminars.SeminarsActivity"
             android:exported="false" />
         <activity

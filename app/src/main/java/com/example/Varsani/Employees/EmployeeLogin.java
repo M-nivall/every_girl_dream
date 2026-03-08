@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Login;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.R;
@@ -42,7 +43,7 @@ public class EmployeeLogin extends AppCompatActivity {
 
     private Button btn_login;
     private EditText edt_username, edt_password, edt_select;
-    private TextView txv_staff_login, tvBackToHome;
+    private TextView txv_staff_login, tvBackToHome, tvGirlsLogin;
     private ProgressBar progressBar;
     private SessionHandler session;
     private UserModel user;
@@ -56,6 +57,7 @@ public class EmployeeLogin extends AppCompatActivity {
         edt_select = findViewById(R.id.edt_select);
         btn_login = findViewById(R.id.login_btn);
         txv_staff_login = findViewById(R.id.txv_stafflogin);
+        tvGirlsLogin = findViewById(R.id.tvGirlsLogin);
         edt_password = findViewById(R.id.edt_password);
         edt_username = findViewById(R.id.edt_username);
         progressBar = findViewById(R.id.progressBar);
@@ -92,6 +94,16 @@ public class EmployeeLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        // Girls Login
+        tvGirlsLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
                 finish();
             }
