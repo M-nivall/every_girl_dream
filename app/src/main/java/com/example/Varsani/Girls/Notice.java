@@ -44,7 +44,7 @@ import java.util.Map;
 public class Notice extends AppCompatActivity {
 
 
-    private List<EmergencyModel> list;
+    private List<NoticeModel> list;
     private AdapterEmergencyReport adapterEmergencyReport;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
@@ -102,16 +102,11 @@ public class Notice extends AppCompatActivity {
                                 for(int i=0; i <jsonArray.length();i++){
                                     JSONObject jsn=jsonArray.getJSONObject(i);
 
-                                    String reportID = jsn.getString("reportID");
-                                    String anonymous = jsn.getString("anonymous");
-                                    String urgency = jsn.getString("urgency");
-                                    String county = jsn.getString("county");
-                                    String townVillage = jsn.getString("townVillage");
-                                    String specificAddress = jsn.getString("specificAddress");
-                                    String ageGroup = jsn.getString("ageGroup");
-                                    String numberOfGirls = jsn.getString("numberOfGirls");
-                                    String description = jsn.getString("description");
-                                    String reportStatus = jsn.getString("status");
+                                    String full_name = jsn.getString("full_name");
+                                    String appStatus = jsn.getString("appStatus");
+                                    String title = jsn.getString("title");
+                                    String seminarDate = jsn.getString("seminarDate");
+                                    String seminarTime = jsn.getString("seminarTime");
 
                                     EmergencyModel emergencyModel = new EmergencyModel(
                                             reportID,
