@@ -143,6 +143,20 @@
                         android:paddingBottom="6dp"
                         android:layout_marginBottom="12dp" />
 
+                    <!-- View Team Members Button -->
+                    <Button
+                        android:id="@+id/btn_view_team_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="👥 View Team Members"
+                        android:textSize="13sp"
+                        android:textAllCaps="false"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="12dp" />
+
                     <!-- Divider -->
                     <View
                         android:layout_width="match_parent"

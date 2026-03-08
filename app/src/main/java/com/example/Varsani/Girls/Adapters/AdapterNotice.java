@@ -71,6 +71,7 @@ public class AdapterNotice extends RecyclerView.Adapter<AdapterNotice.MyViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, NoticeDetails.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("fullName", model.getFullName());
                 intent.putExtra("title", model.getTitle());
                 intent.putExtra("seminarDate", model.getSeminarDate());

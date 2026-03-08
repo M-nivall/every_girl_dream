@@ -2,6 +2,7 @@ package com.example.Varsani.Employees.RescueLead;
 
 import static com.example.Varsani.utils.Urls.URL_START_OPERATION;
 import static com.example.Varsani.utils.Urls.URL_COMPLETE_OPERATION;
+import static com.example.Varsani.utils.Urls.URL_GET_TEAM_MEMBERS;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,11 +29,18 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Employees.RescueLead.Adapters.AdapterTeamMember;
+import com.example.Varsani.Employees.RescueLead.Models.TeamMemberModel;
 import com.example.Varsani.R;
+import com.example.Varsani.utils.SessionHandler;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AssignedEmergencyDetails extends AppCompatActivity {
@@ -43,9 +53,12 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
 
     private CardView card_start_rescue, card_complete_rescue;
 
-    private Button btn_start_rescue, btn_complete_rescue;
+    private Button btn_start_rescue, btn_complete_rescue, btn_view_team_members;
 
-    private String reportID;
+    private String reportID, assignedTeam;
+
+    private SessionHandler session;
+    private UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +86,10 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
 
         btn_start_rescue = findViewById(R.id.btn_start_rescue);
         btn_complete_rescue = findViewById(R.id.btn_complete_rescue);
+        btn_view_team_members = findViewById(R.id.btn_view_team_members);
+
+        session=new SessionHandler(getApplicationContext());
+        user=session.getUserDetails();
 
         Intent intent = getIntent();
 
@@ -85,7 +102,7 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
         String girls = intent.getStringExtra("girls");
         String desc = intent.getStringExtra("desc");
         String reportStatus = intent.getStringExtra("reportStatus");
-        String assignedTeam = intent.getStringExtra("assignedTeam");
+        assignedTeam = intent.getStringExtra("assignedTeam");
 
         txv_reportID.setText("Report ID: " + reportID);
         txv_county.setText("County: " + county);
@@ -101,12 +118,17 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
         card_start_rescue.setVisibility(View.GONE);
         card_complete_rescue.setVisibility(View.GONE);
 
-        if (reportStatus.equals("Pending")) {
+        if (reportStatus.equals("Pending") || reportStatus.equals("Assigned") ) {
             card_start_rescue.setVisibility(View.VISIBLE);
         }
 
         if (reportStatus.equals("In Progress")) {
             card_complete_rescue.setVisibility(View.VISIBLE);
+        }
+
+        if(user.getUser_type().equals("Rescue Worker")) {
+            card_start_rescue.setVisibility(View.GONE);
+            card_complete_rescue.setVisibility(View.GONE);
         }
 
         btn_start_rescue.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +145,14 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
             }
         });
 
+        // View Team Members Button Click
+        btn_view_team_members.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTeamMembersDialog();
+            }
+        });
+
     }
 
     @Override
@@ -133,6 +163,134 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    /* ================= VIEW TEAM MEMBERS ================= */
+
+    public void showTeamMembersDialog() {
+
+        // Inflate custom dialog layout
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_team_members, null);
+
+        // Create dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(dialogView);
+
+        final AlertDialog dialog = builder.create();
+
+        // Initialize dialog views
+        TextView tvTeamName = dialogView.findViewById(R.id.tvTeamName);
+        RecyclerView recyclerViewTeamMembers = dialogView.findViewById(R.id.recyclerViewTeamMembers);
+        ProgressBar progressBarTeam = dialogView.findViewById(R.id.progressBarTeam);
+        TextView tvNoMembers = dialogView.findViewById(R.id.tvNoMembers);
+        Button btnCloseDialog = dialogView.findViewById(R.id.btnCloseDialog);
+
+        // Set team name
+        tvTeamName.setText(assignedTeam);
+
+        // Setup RecyclerView
+        recyclerViewTeamMembers.setLayoutManager(new LinearLayoutManager(this));
+
+        // Show progress
+        progressBarTeam.setVisibility(View.VISIBLE);
+        recyclerViewTeamMembers.setVisibility(View.GONE);
+        tvNoMembers.setVisibility(View.GONE);
+
+        // Fetch team members
+        fetchTeamMembers(assignedTeam, recyclerViewTeamMembers, progressBarTeam, tvNoMembers);
+
+        // Close button
+        btnCloseDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    public void fetchTeamMembers(String teamName, final RecyclerView recyclerView,
+                                 final ProgressBar progressBar, final TextView tvNoMembers) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_TEAM_MEMBERS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+
+                            Log.e("TEAM_RESPONSE", response);
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String status = jsonObject.getString("status");
+                            String msg = jsonObject.getString("message");
+
+                            progressBar.setVisibility(View.GONE);
+
+                            if (status.equals("1")) {
+
+                                JSONArray jsonArray = jsonObject.getJSONArray("members");
+                                List<TeamMemberModel> teamList = new ArrayList<>();
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject jsn = jsonArray.getJSONObject(i);
+
+                                    String userID = jsn.getString("userID");
+                                    String fullName = jsn.getString("fullName");
+                                    String phoneNo = jsn.getString("phoneNo");
+
+                                    TeamMemberModel model = new TeamMemberModel(userID, fullName, phoneNo);
+                                    teamList.add(model);
+                                }
+
+                                // Set adapter
+                                AdapterTeamMember adapter = new AdapterTeamMember(AssignedEmergencyDetails.this, teamList);
+                                recyclerView.setAdapter(adapter);
+                                recyclerView.setVisibility(View.VISIBLE);
+
+                            } else {
+                                // No members found
+                                tvNoMembers.setVisibility(View.VISIBLE);
+                                tvNoMembers.setText(msg);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            progressBar.setVisibility(View.GONE);
+                            tvNoMembers.setVisibility(View.VISIBLE);
+                            tvNoMembers.setText("Error loading team members");
+
+                            Log.e("ERROR", e.toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        progressBar.setVisibility(View.GONE);
+                        tvNoMembers.setVisibility(View.VISIBLE);
+                        tvNoMembers.setText("Network error");
+
+                        Log.e("ERROR", error.toString());
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("team_name", teamName);
+
+                Log.e("PARAMS", "" + params);
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
     }
 
 

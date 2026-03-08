@@ -169,7 +169,7 @@
                     android:id="@+id/tvInstructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Please keep time"
+                    android:text="Important information goes here"
                     android:textColor="#424242"
                     android:textSize="14sp"
                     android:lineSpacingExtra="4dp" />

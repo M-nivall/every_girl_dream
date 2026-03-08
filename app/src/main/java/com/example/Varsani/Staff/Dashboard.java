@@ -21,6 +21,7 @@ import com.example.Varsani.Clients.ContactUs;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.Employees.Mentor.MentorshipSeminars;
 import com.example.Varsani.Employees.RescueLead.EmergencyDuties;
+import com.example.Varsani.Employees.RescueWorker.EmergencyOperations;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.EmergencyReports;
@@ -89,6 +90,9 @@ public class Dashboard extends AppCompatActivity {
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_emergency_duties) {
                     Intent n = new Intent( getApplicationContext(), EmergencyDuties.class );
+                    startActivity( n );
+                } else if (item.getItemId() == R.id.nav_emergency_operations) {
+                    Intent n = new Intent( getApplicationContext(), EmergencyOperations.class );
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_schedule_seminar) {
                     Intent n = new Intent( getApplicationContext(), ScheduleSeminar.class );
@@ -266,6 +270,7 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_emergency_duties).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_schedule_seminar).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_emergency_operations).setVisible(false);
 
         if(session.isLoggedIn()) {
 
@@ -279,6 +284,9 @@ public class Dashboard extends AppCompatActivity {
 
             } else if (user.getUser_type().equals("Rescue Lead")) {
                 navigationView.getMenu().findItem(R.id.nav_emergency_duties).setVisible(true);
+
+            } else if (user.getUser_type().equals("Rescue Worker")) {
+                navigationView.getMenu().findItem(R.id.nav_emergency_operations).setVisible(true);
 
             } else if (user.getUser_type().equals("Mentor")) {
                 navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(true);
