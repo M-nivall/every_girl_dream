@@ -28,6 +28,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Girls.Adapters.AdapterNotice;
+import com.example.Varsani.Girls.Models.NoticeModel;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
 import com.example.Varsani.ReportCases.Models.EmergencyModel;
@@ -45,7 +47,7 @@ public class Notice extends AppCompatActivity {
 
 
     private List<NoticeModel> list;
-    private AdapterEmergencyReport adapterEmergencyReport;
+    private AdapterNotice adapterNotice;
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
 
@@ -102,30 +104,25 @@ public class Notice extends AppCompatActivity {
                                 for(int i=0; i <jsonArray.length();i++){
                                     JSONObject jsn=jsonArray.getJSONObject(i);
 
-                                    String full_name = jsn.getString("full_name");
+                                    String fullName = jsn.getString("fullName");
                                     String appStatus = jsn.getString("appStatus");
                                     String title = jsn.getString("title");
                                     String seminarDate = jsn.getString("seminarDate");
                                     String seminarTime = jsn.getString("seminarTime");
 
-                                    EmergencyModel emergencyModel = new EmergencyModel(
-                                            reportID,
-                                            anonymous,
-                                            urgency,
-                                            county,
-                                            townVillage,
-                                            specificAddress,
-                                            ageGroup,
-                                            numberOfGirls,
-                                            description,
-                                            reportStatus
+                                    NoticeModel noticeModel = new NoticeModel(
+                                            fullName,
+                                            appStatus,
+                                            title,
+                                            seminarDate,
+                                            seminarTime
                                     );
 
-                                    list.add(emergencyModel);
+                                    list.add(noticeModel);
                                 }
 
-                                adapterEmergencyReport = new AdapterEmergencyReport(getApplicationContext(), list);
-                                recyclerView.setAdapter(adapterEmergencyReport);
+                                adapterNotice = new AdapterNotice(getApplicationContext(), list);
+                                recyclerView.setAdapter(adapterNotice);
                                 progressBar.setVisibility(View.GONE);
 
                             }else{
