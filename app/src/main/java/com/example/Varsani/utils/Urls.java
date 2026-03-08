@@ -43,6 +43,7 @@ public class Urls {
     //Girls
     public static final String URL_REGISTER_GIRLS = ROOT_URL +"girls/register.php";
     public static final String URL_LOGIN= ROOT_URL+"girls/login.php";
+    public static final String URL_NOTICES=ROOT_URL + "girls/notices.php";
 
      //  products
     public static final String URL_GET_PRODUCTS=ROOT_URL + "client/products.php";

@@ -18,6 +18,7 @@ import com.example.Varsani.Clients.Search;
 import com.example.Varsani.Clients.ServiceItems;
 import com.example.Varsani.Clients.SupplierLogin;
 import com.example.Varsani.Clients.home.HomeFragment;
+import com.example.Varsani.Girls.Notice;
 import com.example.Varsani.Staff.Dashboard;
 import com.example.Varsani.Staff.SelectLogin;
 import com.example.Varsani.Clients.About;
@@ -235,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_invoice).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_order_history).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_supplies_history).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_notice).setVisible(false);
 
         if(session.isLoggedIn()){
 
@@ -249,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_profile).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_feedback).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_logout).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_notice).setVisible(false);
             }
             if(user.getUser_type().equals("Supplier")){
 

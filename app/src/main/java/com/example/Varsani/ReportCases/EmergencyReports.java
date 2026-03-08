@@ -51,8 +51,8 @@ public class EmergencyReports extends AppCompatActivity {
         setContentView(R.layout.activity_emergency_reports);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         getSupportActionBar().setSubtitle("Emergency Reports");
+
         recyclerView=findViewById(R.id.recyclerView);
         progressBar=findViewById(R.id.progressBar);
 
@@ -63,7 +63,6 @@ public class EmergencyReports extends AppCompatActivity {
 
         newReports();
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -71,6 +70,7 @@ public class EmergencyReports extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void newReports(){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_REPORTS,
                 new Response.Listener<String>() {
