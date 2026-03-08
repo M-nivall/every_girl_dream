@@ -35,4 +35,5 @@ public class NoticeModel {
     public String getSeminarTime() {
         return seminarTime;
     }
+
 }
