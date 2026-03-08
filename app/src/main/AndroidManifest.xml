@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Girls.Notice"
+            android:exported="false" />
+        <activity
             android:name=".Seminars.ToAttend"
             android:exported="false" />
         <activity

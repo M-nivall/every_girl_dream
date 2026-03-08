@@ -121,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_profile) {
                     Intent p=new Intent(getApplicationContext(), Profile.class);
                     startActivity(p);
+                } else if (item.getItemId() == R.id.nav_notice) {
+                    Intent p=new Intent(getApplicationContext(), Notice.class);
+                    startActivity(p);
                 } else if (item.getItemId() == R.id.nav_request) {
                     Intent nr=new Intent(getApplicationContext(), MyRequests.class);
                     startActivity(nr);
