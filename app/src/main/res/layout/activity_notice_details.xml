@@ -169,7 +169,7 @@
                     android:id="@+id/tvInstructions"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Instructions here"
+                    android:text="Please keep time"
                     android:textColor="#424242"
                     android:textSize="14sp"
                     android:lineSpacingExtra="4dp" />
@@ -206,7 +206,7 @@
                     android:id="@+id/tvContact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Contact information here"
+                    android:text="Contact support@girldream.co.ke "
                     android:textColor="#424242"
                     android:textSize="14sp"
                     android:lineSpacingExtra="4dp" />
