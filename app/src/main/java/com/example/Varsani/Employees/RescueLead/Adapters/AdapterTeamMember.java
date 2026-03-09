@@ -57,4 +57,5 @@ public class AdapterTeamMember extends RecyclerView.Adapter<AdapterTeamMember.My
             tvMemberPhone = itemView.findViewById(R.id.tvMemberPhone);
         }
     }
+
 }
