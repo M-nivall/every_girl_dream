@@ -23,5 +23,4 @@ public class TeamMemberModel {
     public String getPhoneNo() {
         return phoneNo;
     }
-
 }
