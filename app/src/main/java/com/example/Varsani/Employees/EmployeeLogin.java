@@ -291,5 +291,4 @@ public class EmployeeLogin extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }
