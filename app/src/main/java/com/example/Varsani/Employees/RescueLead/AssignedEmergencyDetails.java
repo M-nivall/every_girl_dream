@@ -505,4 +505,5 @@ public class AssignedEmergencyDetails extends AppCompatActivity {
 
         builder.show();
     }
+
 }
