@@ -86,7 +86,6 @@ public class AdapterCounselling extends RecyclerView.Adapter<RecyclerView.ViewHo
                 @Override
                 public void onClick(View v) {
 
-                    //TODO CREATE ACTIVITY COUNSELLING DETAILS IN PLACE OF EmergencyDetails
                     Intent in=new Intent(ctx, CounsellingDetails.class);
                     in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     in.putExtra("sessionID", o.getSessionID());
@@ -95,6 +94,8 @@ public class AdapterCounselling extends RecyclerView.Adapter<RecyclerView.ViewHo
                     in.putExtra("address",o.getSpecificAddress());
                     in.putExtra("desc",o.getDescription());
                     in.putExtra("reportStatus",o.getStatus());
+                    in.putExtra("userName",o.getUserName());
+                    in.putExtra("phone",o.getPhoneNo());
                     ctx.startActivity(in);
                 }
             });
