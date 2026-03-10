@@ -27,9 +27,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.EmergencyReportActivity;
 import com.example.Varsani.Seminars.ScheduleSeminar;
+import com.example.Varsani.utils.SessionHandler;
 import com.example.Varsani.utils.Urls;
 
 import org.json.JSONObject;
@@ -44,6 +46,9 @@ public class CounsellingActivity extends AppCompatActivity {
     private EditText etTownVillage, etSpecificAddress, etDescription, edtDate;
     private TextView tvCharCount;
     private Button btnSubmitReport, btnCancel;
+
+    private SessionHandler session;
+    private UserModel user;
 
     private Calendar calendar;
 
@@ -77,6 +82,9 @@ public class CounsellingActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
 
         calendar = Calendar.getInstance();
+
+        session=new SessionHandler(getApplicationContext());
+        user=session.getUserDetails();
     }
 
     private void setupSpinners() {
@@ -275,6 +283,7 @@ public class CounsellingActivity extends AppCompatActivity {
                 params.put("town_village", townVillage);
                 params.put("specific_address", specificAddress);
                 params.put("description", description);
+                params.put("userID",user.getClientID());
 
                 params.put("date", date);
 
