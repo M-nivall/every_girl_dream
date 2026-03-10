@@ -44,9 +44,8 @@ import java.util.Map;
 public class CounsellingDetails extends AppCompatActivity {
 
     private ProgressBar progressBar;
-    private TextView txv_reportID,txv_county,txv_town,
-            txv_address,txv_ageGroup,txv_noGirls,
-            txv_urgency,txv_status,txv_description;
+    private TextView txv_sessionID,txv_county,txv_town,txv_phone,
+            txv_address, txv_user,txv_status,txv_description;
     private Button btn_assign_rescue;
     private CardView card_assign_rescue;
     private ArrayList<String> rescueTeams;
@@ -63,14 +62,13 @@ public class CounsellingDetails extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         progressBar=findViewById(R.id.progressBar);
-        txv_ageGroup=findViewById(R.id.txv_ageGroup);
-        txv_noGirls=findViewById(R.id.txv_noGirls);
-        txv_urgency=findViewById(R.id.txv_urgency);
+        txv_user=findViewById(R.id.txv_user);
+        txv_phone=findViewById(R.id.txv_phone);
         txv_county=findViewById(R.id.txv_county);
         txv_status=findViewById(R.id.txv_status);
         txv_description=findViewById(R.id.txv_description);
         txv_town=findViewById(R.id.txv_town);
-        txv_reportID=findViewById(R.id.txv_reportID);
+        txv_sessionID=findViewById(R.id.txv_sessionID);
         txv_address=findViewById(R.id.txv_address);
         btn_assign_rescue=findViewById(R.id.btn_assign_rescue);
         edt_rescueLead=findViewById(R.id.edt_rescueLead);
@@ -83,24 +81,22 @@ public class CounsellingDetails extends AppCompatActivity {
         Intent intent=getIntent();
 
         reportID=intent.getStringExtra("reportID");
-        String anonymous=intent.getStringExtra("anonymous");
-        String urgency=intent.getStringExtra("urgency");
         String county=intent.getStringExtra("county");
         String village=intent.getStringExtra("village");
         String address=intent.getStringExtra("address");
-        String ageGroup=intent.getStringExtra("ageGroup");
-        String girls=intent.getStringExtra("girls");
         String desc=intent.getStringExtra("desc");
         String reportStatus=intent.getStringExtra("reportStatus");
+        String userName=intent.getStringExtra("userName");
+        String phone=intent.getStringExtra("phone");
 
-        txv_reportID.setText("Report ID: " + reportID);
+
+        txv_sessionID.setText("Report ID: " + reportID);
         txv_county.setText("County: " + county );
         txv_town.setText("Town Village: " + village );
         txv_address.setText("Address: " + address );
-        txv_ageGroup.setText("Age Group: " + ageGroup );
-        txv_noGirls.setText("No Girls: " + girls );
-        txv_urgency.setText("Urgency: " + urgency );
+        txv_user.setText("User: " + userName );
         txv_status.setText("Status: " + reportStatus );
+        txv_phone.setText("Phone: " + phone);
         txv_description.setText(desc);
 
         edt_rescueLead.setOnClickListener(new View.OnClickListener() {

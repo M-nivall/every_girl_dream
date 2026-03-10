@@ -39,7 +39,7 @@
                         android:id="@+id/txv_details"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Emergency Details"
+                        android:text="Counselling Details"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorBlack"
@@ -90,31 +90,22 @@
                         android:layout_marginBottom="4dp" />
 
                     <TextView
-                        android:id="@+id/txv_ageGroup"
+                        android:id="@+id/txv_user"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Age Group: 6–10 years"
-                        android:textSize="16sp"
-                        android:textColor="@color/colorBlack"
-                        android:layout_marginBottom="4dp" />
-
-                    <TextView
-                        android:id="@+id/txv_noGirls"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No Girls: 2–5"
-                        android:textSize="16sp"
-                        android:textColor="@color/colorBlack"
-                        android:layout_marginBottom="6dp" />
-
-                    <TextView
-                        android:id="@+id/txv_urgency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Urgency: Medium"
+                        android:text="User: Michael Nivah"
                         android:textSize="16sp"
                         android:textColor="@color/green_900"
                         android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/txv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone: 0756437809"
+                        android:textSize="16sp"
+                        android:textColor="@color/colorBlack"
                         android:layout_marginBottom="6dp" />
 
                     <TextView
@@ -138,7 +129,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Emergency Description"
+                        android:text="Counselling Description"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorPrimary"
@@ -179,7 +170,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Assign Rescue Team"
+                        android:text="Assign Counsellor"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:textColor="@color/colorBlack"
@@ -189,7 +180,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Select a rescue team to handle this emergency case"
+                        android:text="Select councellor that will handle this session"
                         android:textSize="13sp"
                         android:textColor="#666"
                         android:paddingBottom="10dp"/>
@@ -199,7 +190,7 @@
                         android:id="@+id/edt_rescueLead"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Select Rescue Team"
+                        android:hint="Select Counsellor"
                         android:textSize="15sp"
                         android:padding="12dp"
                         android:background="@drawable/edittext_background1"
