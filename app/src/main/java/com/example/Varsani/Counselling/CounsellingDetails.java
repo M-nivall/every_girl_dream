@@ -1,6 +1,7 @@
 package com.example.Varsani.Counselling;
 
 import static com.example.Varsani.utils.Urls.URL_ASSIGN_RECUE_TEAM;
+import static com.example.Varsani.utils.Urls.URL_GET_COUNSELLOR;
 import static com.example.Varsani.utils.Urls.URL_GET_RESCUE_TEAM;
 
 import android.app.AlertDialog;
@@ -46,9 +47,9 @@ public class CounsellingDetails extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView txv_sessionID,txv_county,txv_town,txv_phone,
             txv_address, txv_user,txv_status,txv_description;
-    private Button btn_assign_rescue;
+    private Button btn_assign_counsellor;
     private CardView card_assign_rescue;
-    private ArrayList<String> rescueTeams;
+    private ArrayList<String> counsellor;
 
     private EditText edt_rescueLead;
 
@@ -70,13 +71,13 @@ public class CounsellingDetails extends AppCompatActivity {
         txv_town=findViewById(R.id.txv_town);
         txv_sessionID=findViewById(R.id.txv_sessionID);
         txv_address=findViewById(R.id.txv_address);
-        btn_assign_rescue=findViewById(R.id.btn_assign_rescue);
+        btn_assign_counsellor=findViewById(R.id.btn_assign_counsellor);
         edt_rescueLead=findViewById(R.id.edt_rescueLead);
         card_assign_rescue=findViewById(R.id.card_assign_rescue);
 
         edt_rescueLead.setFocusable(false);
 
-        rescueTeams = new ArrayList<>();
+        counsellor = new ArrayList<>();
 
         Intent intent=getIntent();
 
@@ -107,14 +108,14 @@ public class CounsellingDetails extends AppCompatActivity {
         });
 
 
-        btn_assign_rescue.setOnClickListener(new View.OnClickListener() {
+        btn_assign_counsellor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getAlertAssign(v);
             }
         });
 
-        getRescueTeams();
+        getCounsellor();
     }
 
     @Override
@@ -188,8 +189,8 @@ public class CounsellingDetails extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void getRescueTeams() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_RESCUE_TEAM,
+    public void getCounsellor() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_COUNSELLOR,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -203,8 +204,8 @@ public class CounsellingDetails extends AppCompatActivity {
                                 JSONArray jsonArray = jsonObject.getJSONArray("details");
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsn = jsonArray.getJSONObject(i);
-                                    String team_name = jsn.getString("team_name");
-                                    rescueTeams.add(team_name);
+                                    String username = jsn.getString("username");
+                                    counsellor.add(username);
                                 }
                             } else {
                                 Toast toast = Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
@@ -234,16 +235,16 @@ public class CounsellingDetails extends AppCompatActivity {
 
     public void getAlertTeams(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Rescue Team");
+        builder.setTitle("Select Counsellor");
 
         // Create a string array of full names for the dialog
-        String[] teamsArray = rescueTeams.toArray(new String[0]);
+        String[] teamsArray = counsellor.toArray(new String[0]);
 
         builder.setItems(teamsArray, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When an instructor is selected, set the username in the EditText
-                edt_rescueLead.setText(rescueTeams.get(which)); // Get the corresponding username
+                edt_rescueLead.setText(counsellor.get(which)); // Get the corresponding username
             }
         });
 
@@ -252,8 +253,8 @@ public class CounsellingDetails extends AppCompatActivity {
 
     public void getAlertAssign(View v){
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-        builder.setTitle("Assign Rescue Team");
-        final String[] array = rescueTeams.toArray(new String[rescueTeams.size()]);
+        builder.setTitle("Assign Counsellor");
+        final String[] array = counsellor.toArray(new String[counsellor.size()]);
         builder.setNegativeButton("Cancel",null);
         builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

@@ -41,6 +41,7 @@ public class Urls {
     //Counselling
     public static  final String URL_REQUEST_COUNSELLING=ROOT_URL+"counselling/request_counselling.php";
     public static final String URL_COUNSELLING_REQUESTS=ROOT_URL + "counselling/counselling_requests.php";
+    public static final String URL_GET_COUNSELLOR=ROOT_URL + "counselling/get_counsellor.php";
 
     //Mentor
     public static final String URL_ASSIGNED_SEMINARS=ROOT_URL + "mentor/get_seminars.php";

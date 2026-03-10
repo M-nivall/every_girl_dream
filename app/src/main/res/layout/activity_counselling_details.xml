@@ -202,10 +202,10 @@
 
                     <!-- Assign Button -->
                     <Button
-                        android:id="@+id/btn_assign_rescue"
+                        android:id="@+id/btn_assign_counsellor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ASSIGN RESCUE TEAM"
+                        android:text="ASSIGN COUNSELLOR"
                         android:textAllCaps="true"
                         android:backgroundTint="@color/colorPrimary"
                         android:textColor="@android:color/white"
