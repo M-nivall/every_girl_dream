@@ -1,5 +1,6 @@
 package com.example.Varsani.Counselling;
 
+import static com.example.Varsani.utils.Urls.URL_ASSIGN_COUNSELLOR;
 import static com.example.Varsani.utils.Urls.URL_ASSIGN_RECUE_TEAM;
 import static com.example.Varsani.utils.Urls.URL_GET_COUNSELLOR;
 import static com.example.Varsani.utils.Urls.URL_GET_RESCUE_TEAM;
@@ -51,9 +52,9 @@ public class CounsellingDetails extends AppCompatActivity {
     private CardView card_assign_rescue;
     private ArrayList<String> counsellor;
 
-    private EditText edt_rescueLead;
+    private EditText edt_counsellor;
 
-    private String reportID;
+    private String sessionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +73,16 @@ public class CounsellingDetails extends AppCompatActivity {
         txv_sessionID=findViewById(R.id.txv_sessionID);
         txv_address=findViewById(R.id.txv_address);
         btn_assign_counsellor=findViewById(R.id.btn_assign_counsellor);
-        edt_rescueLead=findViewById(R.id.edt_rescueLead);
+        edt_counsellor=findViewById(R.id.edt_counsellor);
         card_assign_rescue=findViewById(R.id.card_assign_rescue);
 
-        edt_rescueLead.setFocusable(false);
+        edt_counsellor.setFocusable(false);
 
         counsellor = new ArrayList<>();
 
         Intent intent=getIntent();
 
-        reportID=intent.getStringExtra("reportID");
+        sessionID=intent.getStringExtra("sessionID");
         String county=intent.getStringExtra("county");
         String village=intent.getStringExtra("village");
         String address=intent.getStringExtra("address");
@@ -91,7 +92,7 @@ public class CounsellingDetails extends AppCompatActivity {
         String phone=intent.getStringExtra("phone");
 
 
-        txv_sessionID.setText("Report ID: " + reportID);
+        txv_sessionID.setText("Session ID: " + sessionID);
         txv_county.setText("County: " + county );
         txv_town.setText("Town Village: " + village );
         txv_address.setText("Address: " + address );
@@ -100,10 +101,10 @@ public class CounsellingDetails extends AppCompatActivity {
         txv_phone.setText("Phone: " + phone);
         txv_description.setText(desc);
 
-        edt_rescueLead.setOnClickListener(new View.OnClickListener() {
+        edt_counsellor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getAlertTeams(v);
+                getAlertCounsellors(v);
             }
         });
 
@@ -128,15 +129,15 @@ public class CounsellingDetails extends AppCompatActivity {
 
     public void assign(){
 
-        final String selectedTeam=edt_rescueLead.getText().toString().trim();
+        final String counsellor=edt_counsellor.getText().toString().trim();
 
-        if(TextUtils.isEmpty(selectedTeam)){
-            Toast toast= Toast.makeText(getApplicationContext(), "Please select Rescue Team", Toast.LENGTH_SHORT);
+        if(TextUtils.isEmpty(counsellor)){
+            Toast toast= Toast.makeText(getApplicationContext(), "Please select Counsellor", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.TOP,0,250);
             toast.show();
             return;
         }
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGN_RECUE_TEAM,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGN_COUNSELLOR,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -179,8 +180,8 @@ public class CounsellingDetails extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams()throws AuthFailureError {
                 Map<String,String> params=new HashMap<>();
-                params.put("reportID",reportID);
-                params.put("selectedTeam",selectedTeam);
+                params.put("sessionID",sessionID);
+                params.put("counsellor",counsellor);
                 Log.e("PARAMS",""+params);
                 return params;
             }
@@ -233,7 +234,7 @@ public class CounsellingDetails extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void getAlertTeams(View v) {
+    public void getAlertCounsellors(View v) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Select Counsellor");
 
@@ -244,7 +245,7 @@ public class CounsellingDetails extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // When an instructor is selected, set the username in the EditText
-                edt_rescueLead.setText(counsellor.get(which)); // Get the corresponding username
+                edt_counsellor.setText(counsellor.get(which)); // Get the corresponding username
             }
         });
 
