@@ -100,6 +100,8 @@ public class CounsellingRequests extends AppCompatActivity {
                                     String specificAddress = jsn.getString("specificAddress");
                                     String description = jsn.getString("description");
                                     String reportStatus = jsn.getString("status");
+                                    String userName = jsn.getString("userName");
+                                    String phoneNo = jsn.getString("phoneNo");
 
                                     CounsellingModel counsellingModel = new CounsellingModel(
                                             sessionID,
@@ -107,7 +109,9 @@ public class CounsellingRequests extends AppCompatActivity {
                                             townVillage,
                                             specificAddress,
                                             description,
-                                            reportStatus
+                                            reportStatus,
+                                            userName,
+                                            phoneNo
                                     );
 
                                     list.add(counsellingModel);

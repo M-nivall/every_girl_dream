@@ -215,7 +215,7 @@ public class CounsellingActivity extends AppCompatActivity {
                                         final String description) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("⚠️ Confirm Counselling");
-        builder.setMessage("You are about to submit an anonymous emergency report.\n\n" +
+        builder.setMessage("You are about to submit an counselling request.\n\n" +
                 "Location: " + townVillage + ", " + county + "\n\n" +
                 "Counsellor will reach out in a few.\n\n" +
                 "Do you want to continue?");

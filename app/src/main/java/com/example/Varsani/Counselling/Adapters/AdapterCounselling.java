@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Varsani.Clients.Models.UserModel;
+import com.example.Varsani.Counselling.CounsellingDetails;
 import com.example.Varsani.Counselling.Models.CounsellingModel;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
@@ -42,7 +43,7 @@ public class AdapterCounselling extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView txv_sessionID, txv_county;
+        public TextView txv_sessionID, txv_county, txv_user;
         public TextView txv_address, txv_status;
         public Button btn_view_details;
 
@@ -51,8 +52,9 @@ public class AdapterCounselling extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             txv_county =v.findViewById(R.id.txv_county);
             txv_sessionID =v.findViewById(R.id.txv_sessionID);
-            txv_address = v.findViewById(R.id.txv_urgency);
+            txv_address = v.findViewById(R.id.txv_address);
             txv_status = v.findViewById(R.id.txv_status);
+            txv_user = v.findViewById(R.id.txv_user);
             btn_view_details = v.findViewById(R.id.btn_view_details);
 
         }
@@ -78,13 +80,14 @@ public class AdapterCounselling extends RecyclerView.Adapter<RecyclerView.ViewHo
             view.txv_county.setText("County: " + o.getCounty());
             view.txv_status.setText("Status: " + o.getStatus());
             view.txv_address.setText("Address: " + o.getSpecificAddress());
+            view.txv_user.setText("User: " + o.getUserName());
 
             view.btn_view_details.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     //TODO CREATE ACTIVITY COUNSELLING DETAILS IN PLACE OF EmergencyDetails
-                    Intent in=new Intent(ctx, EmergencyDetails.class);
+                    Intent in=new Intent(ctx, CounsellingDetails.class);
                     in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     in.putExtra("sessionID", o.getSessionID());
                     in.putExtra("county",o.getCounty());

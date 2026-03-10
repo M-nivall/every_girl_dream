@@ -8,9 +8,11 @@ public class CounsellingModel {
     String specificAddress;
     String description;
     String status;
+    String userName;
+    String phoneNo;
 
     public CounsellingModel(String sessionID, String county, String townVillage, String specificAddress,
-                          String description, String status) {
+                          String description, String status, String userName, String phoneNo) {
 
         this.sessionID = sessionID;
         this.county = county;
@@ -18,6 +20,8 @@ public class CounsellingModel {
         this.specificAddress = specificAddress;
         this.description = description;
         this.status = status;
+        this.userName = userName;
+        this.phoneNo = phoneNo;
     }
 
     public String getSessionID() {
@@ -43,5 +47,11 @@ public class CounsellingModel {
 
     public String getStatus() {
         return status;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public String getPhoneNo() {
+        return phoneNo;
     }
 }

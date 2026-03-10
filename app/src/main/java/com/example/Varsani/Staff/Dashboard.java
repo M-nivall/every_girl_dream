@@ -314,7 +314,7 @@ public class Dashboard extends AppCompatActivity {
             else if (user.getUser_type().equals("Service Manager")) {
                 navigationView.getMenu().findItem(R.id.nav_emergency_reports).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_schedule_seminar).setVisible(true);
-                navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(false);
+                navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(true);
 
