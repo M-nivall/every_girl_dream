@@ -18,6 +18,7 @@ import com.example.Varsani.Clients.Search;
 import com.example.Varsani.Clients.ServiceItems;
 import com.example.Varsani.Clients.SupplierLogin;
 import com.example.Varsani.Clients.home.HomeFragment;
+import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.Girls.Notice;
 import com.example.Varsani.Staff.Dashboard;
 import com.example.Varsani.Staff.SelectLogin;
@@ -170,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent fbs=new Intent(getApplicationContext(), Feedback.class);
                     startActivity(fbs);
                 } else if (item.getItemId() == R.id.nav_staff_login) {
-                    Intent s=new Intent(getApplicationContext(), SelectLogin.class);
+                    Intent s=new Intent(getApplicationContext(), EmployeeLogin.class);
                     startActivity(s);
                 } else if (item.getItemId() == R.id.nav_help) {
                     Intent he=new Intent(getApplicationContext(), Help_in.class);

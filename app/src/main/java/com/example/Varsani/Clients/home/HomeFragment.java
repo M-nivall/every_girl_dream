@@ -14,8 +14,10 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.Varsani.Clients.About;
+import com.example.Varsani.Clients.LearnAboutFGMActivity;
 import com.example.Varsani.Clients.Login;
 import com.example.Varsani.Clients.Register;
+import com.example.Varsani.Clients.RescueCentersActivity;
 import com.example.Varsani.Counselling.CounsellingActivity;
 import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.R;
@@ -177,9 +179,8 @@ public class HomeFragment extends Fragment {
      * Opens rescue centers page
      */
     private void openRescueCenters() {
-        // TODO: Create RescueCentersActivity and uncomment
-        // Intent intent = new Intent(getContext(), RescueCentersActivity.class);
-        // startActivity(intent);
+         Intent intent = new Intent(getContext(), RescueCentersActivity.class);
+         startActivity(intent);
 
         Toast.makeText(getContext(), "Opening Rescue Centers...", Toast.LENGTH_SHORT).show();
     }
@@ -221,7 +222,7 @@ public class HomeFragment extends Fragment {
      * Opens learn more / about FGM page
      */
     private void openLearnMore() {
-        Intent intent = new Intent(getContext(), About.class);
+        Intent intent = new Intent(getContext(), LearnAboutFGMActivity.class);
         startActivity(intent);
     }
 

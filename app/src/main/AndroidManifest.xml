@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Clients.LearnAboutFGMActivity"
+            android:exported="false" />
+        <activity
             android:name=".Clients.RescueCentersActivity"
             android:exported="false" />
         <activity
@@ -23,9 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".Employees.RescueWorker.EmergencyOperations"
-            android:exported="false" />
-        <activity
-            android:name=".Employees.RescueWorker.RescueWorker"
             android:exported="false" />
         <activity
             android:name=".Girls.NoticeDetails"

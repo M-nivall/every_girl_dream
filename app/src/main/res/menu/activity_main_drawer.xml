@@ -46,7 +46,7 @@
             android:title="@string/register" />
         <item
             android:id="@+id/nav_login"
-            android:title="@string/login" />
+            android:title="Girls Login" />
         <item
             android:id="@+id/nav_completion"
             android:title="Bookings" />
