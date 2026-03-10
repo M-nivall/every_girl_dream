@@ -238,6 +238,8 @@ public class MainActivity extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_supplies_history).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_notice).setVisible(false);
 
+        navigationView.getMenu().findItem(R.id.nav_supplier_login).setVisible(false);
+
         if(session.isLoggedIn()){
 
             navigationView.getMenu().findItem(R.id.nav_register).setVisible(false);

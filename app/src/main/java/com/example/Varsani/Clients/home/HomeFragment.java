@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.Varsani.Clients.About;
 import com.example.Varsani.Clients.Login;
 import com.example.Varsani.Clients.Register;
+import com.example.Varsani.Counselling.CounsellingActivity;
 import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.EmergencyReportActivity;
@@ -188,9 +189,8 @@ public class HomeFragment extends Fragment {
      */
     private void openCounselling() {
         if(session.isLoggedIn()) {
-            // TODO: Create CounsellingActivity and uncomment
-            // Intent intent = new Intent(getContext(), CounsellingActivity.class);
-            // startActivity(intent);
+             Intent intent = new Intent(getContext(), CounsellingActivity.class);
+             startActivity(intent);
 
             Toast.makeText(getContext(), "Opening Counselling...", Toast.LENGTH_SHORT).show();
         } else {

@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lunga Lunga Road, Kenya"
+                android:text="Isiolo, Kenya"
                 android:paddingStart="8dp"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="refnet@refnetairconditioning.com"
+                android:text="support@everygirldream.com"
                 android:paddingStart="8dp"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -112,7 +112,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="info@refnetconditioning.com"
+                android:text="info@everygirldream.com"
                 android:paddingStart="8dp"
                 android:textSize="16sp" />
         </LinearLayout>
