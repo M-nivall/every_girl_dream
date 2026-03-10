@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        fab.setImageResource(R.drawable.ic_shopping_cart_white);
+        //ab.setImageResource(R.drawable.ic_shopping_cart_white);
         if(session.isLoggedIn()){
 
             if(user.getUser_type().equals("Girl")||user.getUser_type().equals("Supplier")){

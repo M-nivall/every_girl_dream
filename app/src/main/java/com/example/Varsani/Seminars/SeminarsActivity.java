@@ -50,6 +50,9 @@ public class SeminarsActivity extends AppCompatActivity {
         //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_seminars);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         getSupportActionBar().setSubtitle("Seminars");
         rv_seminars=findViewById(R.id.rv_seminars);
         progressBar=findViewById(R.id.progressBar);
@@ -151,4 +154,5 @@ public class SeminarsActivity extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
+
 }
