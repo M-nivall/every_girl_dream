@@ -25,6 +25,7 @@ import com.example.Varsani.Employees.RescueLead.EmergencyDuties;
 import com.example.Varsani.Employees.RescueWorker.EmergencyOperations;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.R;
+import com.example.Varsani.ReportCases.CompletedReports;
 import com.example.Varsani.ReportCases.EmergencyReports;
 import com.example.Varsani.Seminars.ScheduleSeminar;
 import com.example.Varsani.Staff.Driver.ArrivedOrders;
@@ -90,7 +91,7 @@ public class Dashboard extends AppCompatActivity {
                     Intent n = new Intent( getApplicationContext(), EmergencyReports.class );
                     startActivity( n );
                 } else if (item.getItemId() == R.id.nav_Completed_reports) {
-                    Intent cr = new Intent( getApplicationContext(), EmergencyReports.class );
+                    Intent cr = new Intent( getApplicationContext(), CompletedReports.class );
                     startActivity( cr );
                 } else if (item.getItemId() == R.id.nav_emergency_duties) {
                     Intent ed = new Intent( getApplicationContext(), EmergencyDuties.class );
@@ -279,6 +280,7 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_emergency_operations).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_Completed_reports).setVisible(false);
 
         if(session.isLoggedIn()) {
 
@@ -318,6 +320,7 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_emergency_reports).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_schedule_seminar).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_Completed_reports).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(true);
 
