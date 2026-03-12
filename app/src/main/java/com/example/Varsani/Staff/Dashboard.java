@@ -89,24 +89,27 @@ public class Dashboard extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_emergency_reports) {
                     Intent n = new Intent( getApplicationContext(), EmergencyReports.class );
                     startActivity( n );
+                } else if (item.getItemId() == R.id.nav_Completed_reports) {
+                    Intent cr = new Intent( getApplicationContext(), EmergencyReports.class );
+                    startActivity( cr );
                 } else if (item.getItemId() == R.id.nav_emergency_duties) {
-                    Intent n = new Intent( getApplicationContext(), EmergencyDuties.class );
-                    startActivity( n );
+                    Intent ed = new Intent( getApplicationContext(), EmergencyDuties.class );
+                    startActivity( ed );
                 } else if (item.getItemId() == R.id.nav_emergency_operations) {
-                    Intent n = new Intent( getApplicationContext(), EmergencyOperations.class );
-                    startActivity( n );
+                    Intent eo = new Intent( getApplicationContext(), EmergencyOperations.class );
+                    startActivity( eo );
                 } else if (item.getItemId() == R.id.nav_schedule_seminar) {
-                    Intent n = new Intent( getApplicationContext(), ScheduleSeminar.class );
-                    startActivity( n );
+                    Intent ss = new Intent( getApplicationContext(), ScheduleSeminar.class );
+                    startActivity( ss );
                 } else if (item.getItemId() == R.id.nav_mentorship_seminar) {
-                    Intent n = new Intent( getApplicationContext(), MentorshipSeminars.class );
-                    startActivity( n );
+                    Intent ms = new Intent( getApplicationContext(), MentorshipSeminars.class );
+                    startActivity( ms );
                 } else if (item.getItemId() == R.id.nav_counselling_requests) {
-                    Intent n = new Intent( getApplicationContext(), CounsellingRequests.class );
-                    startActivity( n );
+                    Intent cr = new Intent( getApplicationContext(), CounsellingRequests.class );
+                    startActivity( cr );
                 } else if (item.getItemId() == R.id.nav_new_orders) {
-                    Intent n = new Intent( getApplicationContext(), NewOrders.class );
-                    startActivity( n );
+                    Intent no = new Intent( getApplicationContext(), NewOrders.class );
+                    startActivity( no );
                 } else if (item.getItemId() == R.id.nav_approvedOrders) {
                     Intent a = new Intent( getApplicationContext(), ApprovedOrders.class );
                     startActivity( a );

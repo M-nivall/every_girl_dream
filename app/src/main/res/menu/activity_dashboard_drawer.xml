@@ -62,6 +62,10 @@
             android:title="Emeregency Reports" />
 
         <item
+            android:id="@+id/nav_Completed_reports"
+            android:title="Completed Reports" />
+
+        <item
             android:id="@+id/nav_emergency_operations"
             android:title="Emeregency Operations" />
 
