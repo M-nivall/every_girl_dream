@@ -1,5 +1,6 @@
 package com.example.Varsani.ReportCases;
 
+import static com.example.Varsani.utils.Urls.URL_COMPLETED_REPORTS;
 import static com.example.Varsani.utils.Urls.URL_EMERGENCY_REPORTS;
 
 import android.os.Bundle;
@@ -72,7 +73,7 @@ public class CompletedReports extends AppCompatActivity {
 
 
     public void completedReports(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_EMERGENCY_REPORTS,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_COMPLETED_REPORTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
