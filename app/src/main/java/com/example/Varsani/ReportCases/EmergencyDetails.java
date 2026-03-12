@@ -271,5 +271,4 @@ public class EmergencyDetails extends AppCompatActivity {
         });
         builder.show();
     }
-
 }
