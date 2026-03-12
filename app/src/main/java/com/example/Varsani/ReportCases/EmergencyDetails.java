@@ -102,6 +102,10 @@ public class EmergencyDetails extends AppCompatActivity {
         txv_status.setText("Status: " + reportStatus );
         txv_description.setText(desc);
 
+        if (reportStatus.equals("Completed")){
+            card_assign_rescue.setVisibility(View.GONE);
+        }
+
         edt_rescueLead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
