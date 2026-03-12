@@ -71,7 +71,6 @@ public class CompletedReports extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void completedReports(){
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_COMPLETED_REPORTS,
                 new Response.Listener<String>() {
