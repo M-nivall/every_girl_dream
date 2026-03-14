@@ -133,7 +133,7 @@ public class EmployeeLogin extends AppCompatActivity {
                 "Counsellor",
                 "Mentor",
                 //"Finance Manager",
-                //"Inventory Manager"
+                "Inventory Manager"
         };
 
         builder.setSingleChoiceItems(array, -1, new DialogInterface.OnClickListener() {

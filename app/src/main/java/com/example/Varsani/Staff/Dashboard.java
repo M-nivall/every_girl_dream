@@ -322,7 +322,7 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_arrived_orders).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_delivered_orders).setVisible(true);
 
-            } else if (user.getUser_type().equals("Stock manager")) {
+            } else if (user.getUser_type().equals("Inventory Manager")) {
                 navigationView.getMenu().findItem(R.id.nav_stock).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_supplies).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_materials).setVisible(true);
