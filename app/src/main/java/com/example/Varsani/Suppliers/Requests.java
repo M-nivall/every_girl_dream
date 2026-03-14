@@ -13,4 +13,5 @@ public class Requests extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
     }
+
 }
