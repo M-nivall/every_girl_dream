@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Stock"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Action"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#424242"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgAction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rbAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="➕ Add Stock (Received from supplier)"
+            android:textSize="14sp"
+            android:padding="8dp" />
+
+        <RadioButton
+            android:id="@+id/rbRemove"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="➖ Remove Stock (Distributed to girls)"
+            android:textSize="14sp"
+            android:padding="8dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quantity"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#424242"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Enter quantity"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Cancel"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Update Stock"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

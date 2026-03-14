@@ -143,7 +143,13 @@ public class Urls {
     public static final String URL_GET_MARKED_ORDERS=ROOT_URL + "driver/arrived_orders.php";
     public static final String URL_GET_DELIVERED_ORDERS=ROOT_URL + "driver/delivered_orders.php";
     public static final String URL_MARK_ORDER=ROOT_URL + "driver/mark_arrived.php";
+
     //Store mrg
+    public static final String URL_GET_STOCK_LEVEL=ROOT_URL + "inventory/stock.php";
+    public static final String URL_UPDATE_STOCK=ROOT_URL + "inventory/update_stock.php";
+    public static final String URL_CREATE_STOCK_REQUEST=ROOT_URL + "inventory/send_requests.php";
+    public static final String URL_GET_MY_REQUESTS=ROOT_URL + "inventory/requests.php";
+
     public static final String URL_GET_STOCK=ROOT_URL + "stock_mrg/stock.php";
     public static final String URL_GET_TOOLS=ROOT_URL + "stock_mrg/tools.php";
     public static final String URL_ADD_STOCK=ROOT_URL + "stock_mrg/add_stock.php";

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Stock from Suppliers"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Suppliers will bid to supply the requested quantity"
+        android:textSize="13sp"
+        android:textColor="#757575"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quantity Needed *"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#424242"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etQuantityNeeded"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Enter quantity needed"
+        android:inputType="number"
+        android:padding="12dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Urgency Level *"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#424242"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rgUrgency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rbCritical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔴 Critical - Urgent (within 2 days)"
+            android:textSize="14sp"
+            android:padding="6dp" />
+
+        <RadioButton
+            android:id="@+id/rbHigh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🟠 High - Soon (within 1 week)"
+            android:textSize="14sp"
+            android:padding="6dp" />
+
+        <RadioButton
+            android:id="@+id/rbMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🟡 Medium - Normal (within 2 weeks)"
+            android:textSize="14sp"
+            android:padding="6dp"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbLow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🟢 Low - Routine (within 1 month)"
+            android:textSize="14sp"
+            android:padding="6dp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Additional Notes (Optional)"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#424242"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/edit_text_background"
+        android:gravity="top|start"
+        android:hint="Any specific requirements or notes..."
+        android:inputType="textMultiLine"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelRequest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="Cancel"
+            android:backgroundTint="#9E9E9E"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnSubmitRequest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Create Request"
+            android:backgroundTint="@color/green_700"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>
