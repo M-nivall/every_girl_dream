@@ -478,4 +478,5 @@ public class SanitaryTowels extends AppCompatActivity {
         getStockLevel();
         getMyRequests();
     }
+
 }
