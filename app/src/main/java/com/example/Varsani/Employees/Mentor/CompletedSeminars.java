@@ -1,7 +1,7 @@
 package com.example.Varsani.Employees.Mentor;
 
-import static com.example.Varsani.utils.Urls.URL_ASSIGNED_SEMINARS;
-import static com.example.Varsani.utils.Urls.URL_GET_SEMINARS;
+import static com.example.Varsani.utils.Urls.URL_COMPLETED_SEMINARS;
+import static com.example.Varsani.utils.Urls.URL_IN_PROGRESS_SEMINARS;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -31,8 +31,6 @@ import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.Employees.Mentor.Adapters.AdapterAssignedSeminars;
 import com.example.Varsani.Employees.Mentor.Models.AssignedSeminarModel;
 import com.example.Varsani.R;
-import com.example.Varsani.Seminars.Adapters.AdapterSeminars;
-import com.example.Varsani.Seminars.Models.SeminarModel;
 import com.example.Varsani.utils.SessionHandler;
 
 import org.json.JSONArray;
@@ -43,7 +41,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MentorshipSeminars extends AppCompatActivity {
+public class CompletedSeminars extends AppCompatActivity {
+
     private List<AssignedSeminarModel> list;
     private AdapterAssignedSeminars adapterAssignedSeminars;
     private ProgressBar progressBar;
@@ -55,13 +54,12 @@ public class MentorshipSeminars extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       //EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_mentorship_seminars);
-
+        //EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_completed_seminars);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        getSupportActionBar().setSubtitle("Mentorship Seminars");
+        getSupportActionBar().setSubtitle("Completed Seminars");
         rv_seminars=findViewById(R.id.rv_seminars);
         progressBar=findViewById(R.id.progressBar);
 
@@ -82,9 +80,8 @@ public class MentorshipSeminars extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     public void seminars(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_ASSIGNED_SEMINARS,
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_COMPLETED_SEMINARS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -126,7 +123,7 @@ public class MentorshipSeminars extends AppCompatActivity {
                                     list.add(assignedSeminarModel);
                                 }
 
-                                adapterAssignedSeminars = new AdapterAssignedSeminars(MentorshipSeminars.this, list);
+                                adapterAssignedSeminars = new AdapterAssignedSeminars(CompletedSeminars.this, list);
 
                                 rv_seminars.setAdapter(adapterAssignedSeminars);
                                 progressBar.setVisibility(View.GONE);

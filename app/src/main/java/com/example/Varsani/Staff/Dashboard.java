@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.example.Varsani.Clients.ContactUs;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.Counselling.CounsellingRequests;
+import com.example.Varsani.Employees.Mentor.CompletedSeminars;
+import com.example.Varsani.Employees.Mentor.InProgressSeminars;
 import com.example.Varsani.Employees.Mentor.MentorshipSeminars;
 import com.example.Varsani.Employees.RescueLead.EmergencyDuties;
 import com.example.Varsani.Employees.RescueWorker.EmergencyOperations;
@@ -105,6 +107,12 @@ public class Dashboard extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_mentorship_seminar) {
                     Intent ms = new Intent( getApplicationContext(), MentorshipSeminars.class );
                     startActivity( ms );
+                } else if (item.getItemId() == R.id.nav_progress_seminar) {
+                    Intent ps = new Intent( getApplicationContext(), InProgressSeminars.class );
+                    startActivity( ps );
+                } else if (item.getItemId() == R.id.nav_completed_seminar) {
+                    Intent cs = new Intent( getApplicationContext(), CompletedSeminars.class );
+                    startActivity( cs );
                 } else if (item.getItemId() == R.id.nav_counselling_requests) {
                     Intent cr = new Intent( getApplicationContext(), CounsellingRequests.class );
                     startActivity( cr );
@@ -281,6 +289,8 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_emergency_operations).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_Completed_reports).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_progress_seminar).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_completed_seminar).setVisible(false);
 
         if(session.isLoggedIn()) {
 
@@ -300,6 +310,8 @@ public class Dashboard extends AppCompatActivity {
 
             } else if (user.getUser_type().equals("Mentor")) {
                 navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_progress_seminar).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_completed_seminar).setVisible(true);
 
             } else if (user.getUser_type().equals("Shipping Manager")) {
                 navigationView.getMenu().findItem(R.id.nav_orders_to_shipp).setVisible(true);
@@ -321,6 +333,7 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_schedule_seminar).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_counselling_requests).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_Completed_reports).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_completed_seminar).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_quot_requests).setVisible(true);
                 //navigationView.getMenu().findItem(R.id.nav_service_completed).setVisible(true);
 

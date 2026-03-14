@@ -74,12 +74,20 @@
             android:title="Schedule Seminar" />
 
         <item
-            android:id="@+id/nav_counselling_requests"
-            android:title="Counselling Requests" />
-
-        <item
             android:id="@+id/nav_mentorship_seminar"
             android:title="Mentorship Seminar" />
+
+        <item
+            android:id="@+id/nav_progress_seminar"
+            android:title="In Progress Seminars" />
+
+        <item
+            android:id="@+id/nav_completed_seminar"
+            android:title="Completed Seminars" />
+
+        <item
+            android:id="@+id/nav_counselling_requests"
+            android:title="Counselling Requests" />
 
         <item
             android:id="@+id/nav_emergency_duties"
