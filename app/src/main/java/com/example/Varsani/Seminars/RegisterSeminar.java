@@ -233,5 +233,4 @@ public class RegisterSeminar extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 }
