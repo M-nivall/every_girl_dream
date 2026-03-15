@@ -22,7 +22,7 @@
             android:title="Approved Service Payments"/>
         <item
             android:id="@+id/nav_supplier_payments"
-            android:title="Supplier_payments"/>
+            android:title="Supplier Payments"/>
 
         <item
             android:id="@+id/nav_orders_to_shipp"
@@ -44,6 +44,11 @@
         <item
             android:id="@+id/nav_stock"
             android:title="Stock" />
+
+        <item
+            android:id="@+id/nav_sanitary"
+            android:title="Sanitary Towels" />
+
         <item
             android:id="@+id/nav_tools"
             android:title="Tools" />
@@ -53,6 +58,15 @@
         <item
             android:id="@+id/nav_quot_requests"
             android:title="Service Requests" />
+
+        <item
+            android:id="@+id/nav_request"
+            android:title="Sanitary Towel Requests" />
+
+        <item
+            android:id="@+id/nav_approved_requests"
+            android:title="Approved Supply Requests" />
+
         <item
             android:id="@+id/nav_service_completed"
             android:title="Completed Service" />

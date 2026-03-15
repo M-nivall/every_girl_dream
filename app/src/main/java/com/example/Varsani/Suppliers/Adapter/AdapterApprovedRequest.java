@@ -1,6 +1,5 @@
 package com.example.Varsani.Suppliers.Adapter;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,40 +12,37 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Varsani.R;
-import com.example.Varsani.Staff.Driver.AssignedItems;
-import com.example.Varsani.Staff.Store_mrg.Adapter.AdapterStockRequest;
 import com.example.Varsani.Staff.Store_mrg.Model.StockRequestModel;
-import com.example.Varsani.Staff.Store_mrg.ViewRequestBids;
-import com.example.Varsani.Suppliers.Accept;
 import com.example.Varsani.Suppliers.Bid;
-import com.example.Varsani.Suppliers.Model.MyRequetsModel;
+import com.example.Varsani.Suppliers.Model.ApprovedRequestModel;
+import com.example.Varsani.Suppliers.SupplyBid;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class AdapterMyRequest extends RecyclerView.Adapter<AdapterMyRequest.MyViewHolder> {
+public class AdapterApprovedRequest extends RecyclerView.Adapter<AdapterApprovedRequest.MyViewHolder>{
 
     Context context;
-    List<StockRequestModel> list;
+    List<ApprovedRequestModel> list;
 
-    public AdapterMyRequest(Context context, List<StockRequestModel> list) {
+    public AdapterApprovedRequest(Context context, List<ApprovedRequestModel> list) {
         this.context = context;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public AdapterMyRequest.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterApprovedRequest.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
                 .inflate(R.layout.row_my_request, parent, false);
-        return new AdapterMyRequest.MyViewHolder(view);
+        return new AdapterApprovedRequest.MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterMyRequest.MyViewHolder holder, int position) {
-        StockRequestModel model = list.get(position);
+    public void onBindViewHolder(@NonNull AdapterApprovedRequest.MyViewHolder holder, int position) {
+        ApprovedRequestModel model = list.get(position);
 
         holder.tvRequestID.setText("Request #" + model.getRequestID());
         holder.tvQuantity.setText(model.getQuantityNeeded() + " units");
@@ -77,12 +73,14 @@ public class AdapterMyRequest extends RecyclerView.Adapter<AdapterMyRequest.MyVi
         holder.cardRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Bid.class);
+                Intent intent = new Intent(context, SupplyBid.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("requestID", model.getRequestID());
                 intent.putExtra("quantityNeeded", model.getQuantityNeeded());
                 intent.putExtra("urgency", model.getUrgency());
                 intent.putExtra("status", model.getStatus());
+                intent.putExtra("unitPrice", model.getUnitPrice());
+                intent.putExtra("totalPrice", model.getTotalPrice());
                 context.startActivity(intent);
             }
         });

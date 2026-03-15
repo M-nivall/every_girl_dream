@@ -2,9 +2,9 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    public static String ipAddress = "http://192.168.96.102/everygirldream/";
+    //public static String ipAddress = "http://192.168.197.176/everygirldream/";
 
-    //public static String ipAddress = "https://3007-217-199-148-239.ngrok-free.app/everygirldream/";
+    public static String ipAddress = "https://4de7-217-199-148-239.ngrok-free.app/everygirldream/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
@@ -89,6 +89,9 @@ public class Urls {
 //    SUPPLIERS
     public static final String URL_REG_SUPPLIERS= ROOT_URL+"supplier/reg_supplier.php";
     public static final String URL_MY_REQUESTS= ROOT_URL+"supplier/my_requests.php";
+    public static final String URL_SUBMIT_BID= ROOT_URL+"supplier/bid.php";
+    public static final String URL_SUPPLY_BID= ROOT_URL+"supplier/supply_bid.php";
+    public static final String URL_APPROVED_REQUESTS= ROOT_URL+"supplier/approved_requests.php";
     public static final String URL_SUPPLY_HISTORY= ROOT_URL+"supplier/supply_history.php";
     public static final String URL_PAYMENT_DETAILS= ROOT_URL+"supplier/payment_details.php";
     public static final String URL_ACCEPT= ROOT_URL+"supplier/approve_items.php";
@@ -149,6 +152,9 @@ public class Urls {
     public static final String URL_UPDATE_STOCK=ROOT_URL + "inventory/update_stock.php";
     public static final String URL_CREATE_STOCK_REQUEST=ROOT_URL + "inventory/send_requests.php";
     public static final String URL_GET_MY_REQUESTS=ROOT_URL + "inventory/requests.php";
+    public static final String URL_GET_REQUEST_BIDS=ROOT_URL + "inventory/get_request_bids.php";
+    public static final String URL_APPROVE_SUPPLIER=ROOT_URL + "inventory/approve_supplier.php";
+    public static final String URL_CONFIRM_STOCK_SUPPLY=ROOT_URL + "inventory/confirm_supply.php";
 
     public static final String URL_GET_STOCK=ROOT_URL + "stock_mrg/stock.php";
     public static final String URL_GET_TOOLS=ROOT_URL + "stock_mrg/tools.php";

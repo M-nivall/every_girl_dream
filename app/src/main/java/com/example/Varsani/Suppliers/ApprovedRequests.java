@@ -1,22 +1,19 @@
 package com.example.Varsani.Suppliers;
 
-import static com.example.Varsani.utils.Urls.URL_MY_REQUESTS;
-import static com.example.Varsani.utils.Urls.URL_REQUESTS;
+import static com.example.Varsani.utils.Urls.URL_APPROVED_REQUESTS;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -27,12 +24,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.R;
-import com.example.Varsani.Staff.Store_mrg.Adapter.AdapterRequest;
-import com.example.Varsani.Staff.Store_mrg.Model.RequestModel;
 import com.example.Varsani.Staff.Store_mrg.Model.StockRequestModel;
-import com.example.Varsani.Staff.Store_mrg.RequestSupplier;
+import com.example.Varsani.Suppliers.Adapter.AdapterApprovedRequest;
 import com.example.Varsani.Suppliers.Adapter.AdapterMyRequest;
-import com.example.Varsani.Suppliers.Model.MyRequetsModel;
+import com.example.Varsani.Suppliers.Model.ApprovedRequestModel;
 import com.example.Varsani.utils.SessionHandler;
 
 import org.json.JSONArray;
@@ -43,12 +38,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MyRequests extends AppCompatActivity {
-
+public class ApprovedRequests extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
-    private List<StockRequestModel> list;
-    private AdapterMyRequest adapter;
+    private List<ApprovedRequestModel> list;
+    private AdapterApprovedRequest adapter;
 
     private SessionHandler session;
     private UserModel user;
@@ -56,7 +50,8 @@ public class MyRequests extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_requests);
+        //EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_approved_requests);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         progressBar = findViewById(R.id.progressBar);
@@ -71,8 +66,9 @@ public class MyRequests extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 1);
         recyclerView.setLayoutManager(layoutManager);
 
-        requests();
+        approvedRequests();
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -80,8 +76,9 @@ public class MyRequests extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void requests(){
-        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_MY_REQUESTS,
+
+    public void approvedRequests(){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_APPROVED_REQUESTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -103,10 +100,13 @@ public class MyRequests extends AppCompatActivity {
                                     String createdAt = jsn.getString("created_at");
                                     String bidCount = jsn.optString("quantity_needed", "0");
 
-                                    StockRequestModel sr=new StockRequestModel(requestID, quantityNeeded,  urgency,  requestStatus, createdAt, bidCount);
-                                    list.add(sr);
+                                    String unitPrice = jsn.getString("unit_price");
+                                    String totalPrice = jsn.getString("total_price");
+
+                                    ApprovedRequestModel am=new ApprovedRequestModel(requestID, quantityNeeded,  urgency,  requestStatus, createdAt, bidCount, unitPrice, totalPrice);
+                                    list.add(am);
                                 }
-                                adapter=new AdapterMyRequest(getApplicationContext(),list);
+                                adapter=new AdapterApprovedRequest(getApplicationContext(),list);
                                 recyclerView.setAdapter(adapter);
                                 progressBar.setVisibility(View.GONE);
 

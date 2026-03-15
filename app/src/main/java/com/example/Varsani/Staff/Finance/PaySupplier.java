@@ -40,13 +40,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PaySupplier extends AppCompatActivity {
-    private TextView txv_id,txv_supplierName,txv_amount,txv_amount2,txv_paymentdesc,
-            txv_paymentstatus,txv_payment_date;
+    private TextView txv_requestID,txv_supplierName,txv_quantity,txv_unitPrice,txv_totalPrice,
+            txv_requestStatus,txv_amount;
     private EditText edt_paymentCode;
 
-    private Button btn_submit;
+    private Button txv_paySupplier;
     private ProgressBar progressBar;
-    private String id,requestID;
+    private String requestID;
 
 
     @Override
@@ -56,17 +56,17 @@ public class PaySupplier extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txv_id =findViewById(R.id.txv_supplyid);
+        txv_requestID =findViewById(R.id.txv_requestID);
         txv_supplierName =findViewById(R.id.txv_supplierName);
+        txv_quantity = findViewById(R.id.txv_quantity);
+        txv_unitPrice = findViewById(R.id.txv_unitPrice);
+        txv_totalPrice = findViewById(R.id.txv_totalPrice);
+        txv_requestStatus = findViewById(R.id.txv_requestStatus);
         txv_amount = findViewById(R.id.txv_amount);
-        txv_amount2 = findViewById(R.id.txv_amount2);
-        txv_paymentdesc = findViewById(R.id.txv_paymentdescription);
-        txv_paymentstatus = findViewById(R.id.txv_paymentstatus);
-        txv_payment_date = findViewById(R.id.txv_paymentdate);
         edt_paymentCode = findViewById(R.id.edt_paymentCode);
 
         progressBar=findViewById(R.id.progressBar);
-        btn_submit=findViewById(R.id.paysupplier);
+        txv_paySupplier=findViewById(R.id.txv_paySupplier);
 
 
         progressBar.setVisibility(View.GONE);
@@ -74,17 +74,16 @@ public class PaySupplier extends AppCompatActivity {
         edt_paymentCode.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
 
         Intent in=getIntent();
-        id=in.getStringExtra("id");
         requestID = in.getStringExtra("requestID");
-        txv_id.setText("Serial:"+in.getStringExtra("id"));
-        txv_supplierName.setText("Payment To:"+in.getStringExtra("supplierName"));
-        txv_amount.setText("Amount:"+in.getStringExtra("amount"));
-        txv_amount2.setText("Kes:"+in.getStringExtra("amount"));
-        txv_paymentdesc.setText("Supply Of :"+in.getStringExtra("payment_description"));
-        txv_payment_date.setText("Invoiced On:"+in.getStringExtra("payment_date"));
-        txv_paymentstatus.setText("Status:"+in.getStringExtra("payment_status"));
+        txv_requestID.setText("Request ID: "+in.getStringExtra("requestID"));
+        txv_supplierName.setText("Payment To: "+in.getStringExtra("supplierName"));
+        txv_quantity.setText("Quantity: "+in.getStringExtra("quantity"));
+        txv_unitPrice.setText("Unit Price Ksh :"+in.getStringExtra("unitPrice"));
+        txv_totalPrice.setText("Total Price: Ksh "+in.getStringExtra("totalPrice"));
+        txv_amount.setText("Amount Ksh: "+in.getStringExtra("totalPrice"));
+        txv_requestStatus.setText("Status: "+in.getStringExtra("bitStatus"));
 
-        btn_submit.setOnClickListener(v-> alertApprove());
+        txv_paySupplier.setOnClickListener(v-> alertApprove());
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,7 +137,6 @@ public class PaySupplier extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams()throws AuthFailureError {
                 Map<String,String> params=new HashMap<>();
-                params.put("id",id);
                 params.put("requestID",requestID);
                 Log.e("PARAMS",""+params);
                 return params;

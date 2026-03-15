@@ -132,8 +132,9 @@ public class EmployeeLogin extends AppCompatActivity {
                 "Rescue Worker",
                 "Counsellor",
                 "Mentor",
-                //"Finance Manager",
-                "Inventory Manager"
+                "Finance Manager",
+                "Inventory Manager",
+                "Supplier"
         };
 
         builder.setSingleChoiceItems(array, -1, new DialogInterface.OnClickListener() {

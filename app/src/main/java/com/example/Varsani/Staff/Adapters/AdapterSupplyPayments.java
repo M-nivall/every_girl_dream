@@ -46,18 +46,17 @@ public class AdapterSupplyPayments extends RecyclerView.Adapter<RecyclerView.Vie
 
     public class OriginalViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView txv_requestID,txv_name,txv_items,
-                txv_requestDate, txv_requestStatus;
+        public TextView txv_requestID,txv_supplierName,txv_amount,
+                txv_requestStatus;
 
 
         public OriginalViewHolder(View v) {
             super(v);
 
-            txv_items =v.findViewById(R.id.txv_items);
-            txv_name =v.findViewById(R.id.txv_name);
+            txv_amount =v.findViewById(R.id.txv_amount);
+            txv_supplierName =v.findViewById(R.id.txv_supplierName);
             txv_requestID = v.findViewById(R.id.txv_requestID);
             txv_requestStatus = v.findViewById(R.id.txv_requestStatus);
-            txv_requestDate = v.findViewById(R.id.txv_requestDate);
 
         }
     }
@@ -65,7 +64,7 @@ public class AdapterSupplyPayments extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder vh;
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lv_my_request, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.lv_payment_card, parent, false);
         vh = new OriginalViewHolder(v);
         return vh;
     }
@@ -78,10 +77,10 @@ public class AdapterSupplyPayments extends RecyclerView.Adapter<RecyclerView.Vie
 
             final SupplyPaymentsModel o= items.get(position);
 
-            view.txv_requestID.setText(" #ID: "+o.getId());
-            view.txv_requestDate.setText("Date: "+o.getPayment_date());
-            view.txv_requestStatus.setText("Status: "+o.getPayment_status());
-            view.txv_items.setText("Tender: "+o.getPayment_description());
+            view.txv_requestID.setText("Request ID: "+o.getRequestID());
+            view.txv_supplierName.setText("Supplier: "+o.getSupplierName());
+            view.txv_amount.setText("Amount Ksh: "+o.getTotalPrice());
+            view.txv_requestStatus.setText("Status: "+o.getBidStatus());
 
             view.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -89,14 +88,12 @@ public class AdapterSupplyPayments extends RecyclerView.Adapter<RecyclerView.Vie
 
                     Intent in=new Intent(ctx, PaySupplier.class);
                     in.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    in.putExtra("id", o.getId());
-                    in.putExtra("supplierID",o.getSupplierID());
-                    in.putExtra("supplierName",o.getSupplierName());
-                    in.putExtra("amount",o.getAmount());
-                    in.putExtra("payment_description",o.getPayment_description());
-                    in.putExtra("payment_status",o.getPayment_status());
-                    in.putExtra("payment_date",o.getPayment_date());
                     in.putExtra("requestID",o.getRequestID());
+                    in.putExtra("supplierName",o.getSupplierName());
+                    in.putExtra("unitPrice",o.getUnitPrice());
+                    in.putExtra("totalPrice",o.getTotalPrice());
+                    in.putExtra("bitStatus",o.getBidStatus());
+                    in.putExtra("quantity",o.getQuantity());
                     ctx.startActivity(in);
                 }
             });

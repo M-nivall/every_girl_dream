@@ -13,6 +13,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Suppliers.SupplyBid"
+            android:exported="false" />
+        <activity
+            android:name=".Suppliers.ApprovedRequests"
+            android:exported="false" />
+        <activity
+            android:name=".Suppliers.Bid"
+            android:exported="false" />
+        <activity
             android:name=".Staff.Store_mrg.ViewRequestBids"
             android:exported="false" />
         <activity

@@ -21,7 +21,7 @@
 
         <item
             android:id="@+id/nav_request"
-            android:title="Requests" />
+            android:title="Sanitary Towel Requests" />
         <item
             android:id="@+id/nav_supplies_history"
             android:title="Supplies History" />

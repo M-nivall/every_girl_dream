@@ -94,14 +94,13 @@ public class SupplyPayments extends AppCompatActivity {
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsn = jsonArray.getJSONObject(i);
                                     SupplyPaymentsModel rq = new SupplyPaymentsModel(
-                                            jsn.getString("id"),
-                                            jsn.getString("supplierID"),
+
+                                            jsn.getString("requestID"),
                                             jsn.getString("supplierName"),
-                                            jsn.getString("amount"),
-                                            jsn.getString("payment_description"),
-                                            jsn.getString("payment_status"),
-                                            jsn.getString("payment_date"),
-                                            jsn.getString("requestID")
+                                            jsn.getString("quantity"),
+                                            jsn.getString("unitPrice"),
+                                            jsn.getString("totalPrice"),
+                                            jsn.getString("bidStatus")
                                     );
                                     list.add(rq);
                                 }

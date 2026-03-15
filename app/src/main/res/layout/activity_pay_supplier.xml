@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Pay For Stock Supply"
+            android:text="Pay Supplier"
             android:textSize="20dp"
             android:textStyle="bold"/>
 
@@ -37,11 +37,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="10dp">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txv_supplyid"
-                        android:text="No."
+                        android:id="@+id/txv_requestID"
+                        android:text="Request ID."
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/colorBlack"/>
@@ -54,38 +55,51 @@
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/colorBlack"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txv_paymentdescription"
-                        android:text="Tender"
+                        android:id="@+id/txv_item"
+                        android:text="Item: Sanitary Towel"
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/colorBlack"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txv_amount"
-                        android:text="Amount"
+                        android:id="@+id/txv_quantity"
+                        android:text="Quantity"
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/colorBlack"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txv_paymentdate"
-                        android:text="InvoiceDate"
+                        android:id="@+id/txv_unitPrice"
+                        android:text="Unit Price"
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@color/colorBlack"/>
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/txv_paymentstatus"
+                        android:id="@+id/txv_totalPrice"
+                        android:text="Total Price"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorBlack"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txv_requestStatus"
                         android:text="Status"
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
-                        android:textColor="@color/colorBlack"/>
+                        android:textColor="@color/btn_color"/>
 
 
 
@@ -98,11 +112,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@android:color/black" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:id="@+id/txv_amount2"
+                        android:id="@+id/txv_amount"
                         android:textSize="30dp"
                         android:text="Amount(Kes)"
                         android:textStyle="bold"
@@ -169,9 +184,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/btn_color"
-                    android:text="Release Stipulated Funds"
+                    android:text="Pay Supplier"
                     android:layout_margin="25dp"
-                    android:id="@+id/paysupplier"/>
+                    android:id="@+id/txv_paySupplier"/>
                 <ProgressBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
