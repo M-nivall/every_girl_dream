@@ -108,7 +108,6 @@ public class CounsellingDetails extends AppCompatActivity {
             }
         });
 
-
         btn_assign_counsellor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
