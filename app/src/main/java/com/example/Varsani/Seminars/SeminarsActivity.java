@@ -154,5 +154,4 @@ public class SeminarsActivity extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
-
 }
