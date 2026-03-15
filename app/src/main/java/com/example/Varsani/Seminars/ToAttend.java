@@ -42,7 +42,6 @@ public class ToAttend extends AppCompatActivity {
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
 
-
     String seminarID;
 
     @Override
