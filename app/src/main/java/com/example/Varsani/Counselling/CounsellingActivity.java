@@ -350,5 +350,4 @@ public class CounsellingActivity extends AppCompatActivity {
 
         builder.show();
     }
-
 }
