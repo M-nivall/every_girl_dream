@@ -2,8 +2,10 @@ package com.example.Varsani.Counselling;
 
 import static com.example.Varsani.utils.Urls.URL_ASSIGN_COUNSELLOR;
 import static com.example.Varsani.utils.Urls.URL_ASSIGN_RECUE_TEAM;
+import static com.example.Varsani.utils.Urls.URL_COMPLETE_COUNSELLING;
 import static com.example.Varsani.utils.Urls.URL_GET_COUNSELLOR;
 import static com.example.Varsani.utils.Urls.URL_GET_RESCUE_TEAM;
+import static com.example.Varsani.utils.Urls.URL_START_COUNSELLING;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -34,7 +36,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.R;
+import com.example.Varsani.utils.SessionHandler;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -48,13 +52,16 @@ public class CounsellingDetails extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView txv_sessionID,txv_county,txv_town,txv_phone,
             txv_address, txv_user,txv_status,txv_description;
-    private Button btn_assign_counsellor;
-    private CardView card_assign_rescue;
+    private Button btn_assign_counsellor, btn_start_counselling, btn_complete_counselling;
+    private CardView card_assign_rescue, card_counsellor;
     private ArrayList<String> counsellor;
 
     private EditText edt_counsellor;
 
     private String sessionID;
+
+    private SessionHandler session;
+    private UserModel user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +82,13 @@ public class CounsellingDetails extends AppCompatActivity {
         btn_assign_counsellor=findViewById(R.id.btn_assign_counsellor);
         edt_counsellor=findViewById(R.id.edt_counsellor);
         card_assign_rescue=findViewById(R.id.card_assign_rescue);
+        card_counsellor=findViewById(R.id.card_counsellor);
+
+        btn_start_counselling = findViewById(R.id.btn_start_counselling);
+        btn_complete_counselling = findViewById(R.id.btn_complete_counselling);
+
+        session=new SessionHandler(getApplicationContext());
+        user=session.getUserDetails();
 
         edt_counsellor.setFocusable(false);
 
@@ -90,6 +104,20 @@ public class CounsellingDetails extends AppCompatActivity {
         String reportStatus=intent.getStringExtra("reportStatus");
         String userName=intent.getStringExtra("userName");
         String phone=intent.getStringExtra("phone");
+
+        if (user.getUser_type().equals("Counsellor")){
+            card_assign_rescue.setVisibility(View.GONE);
+            card_counsellor.setVisibility(View.VISIBLE);
+
+            if (reportStatus.equals("Assigned")){
+                btn_complete_counselling.setVisibility(View.GONE);
+            }
+        }
+
+        if (reportStatus.equals("In Progress")) {
+            btn_start_counselling.setVisibility(View.GONE);
+            btn_complete_counselling.setVisibility(View.VISIBLE);
+        }
 
 
         txv_sessionID.setText("Session ID: " + sessionID);
@@ -112,6 +140,20 @@ public class CounsellingDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getAlertAssign(v);
+            }
+        });
+
+        btn_start_counselling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAlertStart(v);
+            }
+        });
+
+        btn_complete_counselling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAlertComplete(v);
             }
         });
 
@@ -189,6 +231,115 @@ public class CounsellingDetails extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    public void startCounselling(){
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_START_COUNSELLING,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            Log.e("RESPONSE",response);
+                            JSONObject jsonObject=new JSONObject(response);
+                            String status=jsonObject.getString("status");
+                            String msg=jsonObject.getString("message");
+                            if (status.equals("1")){
+
+                                Toast toast= Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.TOP,0,250);
+                                toast.show();
+                                finish();
+                            }else{
+
+                                Toast toast= Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.TOP,0,250);
+                                toast.show();
+                            }
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            Toast toast= Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP,0,250);
+                            toast.show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast toast= Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP,0,250);
+                toast.show();
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams()throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put("sessionID",sessionID);
+                Log.e("PARAMS",""+params);
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+    }
+
+    public void completeCounselling(){
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_COMPLETE_COUNSELLING,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            Log.e("RESPONSE",response);
+                            JSONObject jsonObject=new JSONObject(response);
+                            String status=jsonObject.getString("status");
+                            String msg=jsonObject.getString("message");
+                            if (status.equals("1")){
+
+                                Toast toast= Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.TOP,0,250);
+                                toast.show();
+                                finish();
+                            }else{
+
+                                Toast toast= Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.TOP,0,250);
+                                toast.show();
+                            }
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            Toast toast= Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT);
+                            toast.setGravity(Gravity.TOP,0,250);
+                            toast.show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast toast= Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP,0,250);
+                toast.show();
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams()throws AuthFailureError {
+                Map<String,String> params=new HashMap<>();
+                params.put("sessionID",sessionID);
+                Log.e("PARAMS",""+params);
+                return params;
+            }
+        };
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
+    }
+
+
     public void getCounsellor() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_GET_COUNSELLOR,
                 new Response.Listener<String>() {
@@ -260,6 +411,38 @@ public class CounsellingDetails extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 assign();
+
+                return;
+            }
+        });
+        builder.show();
+    }
+
+    public void getAlertStart(View v){
+        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setTitle("Confirm Start of Counselling Session");
+        final String[] array = counsellor.toArray(new String[counsellor.size()]);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                startCounselling();
+
+                return;
+            }
+        });
+        builder.show();
+    }
+
+    public void getAlertComplete(View v){
+        android.app.AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+        builder.setTitle("Confirm Start of Counselling Session");
+        final String[] array = counsellor.toArray(new String[counsellor.size()]);
+        builder.setNegativeButton("Cancel",null);
+        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+                completeCounselling();
 
                 return;
             }

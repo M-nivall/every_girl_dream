@@ -104,6 +104,14 @@
             android:title="Counselling Requests" />
 
         <item
+            android:id="@+id/nav_assigned_counselling"
+            android:title="Assigned Counselling Requests" />
+
+        <item
+            android:id="@+id/nav_progress_counselling"
+            android:title="Counselling In Progres" />
+
+        <item
             android:id="@+id/nav_emergency_duties"
             android:title="Emeregency Duties" />
 

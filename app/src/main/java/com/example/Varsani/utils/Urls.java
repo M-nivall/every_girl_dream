@@ -2,9 +2,9 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    //public static String ipAddress = "http://192.168.197.196/everygirldream/";
+    public static String ipAddress = "http://192.168.205.151/everygirldream/";
 
-    public static String ipAddress = "https://4de7-217-199-148-239.ngrok-free.app/everygirldream/";
+    //public static String ipAddress = "https://4de7-217-199-148-239.ngrok-free.app/everygirldream/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
@@ -52,6 +52,12 @@ public class Urls {
     public static final String URL_COMPLETED_SEMINARS=ROOT_URL + "mentor/completed_seminars.php";
     public static final String URL_START_SEMINAR=ROOT_URL + "mentor/start_seminar.php";
     public static final String URL_END_SEMINAR=ROOT_URL + "mentor/end_seminar.php";
+
+    //Counsellor
+    public static final String URL_MY_COUNSELLING_REQUESTS=ROOT_URL + "counsellor/counselling_requests.php";
+    public static final String URL_IN_PROGRESS_COUNSELLING=ROOT_URL + "counsellor/in_progress_counselling.php";
+    public static final String URL_START_COUNSELLING=ROOT_URL + "counsellor/start_counselling.php";
+    public static final String URL_COMPLETE_COUNSELLING=ROOT_URL + "counsellor/complete_counselling.php";
 
     public static  final String UEL_STAFF_SEND_FEEDBACK=ROOT_URL+"client/staff_sendfeedback.php";
     public static  final String UEL_STAFF_FEEDBACK=ROOT_URL+"client/getstafffeedback.php";

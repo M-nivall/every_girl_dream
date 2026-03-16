@@ -215,6 +215,50 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
+            <androidx.cardview.widget.CardView
+                android:visibility="gone"
+                android:id="@+id/card_counsellor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:orientation="vertical">
+
+                    <!-- Assign Button -->
+                    <Button
+                        android:id="@+id/btn_start_counselling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Start Counselling"
+                        android:textAllCaps="true"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="18dp"
+                        android:padding="12dp"/>
+
+                    <Button
+                        android:id="@+id/btn_complete_counselling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Complete Counselling"
+                        android:textAllCaps="true"
+                        android:backgroundTint="@color/colorAccent"
+                        android:textColor="@android:color/white"
+                        android:layout_marginTop="18dp"
+                        android:padding="12dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="match_parent"

@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.Counselling.CounsellingRequests;
+import com.example.Varsani.Employees.Counsellor.AssignedCounselling;
+import com.example.Varsani.Employees.Counsellor.InProgressCounselling;
 import com.example.Varsani.Employees.Mentor.CompletedSeminars;
 import com.example.Varsani.Employees.Mentor.InProgressSeminars;
 import com.example.Varsani.Employees.Mentor.MentorshipSeminars;
@@ -118,6 +120,12 @@ public class Dashboard extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.nav_counselling_requests) {
                     Intent cr = new Intent( getApplicationContext(), CounsellingRequests.class );
                     startActivity( cr );
+                } else if (item.getItemId() == R.id.nav_assigned_counselling) {
+                    Intent ac = new Intent( getApplicationContext(), AssignedCounselling.class );
+                    startActivity( ac );
+                }  else if (item.getItemId() == R.id.nav_progress_counselling) {
+                    Intent ac = new Intent( getApplicationContext(), InProgressCounselling.class );
+                    startActivity( ac );
                 }  else if (item.getItemId() == R.id.nav_sanitary) {
                     Intent st = new Intent( getApplicationContext(), SanitaryTowels.class );
                     startActivity( st );
@@ -305,6 +313,8 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_sanitary).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_request).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_approved_requests).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_assigned_counselling).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_progress_counselling).setVisible(false);
 
         if(session.isLoggedIn()) {
 
@@ -326,6 +336,10 @@ public class Dashboard extends AppCompatActivity {
                 navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_progress_seminar).setVisible(true);
                 navigationView.getMenu().findItem(R.id.nav_completed_seminar).setVisible(true);
+
+            } else if (user.getUser_type().equals("Counsellor")) {
+                navigationView.getMenu().findItem(R.id.nav_assigned_counselling).setVisible(true);
+                navigationView.getMenu().findItem(R.id.nav_progress_counselling).setVisible(true);
 
             } else if (user.getUser_type().equals("Supplier")) {
                 navigationView.getMenu().findItem(R.id.nav_request).setVisible(true);

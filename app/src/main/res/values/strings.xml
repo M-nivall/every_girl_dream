@@ -30,10 +30,11 @@ Every Girls Dream is dedicated to protecting girls from Female Genital Mutilatio
 
     <string-array name="recipient">
         <item>Select Recipient</item>
-        <item>Finance</item>
-        <item>Shipping Manager</item>
-        <item>Stock manager</item>
-        <item>Service manager</item>
+        <item>Service Manager</item>
+        <item>Inventory Manager</item>
+        <item>Finance Manager</item>
+        <item>Mentor</item>
+        <item>Counsellor</item>
     </string-array>
 
 
