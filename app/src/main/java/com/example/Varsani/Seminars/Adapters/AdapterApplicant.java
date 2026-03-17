@@ -177,4 +177,5 @@ public class AdapterApplicant extends RecyclerView.Adapter<AdapterApplicant.MyVi
             layoutStatus = itemView.findViewById(R.id.layoutStatus);
         }
     }
+
 }
