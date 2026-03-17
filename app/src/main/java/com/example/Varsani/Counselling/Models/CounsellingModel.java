@@ -54,5 +54,4 @@ public class CounsellingModel {
     public String getPhoneNo() {
         return phoneNo;
     }
-
 }
