@@ -50,5 +50,4 @@ public class SeminarModel {
     public String getSeminarStatus() {
         return seminarStatus;
     }
-
 }
