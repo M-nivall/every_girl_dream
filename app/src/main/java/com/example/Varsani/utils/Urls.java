@@ -2,7 +2,7 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    //public static String ipAddress = "http://192.168.205.157/everygirldream/";
+    //public static String ipAddress = "http://192.168.205.150/everygirldream/";
 
     public static String ipAddress = "https://46a3-197-248-201-21.ngrok-free.app/everygirldream/";
 
