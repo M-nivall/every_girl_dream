@@ -67,6 +67,9 @@ public class Urls {
     public static final String URL_LOGIN= ROOT_URL+"girls/login.php";
     public static final String URL_NOTICES=ROOT_URL + "girls/notices.php";
 
+    //Donors
+    public static final String URL_DONATE= ROOT_URL+"donor/donate.php";
+
      //  products
     public static final String URL_GET_PRODUCTS=ROOT_URL + "client/products.php";
     public static final String URL_ADD_CART=ROOT_URL + "client/add_to_cart.php";

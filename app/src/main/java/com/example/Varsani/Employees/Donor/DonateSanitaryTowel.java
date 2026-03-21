@@ -1,5 +1,6 @@
 package com.example.Varsani.Employees.Donor;
 
+import static com.example.Varsani.utils.Urls.URL_DONATE;
 import static com.example.Varsani.utils.Urls.URL_SUBMIT_BID;
 
 import android.app.AlertDialog;
@@ -84,10 +85,9 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        String unit_price = edt_unit_price.getText().toString();
-        String total_price = String.valueOf(totalPrice);
+        String quantity = edt_unit_price.getText().toString();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SUBMIT_BID,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_DONATE,
 
                 new Response.Listener<String>() {
                     @Override
@@ -106,7 +106,7 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
                             if (status.equals("1")) {
 
-                                Toast toast = Toast.makeText(Bid.this, msg, Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(DonateSanitaryTowel.this, msg, Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.TOP,0,250);
                                 toast.show();
 
@@ -114,7 +114,7 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
                             } else {
 
-                                Toast toast = Toast.makeText(Bid.this, msg, Toast.LENGTH_SHORT);
+                                Toast toast = Toast.makeText(DonateSanitaryTowel.this, msg, Toast.LENGTH_SHORT);
                                 toast.setGravity(Gravity.TOP,0,250);
                                 toast.show();
                             }
@@ -123,7 +123,7 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
                             e.printStackTrace();
 
-                            Toast toast = Toast.makeText(Bid.this, e.toString(), Toast.LENGTH_SHORT);
+                            Toast toast = Toast.makeText(DonateSanitaryTowel.this, e.toString(), Toast.LENGTH_SHORT);
                             toast.setGravity(Gravity.TOP,0,250);
                             toast.show();
                         }
@@ -138,7 +138,7 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
                 error.printStackTrace();
 
-                Toast toast = Toast.makeText(Bid.this, error.toString(), Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(DonateSanitaryTowel.this, error.toString(), Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.TOP,0,250);
                 toast.show();
             }
@@ -150,11 +150,9 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
                 Map<String,String> params = new HashMap<>();
 
-                params.put("requestID", requestID);
-                params.put("unit_price", edt_unit_price.getText().toString());
-                params.put("total_price", String.valueOf(totalPrice));
+                params.put("quantity", quantity);;
                 params.put("supplierID",user.getClientID());
-                params.put("quantity", String.valueOf(quantity));
+
 
                 Log.e("PARAMS", "" + params);
 
@@ -174,7 +172,7 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
-        alertDialog.setMessage("Submit this bid?");
+        alertDialog.setMessage("Donate SanitaryTowels?");
         alertDialog.setCancelable(false);
 
         alertDialog.setButton2("Cancel", new DialogInterface.OnClickListener() {
