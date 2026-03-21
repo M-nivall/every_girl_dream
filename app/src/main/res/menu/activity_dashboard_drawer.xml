@@ -64,6 +64,10 @@
             android:title="Sanitary Towel Requests" />
 
         <item
+            android:id="@+id/nav_donations"
+            android:title="Sanitary Towel Donations" />
+
+        <item
             android:id="@+id/nav_donate_towel"
             android:title="Donate Sanitary Towel" />
 
