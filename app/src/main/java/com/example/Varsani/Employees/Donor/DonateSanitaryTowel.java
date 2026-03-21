@@ -191,5 +191,4 @@ public class DonateSanitaryTowel extends AppCompatActivity {
 
         alertDialog.show();
     }
-
 }
