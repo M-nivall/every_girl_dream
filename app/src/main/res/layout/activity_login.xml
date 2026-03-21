@@ -125,6 +125,7 @@
         android:textColor="@color/colorBlack"
         android:layout_marginBottom="20dp"/>
     <TextView
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
