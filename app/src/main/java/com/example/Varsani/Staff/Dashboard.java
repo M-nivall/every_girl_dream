@@ -21,6 +21,7 @@ import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.Counselling.CounsellingRequests;
 import com.example.Varsani.Employees.Counsellor.AssignedCounselling;
 import com.example.Varsani.Employees.Counsellor.InProgressCounselling;
+import com.example.Varsani.Employees.Donor.DonateSanitaryTowel;
 import com.example.Varsani.Employees.Mentor.CompletedSeminars;
 import com.example.Varsani.Employees.Mentor.InProgressSeminars;
 import com.example.Varsani.Employees.Mentor.MentorshipSeminars;
@@ -129,6 +130,9 @@ public class Dashboard extends AppCompatActivity {
                 }  else if (item.getItemId() == R.id.nav_sanitary) {
                     Intent st = new Intent( getApplicationContext(), SanitaryTowels.class );
                     startActivity( st );
+                }  else if (item.getItemId() == R.id.nav_donate_towel) {
+                    Intent dt = new Intent( getApplicationContext(), DonateSanitaryTowel.class );
+                    startActivity( dt );
                 } else if (item.getItemId() == R.id.nav_request) {
                     Intent nr = new Intent( getApplicationContext(), MyRequests.class );
                     startActivity( nr );
@@ -315,6 +319,7 @@ public class Dashboard extends AppCompatActivity {
         navigationView.getMenu().findItem(R.id.nav_approved_requests).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_assigned_counselling).setVisible(false);
         navigationView.getMenu().findItem(R.id.nav_progress_counselling).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_donate_towel).setVisible(false);
 
         if(session.isLoggedIn()) {
 
@@ -331,6 +336,9 @@ public class Dashboard extends AppCompatActivity {
 
             } else if (user.getUser_type().equals("Rescue Worker")) {
                 navigationView.getMenu().findItem(R.id.nav_emergency_operations).setVisible(true);
+
+            } else if (user.getUser_type().equals("Donor")) {
+                navigationView.getMenu().findItem(R.id.nav_donate_towel).setVisible(true);
 
             } else if (user.getUser_type().equals("Mentor")) {
                 navigationView.getMenu().findItem(R.id.nav_mentorship_seminar).setVisible(true);
