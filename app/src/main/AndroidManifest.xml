@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Staff.Store_mrg.Donatations"
+            android:name=".Staff.Store_mrg.Donations"
             android:exported="false" />
         <activity
             android:name=".Employees.Donor.DonateSanitaryTowel"

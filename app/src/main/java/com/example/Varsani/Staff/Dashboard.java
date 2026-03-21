@@ -44,7 +44,7 @@ import com.example.Varsani.Staff.ServMrg.QuotationRequests;
 import com.example.Varsani.Staff.ServMrg.ServiceCompleted;
 import com.example.Varsani.Staff.ShippingMrg.OrdersToShip;
 import com.example.Varsani.Staff.ShippingMrg.ShippingOrders;
-import com.example.Varsani.Staff.Store_mrg.Donatations;
+import com.example.Varsani.Staff.Store_mrg.Donations;
 import com.example.Varsani.Staff.Store_mrg.RequestItems;
 import com.example.Varsani.Staff.Store_mrg.RequestedMaterials;
 import com.example.Varsani.Staff.Store_mrg.SanitaryTowels;
@@ -135,7 +135,7 @@ public class Dashboard extends AppCompatActivity {
                     Intent dt = new Intent( getApplicationContext(), DonateSanitaryTowel.class );
                     startActivity( dt );
                 }  else if (item.getItemId() == R.id.nav_donations) {
-                    Intent d = new Intent( getApplicationContext(), Donatations.class );
+                    Intent d = new Intent( getApplicationContext(), Donations.class );
                     startActivity( d );
                 } else if (item.getItemId() == R.id.nav_request) {
                     Intent nr = new Intent( getApplicationContext(), MyRequests.class );
