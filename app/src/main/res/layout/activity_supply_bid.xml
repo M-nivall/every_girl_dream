@@ -102,6 +102,19 @@
                     android:layout_marginTop="18dp"
                     android:textColor="#37474F"/>
 
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txt_view_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Receipt"
+                    android:textSize="14sp"
+                    android:textColor="#1565C0"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
 
                 <ProgressBar
                     android:id="@+id/progressBar"

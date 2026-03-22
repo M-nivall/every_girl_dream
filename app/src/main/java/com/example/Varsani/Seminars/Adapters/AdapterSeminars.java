@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Varsani.Clients.Models.ProductModal;
 import com.example.Varsani.Clients.Models.UserModel;
 import com.example.Varsani.R;
 import com.example.Varsani.ReportCases.Adapters.AdapterEmergencyReport;
@@ -20,10 +22,13 @@ import com.example.Varsani.Seminars.Models.SeminarModel;
 import com.example.Varsani.Seminars.RegisterSeminar;
 import com.example.Varsani.utils.SessionHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterSeminars extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<SeminarModel> items;
+
+    private List<SeminarModel> searchView;
 
     private Context ctx;
     ProgressDialog progressDialog;
@@ -37,6 +42,7 @@ public class AdapterSeminars extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public AdapterSeminars(Context context, List<SeminarModel> items) {
         this.items = items;
+        this.searchView = items;
         ctx = context;
     }
 
@@ -81,6 +87,10 @@ public class AdapterSeminars extends RecyclerView.Adapter<RecyclerView.ViewHolde
             view.txt_status.setText(o.getSeminarStatus());
             view.txt_seminar_location.setText("Location: " + o.getLocation());
 
+            if (o.getSeminarStatus().equals("Completed") || o.getSeminarStatus().equals("In Progress")) {
+                view.btn_apply.setVisibility(View.GONE);
+            }
+
             view.btn_apply.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,5 +107,44 @@ public class AdapterSeminars extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+
+                String charString = charSequence.toString();
+
+                if (charString.isEmpty()) {
+
+                    items = searchView;
+                } else {
+
+                    ArrayList<SeminarModel> filteredList = new ArrayList<>();
+
+                    for (SeminarModel androidVersion : items) {
+
+                        if (androidVersion.getTitle().toLowerCase().contains(charString)) {
+
+                            filteredList.add(androidVersion);
+                        }
+                    }
+
+                    items = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = items;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                items = (ArrayList<SeminarModel>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }

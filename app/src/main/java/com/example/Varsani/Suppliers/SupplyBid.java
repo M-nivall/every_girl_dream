@@ -5,6 +5,7 @@ import static com.example.Varsani.utils.Urls.URL_SUPPLY_BID;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -42,7 +43,8 @@ import java.util.Map;
 
 public class SupplyBid extends AppCompatActivity {
 
-    private TextView txt_request_id, txt_quantity, txt_urgency, txv_unit_price, txv_total_price, txt_bid_status;
+    private TextView txt_request_id, txt_quantity, txt_urgency, txv_unit_price,
+            txv_total_price, txt_bid_status, txt_view_payment;
     private Button btn_supply;
     private ProgressBar progressBar;
 
@@ -67,6 +69,7 @@ public class SupplyBid extends AppCompatActivity {
         txv_unit_price = findViewById(R.id.txv_unit_price);
         txv_total_price = findViewById(R.id.txv_total_price);
         txt_bid_status = findViewById(R.id.txt_bid_status);
+        txt_view_payment = findViewById(R.id.txt_view_payment);
 
         btn_supply = findViewById(R.id.btn_supply);
         progressBar = findViewById(R.id.progressBar);
@@ -102,6 +105,23 @@ public class SupplyBid extends AppCompatActivity {
         if (status.equals("Approved") || status.equals("Supplied") || status.equals("Received") || status.equals("Paid")) {
             btn_supply.setVisibility(View.GONE);
         }
+
+        if (status.equals("Paid")) {
+            txt_view_payment.setVisibility(View.VISIBLE);
+        }
+
+        txt_view_payment.setOnClickListener(v -> {
+            Intent intent = new Intent(SupplyBid.this, SupplyReceipt.class);
+            intent.putExtra("requestID", requestID);
+            intent.putExtra("urgency", urgency);
+            intent.putExtra("status", status);
+            intent.putExtra("unitPrice", unitPrice);
+            intent.putExtra("totalPrice", totalPrice);
+            intent.putExtra("quantityNeeded", String.valueOf(quantity));
+            intent.putExtra("supplierName", user.getFirstname() + " " + user.getLastname());
+            intent.putExtra("supplierPhone", user.getPhoneNo());
+            startActivity(intent);
+        });
 
         btn_supply.setOnClickListener(v -> alertSubmit());
 
