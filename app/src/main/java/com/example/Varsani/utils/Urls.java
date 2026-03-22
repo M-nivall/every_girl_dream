@@ -2,9 +2,9 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    //public static String ipAddress = "http://192.168.101.248/everygirldream/";
+    //public static String ipAddress = "http://192.168.38.240/everygirldream/";
 
-    public static String ipAddress = "https://131c-217-199-148-239.ngrok-free.app/everygirldream/";
+    public static String ipAddress = "https://8bdc-217-199-148-239.ngrok-free.app/everygirldream/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
@@ -68,6 +68,7 @@ public class Urls {
     public static final String URL_NOTICES=ROOT_URL + "girls/notices.php";
 
     //Donors
+    public static final String URL_REGISTER_DONOR = ROOT_URL +"donor/register.php";
     public static final String URL_DONATE= ROOT_URL+"donor/donate.php";
 
      //  products
@@ -164,6 +165,9 @@ public class Urls {
     public static final String URL_GET_REQUEST_BIDS=ROOT_URL + "inventory/get_request_bids.php";
     public static final String URL_APPROVE_SUPPLIER=ROOT_URL + "inventory/approve_supplier.php";
     public static final String URL_CONFIRM_STOCK_SUPPLY=ROOT_URL + "inventory/confirm_supply.php";
+
+    public static final String URL_GET_DONATIONS=ROOT_URL + "inventory/donations.php";
+    public static final String URL_RECEIVE_DONATIONS=ROOT_URL + "inventory/receive_donations.php";
 
     public static final String URL_GET_STOCK=ROOT_URL + "stock_mrg/stock.php";
     public static final String URL_GET_TOOLS=ROOT_URL + "stock_mrg/tools.php";

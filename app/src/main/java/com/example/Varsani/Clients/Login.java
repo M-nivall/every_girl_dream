@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.Varsani.Employees.Donor.RegisterDonor;
 import com.example.Varsani.Employees.EmployeeLogin;
 import com.example.Varsani.MainActivity;
 import com.example.Varsani.Staff.SelectLogin;
@@ -39,7 +40,7 @@ public class Login extends AppCompatActivity {
 
     private Button btn_login;
     private EditText edt_username,edt_password;
-    TextView signuptext,gotostaff,gotoforgot,go_supplier;
+    TextView signuptext,gotostaff,gotoforgot,text_donor;
     private ProgressBar progressBar;
     private SessionHandler session;
     private UserModel user;
@@ -56,7 +57,7 @@ public class Login extends AppCompatActivity {
         progressBar=findViewById(R.id.progressBar);
         gotostaff = findViewById(R.id.gotostaff);
         gotoforgot=findViewById(R.id.gotoforgot);
-        go_supplier = findViewById(R.id.go_supplier);
+        text_donor = findViewById(R.id.text_donor);
 
 
         session=new SessionHandler(getApplicationContext());
@@ -85,10 +86,10 @@ public class Login extends AppCompatActivity {
                 startActivity(in);
             }
         });
-        go_supplier.setOnClickListener(new View.OnClickListener() {
+        text_donor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),SupplierLogin.class);
+                Intent in = new Intent(getApplicationContext(), RegisterDonor.class);
                 startActivity(in);
             }
         });
