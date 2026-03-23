@@ -125,5 +125,4 @@ public class AdapterDonations extends RecyclerView.Adapter<AdapterDonations.MyVi
         Volley.newRequestQueue(context).add(request);
 
     }
-
 }
