@@ -102,18 +102,16 @@
                     android:layout_marginTop="18dp"
                     android:textColor="#37474F"/>
 
-                <TextView
+                <Button
                     android:visibility="gone"
-                    android:id="@+id/txt_view_payment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Receipt"
-                    android:textSize="14sp"
-                    android:textColor="#1565C0"
+                    android:id="@+id/btn_view_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="View Payment Receipt"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:clickable="true"
-                    android:focusable="true"/>
+                    android:backgroundTint="#00897B"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="12dp"/>
 
 
                 <ProgressBar

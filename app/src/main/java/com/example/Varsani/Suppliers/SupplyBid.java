@@ -44,8 +44,8 @@ import java.util.Map;
 public class SupplyBid extends AppCompatActivity {
 
     private TextView txt_request_id, txt_quantity, txt_urgency, txv_unit_price,
-            txv_total_price, txt_bid_status, txt_view_payment;
-    private Button btn_supply;
+            txv_total_price, txt_bid_status;
+    private Button btn_supply, btn_view_payment;
     private ProgressBar progressBar;
 
     private String requestID, urgency, status, unitPrice, totalPrice;
@@ -69,10 +69,11 @@ public class SupplyBid extends AppCompatActivity {
         txv_unit_price = findViewById(R.id.txv_unit_price);
         txv_total_price = findViewById(R.id.txv_total_price);
         txt_bid_status = findViewById(R.id.txt_bid_status);
-        txt_view_payment = findViewById(R.id.txt_view_payment);
 
         btn_supply = findViewById(R.id.btn_supply);
         progressBar = findViewById(R.id.progressBar);
+
+        btn_view_payment = findViewById(R.id.btn_view_payment);
 
         progressBar.setVisibility(View.GONE);
 
@@ -107,10 +108,10 @@ public class SupplyBid extends AppCompatActivity {
         }
 
         if (status.equals("Paid")) {
-            txt_view_payment.setVisibility(View.VISIBLE);
+            btn_view_payment.setVisibility(View.VISIBLE);
         }
 
-        txt_view_payment.setOnClickListener(v -> {
+        btn_view_payment.setOnClickListener(v -> {
             Intent intent = new Intent(SupplyBid.this, SupplyReceipt.class);
             intent.putExtra("requestID", requestID);
             intent.putExtra("urgency", urgency);

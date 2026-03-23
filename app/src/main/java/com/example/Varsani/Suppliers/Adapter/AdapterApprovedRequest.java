@@ -48,7 +48,7 @@ public class AdapterApprovedRequest extends RecyclerView.Adapter<AdapterApproved
         holder.tvQuantity.setText(model.getQuantityNeeded() + " units");
         holder.tvUrgency.setText(model.getUrgency());
         holder.tvStatus.setText(model.getStatus());
-        holder.tvBidCount.setText(model.getBidCount() + " bids received");
+        //holder.tvBidCount.setText(model.getBidCount() + " bids received");
         holder.tvDate.setText(formatDate(model.getCreatedAt()));
 
         // Color code urgency
