@@ -36,5 +36,4 @@ public class DonationModel {
         this.quantity = quantity;
     }
 
-
 }
