@@ -4,7 +4,7 @@ public class Urls {
 
     //public static String ipAddress = "http://192.168.38.247/everygirldream/";
 
-    public static String ipAddress = "https://d28a-197-248-201-21.ngrok-free.app/everygirldream/";
+    public static String ipAddress = "https://e5cb-197-248-201-21.ngrok-free.app/everygirldream/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
