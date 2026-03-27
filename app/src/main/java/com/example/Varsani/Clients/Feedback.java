@@ -51,7 +51,6 @@ public class Feedback extends AppCompatActivity {
     private Button btn_feedback;
     private Spinner spinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
