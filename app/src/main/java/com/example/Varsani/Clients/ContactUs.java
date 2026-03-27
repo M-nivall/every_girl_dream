@@ -24,5 +24,4 @@ public class ContactUs extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
