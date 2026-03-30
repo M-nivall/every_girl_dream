@@ -115,5 +115,4 @@ public class NoticeDetails extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
