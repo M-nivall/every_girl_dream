@@ -169,5 +169,4 @@ public class Notice extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
-
 }
