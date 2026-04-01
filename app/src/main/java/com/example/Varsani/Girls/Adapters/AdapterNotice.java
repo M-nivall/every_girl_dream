@@ -132,5 +132,4 @@ public class AdapterNotice extends RecyclerView.Adapter<AdapterNotice.MyViewHold
             tvPreviewMessage = itemView.findViewById(R.id.tvPreviewMessage);
         }
     }
-
 }
