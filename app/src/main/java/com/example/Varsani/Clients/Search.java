@@ -60,7 +60,7 @@ public class Search extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        getProducts(); // fixed name
+        getProducts();
     }
 
     @Override
