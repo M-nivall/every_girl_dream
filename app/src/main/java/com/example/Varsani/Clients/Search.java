@@ -53,7 +53,6 @@ public class Search extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Search");
 
-        // ✅ Use only ONE layout manager
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         session = new SessionHandler(this);
