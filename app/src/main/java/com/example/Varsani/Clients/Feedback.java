@@ -69,8 +69,6 @@ public class Feedback extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this,R.array.recipient,android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-//        progressBar=findViewById(R.id.progressBar);
-//        progressBar.setVisibility(View.GONE);
         session=new SessionHandler(getApplicationContext());
         user=session.getUserDetails();
         list=new ArrayList<>();
@@ -222,5 +220,4 @@ public class Feedback extends AppCompatActivity {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
-
 }
