@@ -14,8 +14,7 @@ public class Profile extends AppCompatActivity {
 
     private SessionHandler session;
     private UserModel user;
-    private TextView txv_name,txv_phoneNo, txv_email,
-            txv_username;
+    private TextView txv_name,txv_phoneNo, txv_email, txv_username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,4 +44,5 @@ public class Profile extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
