@@ -76,9 +76,6 @@ public class Feedback extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager= new GridLayoutManager(getApplicationContext(),1);
         recyclerView.setLayoutManager(layoutManager);
 
-
-
-//
         btn_feedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
