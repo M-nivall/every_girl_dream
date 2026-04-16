@@ -2,9 +2,9 @@ package com.example.Varsani.utils;
 
 public class Urls {
 
-    //public static String ipAddress = "http://192.168.34.20/everygirldream/";
+    //public static String ipAddress = "http://192.168.34.250/everygirldream/";
 
-    public static String ipAddress = "https://e5cb-197-248-201-21.ngrok-free.app/everygirldream/";
+    public static String ipAddress = "https://8ddb-217-199-148-239.ngrok-free.app/everygirldream/";
 
     private static final String ROOT_URL =ipAddress+ "android_files/";
     public static final String ROOT_URL_IMAGES =ipAddress+"upload_products/" ;
